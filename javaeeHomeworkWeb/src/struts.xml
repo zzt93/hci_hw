@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+
+
+    <include file="global.xml"/>
+
+
+    <package name="struts2" namespace="/dessert"
+             extends="appDefault">
+
+        <action name="Login_*" method="{1}" class="action.UserLogin">
+            <!--"success" is the default result code, so the framework will use the "Menu" action as response. (Which we haven't written yet.)-->
+            <result type="redirectAction">Account</result>
+            <result name="input">/jsp/UserLogin.jsp</result>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+
+        <action name="Register_*" method="{1}" class="action.Register">
+            <result type="redirectAction">Activation_input</result>
+            <result name="input">/jsp/Register.jsp</result>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+
+        <action name="Activation_*" class="action.Activation" method="{1}">
+            <result type="redirectAction">Account</result>
+            <result name="input">/jsp/Activation.jsp</result>
+        </action>
+
+        <action name="InnerLogin_*" method="{1}" class="action.InnerLogin">
+            <result name="input">/jsp/InnerLogin.jsp</result>
+            <!-- redirect and not forward-->
+            <result type="redirectAction" name="manager">ManagerSession</result>
+            <result type="redirectAction" name="main branch waiter">Waiter0Session</result>
+            <result type="redirectAction" name="other branch waiter">OtherWaiterSession</result>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+
+        <action name="InnerRegister_*" method="{1}" class="action.InnerRegister">
+            <result>/jsp/InnerLogin.jsp</result>
+            <result name="input">/jsp/InnerRegister.jsp</result>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+
+        <action name="ManagerSession">
+            <result name="input" type="redirectAction">InnerLogin_input</result>
+            <result>/jsp/Manager.jsp</result>
+            <interceptor-ref name="staffStack"/>
+        </action>
+
+        <action name="Waiter0Session" class="action.Waiter0">
+            <result name="input" type="redirectAction">InnerLogin_input</result>
+            <result>/jsp/Waiter0.jsp</result>
+            <interceptor-ref name="staffStack"/>
+        </action>
+
+        <action name="OtherWaiterSession" class="action.OtherWaiter">
+            <result name="input" type="redirectAction">InnerLogin_input</result>
+            <result>/jsp/OtherWaiter.jsp</result>
+            <interceptor-ref name="staffStack"/>
+        </action>
+
+
+        <action name="Account*" class="action.AccountAction" method="account{1}">
+            <result name="success">/jsp/Account.jsp</result>
+        </action>
+
+
+        <action name="Branch" class="action.BranchReserveAction">
+            <result>/jsp/Branch.jsp</result>
+        </action>
+
+        <action name="Branches" class="action.AllBranches">
+            <result>/jsp/Branches.jsp</result>
+        </action>
+
+        <action name="SearchUser" class="action.OtherWaiter" method="searchUser">
+            <result>/jsp/OtherWaiter.jsp</result>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+
+    </package>
+
+    <package name="ajax" namespace="/dessert" extends="json-default">
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+
+        <action name="WaiterPayMoney" class="action.OtherWaiter" method="payMoney">
+            <result>/jsp/OtherWaiter.jsp</result>
+        </action>
+
+        <action name="UserReserve*" class="action.AccountReserveAction" method="userReserve{1}">
+            <!--the action will return a json to use in a page-->
+            <result type="json">/jsp/Account.jsp</result>
+        </action>
+
+        <action name="BranchUserReserveDetail*" class="action.OtherWaiter" method="branchUserReserveDetail{1}">
+            <!--<result name="input">/jsp/OtherWaiter.jsp</result>-->
+            <result type="json">/jsp/OtherWaiter.jsp</result>
+        </action>
+
+        <action name="BranchUserReserve*" class="action.BranchReserveAction" method="branchUserReserve{1}">
+            <result type="json">/jsp/Branch.jsp</result>
+        </action>
+
+        <action name="Branch*" class="action.BranchManagementAction" method="branch{1}">
+            <result type="json">/jsp/Manager.jsp</result>
+        </action>
+
+        <action name="Order*" class="action.ReserveDetailAction" method="order{1}">
+            <result type="json">/jsp/Account.jsp</result>
+        </action>
+
+        <action name="ReserveDetailAdd" class="action.SessionRDAction" method="orderBranchAdd">
+            <result type="json"></result>
+        </action>
+
+        <action name="ReserveDetail*" class="action.SessionRDAction" method="orderBranch{1}">
+            <result type="json">/jsp/Branch.jsp</result>
+        </action>
+
+        <action name="Pay*" class="action.PayHistoryAction" method="pay{1}">
+            <result type="json">/jsp/Account.jsp</result>
+        </action>
+
+
+        <action name="PlanDetail*" class="action.PlanDetailAction" method="planDetail{1}">
+            <result type="json">/jsp/Waiter0.jsp</result>
+        </action>
+
+        <action name="Plan*" class="action.PlanAction" method="plan{1}">
+            <result type="json">/jsp/Account.jsp</result>
+        </action>
+
+        <action name="Msg*" class="action.MessageAction" method="msg{1}">
+            <result type="json">/jsp/Account.jsp</result>
+        </action>
+
+        <action name="UserList" class="action.AccountAction" method="userList">
+            <result type="json">/jsp/Account.jsp</result>
+        </action>
+
+        <action name="UserCardList" class="action.AccountAction" method="UserCardList">
+            <result type="json">/jsp/Account.jsp</result>
+        </action>
+
+        <action name="UpdateAccount" class="action.UpdateAccountAction" method="update">
+            <result type="json">/jsp/Account.jsp</result>
+        </action>
+
+        <action name="ManagerAgeChart" class="action.ManagerStatistic" method="prepareChart">
+            <result type="json"></result>
+        </action>
+
+        <action name="BranchOptions" class="action.BranchesOptions" method="branches">
+            <result type="json"></result>
+        </action>
+
+
+    </package>
+
+</struts>
