@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="../styles/util.css">
     <link rel="stylesheet" href="../styles/dessert.css">
     <link rel="stylesheet" href="../styles/lightBox.css">
+    <link rel="stylesheet" href="../styles/cart.css">
 
     <!-- jTable Metro theme -->
     <link href="../scripts/jtable.2.4.0/themes/metro/blue/jtable.css" rel="stylesheet" type="text/css"/>
@@ -135,6 +136,18 @@
     </div>
 </div>
 
+
+
+<div class="cart">
+    <div class="detail-cart" style="top: -43px; height: auto;">
+
+    </div>
+    <div class="cart-footer" onclick="">
+
+    </div>
+    <div class="shop-carthelper-opener" ng-class="{show: shopCart.cartHelper.show}" onclick="showCartHelper()"></div>
+    <div class="shop-flyitem"></div>
+</div>
 
 <%@include file="../html/footer.html" %>
 

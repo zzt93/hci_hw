@@ -1,0 +1,18 @@
+.cart {
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    width: 320px;
+    height: 46px;
+    background: #0b67cd;
+    font-size: 14px;
+}
+
+.detail-cart {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 1px 15px #ccc
+}

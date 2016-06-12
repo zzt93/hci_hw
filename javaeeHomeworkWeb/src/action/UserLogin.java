@@ -6,7 +6,6 @@ import interceptor.SessionManagement;
 import remote.JNDIFactory;
 import service.AccountService;
 
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by zzt on 2/11/16.
