@@ -36,7 +36,7 @@
     <title>Branch ${branchNum}: ${branchAddr} </title>
     <s:head/>
 </head>
-<body>
+<body >
 
 <header>
     <section id="main-header">
@@ -139,21 +139,18 @@
 
 <div class="cart">
     <div class="shop-cartbasket" style="top: -88px; height: auto;">
-        <div cart="shopCart" class="ng-isolate-scope">
+        <div id="shopCart" class="ng-isolate-scope">
             <!-- ngIf: shopCart.vm.groups.length > 1 -->
-            <div class="shop-grouphead single" ng-class="{ single: shopCart.vm.groups.length === 1 }">
-                <!-- ngIf: shopCart.vm.groups.length === 1 -->
-                <%--<a href="javascript:" class="icon-cart-add ng-scope" ng-if="shopCart.vm.groups.length === 1" ng-click="addGroup()" tooltip="添加购物车"></a>--%>
-                <!-- end ngIf: shopCart.vm.groups.length === 1 -->
+            <div class="shop-grouphead single">
                 <!-- ngIf: showGuide && shopCart.vm.groups.length === 1 -->
                 <div class="shop-grouphead-row">
                     <!-- ngIf: shopCart.vm.groups.length > 1 -->购物车
-                    <a href="javascript:" ng-click="shopCart.clearGroup(shopCart.currentGroupIndex)">[清空]</a>
+                    <a href="javascript:" onclick="shopCart.clearGroup(shopCart.currentGroupIndex)">[清空]</a>
                 </div></div></div>
         <div ng-repeat="item in shopCart.vm.groups[shopCart.currentGroupIndex]" class="shop-cartbasket-tablerow ng-scope" entityid="3428029">
-            <div class="cell itemname ng-binding" ng-bind="item.name" title="芒果紫米露/热">芒果紫米露/热</div>
+            <div class="cell itemname" ng-bind="item.name" title="芒果紫米露/热">芒果紫米露/热</div>
             <div class="cell itemquantity"><button ng-click="shopCart.subEntity(item, $event)">-</button><input ng-model="item.quantity" ng-blur="shopCart.updateFromInput(item, item.quantity)" class="ng-pristine ng-valid"><button ng-click="shopCart.addEntity(item, $event)">+</button></div>
-            <div class="cell itemtotal ng-binding" ng-bind="'¥' + ((item.price * item.quantity).toFixed(2) | number)">¥9</div></div>
+            <div class="cell itemtotal" ng-bind="'¥' + ((item.price * item.quantity).toFixed(2) | number)">¥9</div></div>
     </div>
 
     <div class="shop-cartfooter" onclick="">
@@ -162,8 +159,8 @@
       ng-if="shopCart.vm.quantity > 0">1
             </span>
         </span>
-        <p class="shop-cartfooter-text price ng-binding ng-scope" ng-if="shopCart.vm.quantity > 0" ng-bind="shopCart.vm.total | number">15</p>
-        <button class="shop-cartfooter-checkout ng-binding disabled" ng-class="{disabled: shopCart.vm.button.name !== 'CAN_ORDER'}" ng-disabled="shopCart.vm.button.disabled" ng-bind="shopCart.vm.button.text" ng-click="checkout($event)" disabled="disabled">还差 6 元起送</button>
+        <p class="shop-cartfooter-text price ng-scope" ng-if="shopCart.vm.quantity > 0" ng-bind="shopCart.vm.total | number">15</p>
+        <button class="shop-cartfooter-checkout disabled" ng-class="{disabled: shopCart.vm.button.name !== 'CAN_ORDER'}" ng-disabled="shopCart.vm.button.disabled" ng-bind="shopCart.vm.button.text" ng-click="checkout($event)" disabled="disabled">还差 6 元起送</button>
     </div>
     <div class="shop-flyitem"></div>
 </div>

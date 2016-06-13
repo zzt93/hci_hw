@@ -2,6 +2,27 @@
  * Created by zzt on 6/13/16.
  */
 
+var shopCart = {
+    vm: {
+        groups: [],
+        quantity: 0,
+        total: 0,
+    },
+    currentGroupIndex: 0,
+    clearGroup: function (index) {
+
+    },
+    subEntity: function (item, $event) {
+
+    },
+    addEntity: function (item, $event) {
+
+    },
+    updateFromInput: function (item, quantity) {
+    }
+};
+
+
 var cart = Object.create(null);
 
 var UI = function () {
@@ -13,7 +34,7 @@ var UI = function () {
 
         },
         updateNum: function (id, num) {
-            
+
         }
     }
 };
@@ -36,7 +57,7 @@ function removeCartItem(goodsId) {
 }
 
 /**
- * 
+ *
  * @param goodsId
  * @param num ADD or SUB
  */
@@ -49,7 +70,7 @@ function updateNum(goodsId, num) {
     }
 }
 
-function newCartItem (id) {
+function newCartItem(id) {
     return {
         goodsId: id,
         num: 0,
