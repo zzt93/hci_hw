@@ -137,15 +137,34 @@
 </div>
 
 
-
 <div class="cart">
-    <div class="detail-cart" style="top: -43px; height: auto;">
-
+    <div class="shop-cartbasket" style="top: -88px; height: auto;">
+        <div cart="shopCart" class="ng-isolate-scope">
+            <!-- ngIf: shopCart.vm.groups.length > 1 -->
+            <div class="shop-grouphead single" ng-class="{ single: shopCart.vm.groups.length === 1 }">
+                <!-- ngIf: shopCart.vm.groups.length === 1 -->
+                <%--<a href="javascript:" class="icon-cart-add ng-scope" ng-if="shopCart.vm.groups.length === 1" ng-click="addGroup()" tooltip="添加购物车"></a>--%>
+                <!-- end ngIf: shopCart.vm.groups.length === 1 -->
+                <!-- ngIf: showGuide && shopCart.vm.groups.length === 1 -->
+                <div class="shop-grouphead-row">
+                    <!-- ngIf: shopCart.vm.groups.length > 1 -->购物车
+                    <a href="javascript:" ng-click="shopCart.clearGroup(shopCart.currentGroupIndex)">[清空]</a>
+                </div></div></div>
+        <div ng-repeat="item in shopCart.vm.groups[shopCart.currentGroupIndex]" class="shop-cartbasket-tablerow ng-scope" entityid="3428029">
+            <div class="cell itemname ng-binding" ng-bind="item.name" title="芒果紫米露/热">芒果紫米露/热</div>
+            <div class="cell itemquantity"><button ng-click="shopCart.subEntity(item, $event)">-</button><input ng-model="item.quantity" ng-blur="shopCart.updateFromInput(item, item.quantity)" class="ng-pristine ng-valid"><button ng-click="shopCart.addEntity(item, $event)">+</button></div>
+            <div class="cell itemtotal ng-binding" ng-bind="'¥' + ((item.price * item.quantity).toFixed(2) | number)">¥9</div></div>
     </div>
-    <div class="cart-footer" onclick="">
 
+    <div class="shop-cartfooter" onclick="">
+        <span class="fa fa-2x fa-shopping-cart shop-carticon">
+            <span class="shop-cartpieces" ng-bind="shopCart.vm.quantity"
+      ng-if="shopCart.vm.quantity > 0">1
+            </span>
+        </span>
+        <p class="shop-cartfooter-text price ng-binding ng-scope" ng-if="shopCart.vm.quantity > 0" ng-bind="shopCart.vm.total | number">15</p>
+        <button class="shop-cartfooter-checkout ng-binding disabled" ng-class="{disabled: shopCart.vm.button.name !== 'CAN_ORDER'}" ng-disabled="shopCart.vm.button.disabled" ng-bind="shopCart.vm.button.text" ng-click="checkout($event)" disabled="disabled">还差 6 元起送</button>
     </div>
-    <div class="shop-carthelper-opener" ng-class="{show: shopCart.cartHelper.show}" onclick="showCartHelper()"></div>
     <div class="shop-flyitem"></div>
 </div>
 
@@ -157,6 +176,7 @@
 <script src="../scripts/jquery-ui-1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 <script type="application/javascript" src="../scripts/drag.js"></script>
 <script src="../scripts/jtable.2.4.0/jquery.jtable.js" type="text/javascript"></script>
+<script src="../scripts/angular.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         var order = $('#previous-order');
@@ -282,9 +302,9 @@
     });
 
 
-    $(window).bind('beforeunload', function () {
-        return 'If not paying your order, you may lose it later';
-    });
+    //    $(window).bind('beforeunload', function () {
+    //        return 'If not paying your order, you may lose it later';
+    //    });
 </script>
 
 

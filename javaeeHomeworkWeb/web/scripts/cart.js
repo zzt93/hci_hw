@@ -40,7 +40,7 @@ function removeCartItem(goodsId) {
  * @param goodsId
  * @param num ADD or SUB
  */
-function update_num(goodsId, num) {
+function updateNum(goodsId, num) {
     var item = getCartItem(goodsId);
     if (item.valid(num)) {
         item.update_num(num);
