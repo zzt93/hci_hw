@@ -10,6 +10,7 @@ import service.PlanService;
 import service.ReserveService;
 import tmpEntity.ReserveBranchVO;
 import vo.PlanBranchVO;
+import vo.ShoppingCart;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -202,4 +203,24 @@ public class BranchReserveAction extends ActionSupport {
         return SUCCESS;
     }
 
+
+    /**
+     * ------------------ new shopping cart function and variable-----------------
+     */
+    private ShoppingCart cart;
+
+    public ShoppingCart getCart() {
+        HttpSession session = SessionManagement.getSession();
+        cart = (ShoppingCart) session.getAttribute("cart");
+        if (cart == null) {
+            cart = new ShoppingCart();
+        }
+        return cart;
+    }
+
+    public String shopping() throws Exception {
+        final ShoppingCart cart = getCart();
+        cart.getItems();
+        return SUCCESS;
+    }
 }
