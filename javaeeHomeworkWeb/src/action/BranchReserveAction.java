@@ -9,6 +9,7 @@ import remote.JNDIFactory;
 import service.PlanService;
 import service.ReserveService;
 import tmpEntity.ReserveBranchVO;
+import vo.CartItem;
 import vo.PlanBranchVO;
 import vo.ShoppingCart;
 
@@ -211,16 +212,11 @@ public class BranchReserveAction extends ActionSupport {
 
     public ShoppingCart getCart() {
         HttpSession session = SessionManagement.getSession();
-        cart = (ShoppingCart) session.getAttribute("cart");
+        cart = (ShoppingCart) session.getAttribute(CartAction.CART);
         if (cart == null) {
             cart = new ShoppingCart();
         }
         return cart;
     }
 
-    public String shopping() throws Exception {
-        final ShoppingCart cart = getCart();
-        cart.getItems();
-        return SUCCESS;
-    }
 }

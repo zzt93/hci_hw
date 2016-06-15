@@ -11,3 +11,6 @@ function updateItemNum(goodsId, num) {
 
 }
 
+function getPriceById(id) {
+    
+}

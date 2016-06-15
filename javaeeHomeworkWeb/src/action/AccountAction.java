@@ -84,12 +84,12 @@ public class AccountAction extends ActionSupport {
 
             // handle gender
             for (Gender gender1 : Gender.values()) {
-                gender.add(gender1.getDes());
+                gender.add(gender1.getDes2());
             }
             userGender = Gender.values()[account.getGender()].getDes();
 
             // handle rank
-            userRank = Rank.values()[consume.getRank()].getDes();
+            userRank = Rank.values()[consume.getRank()].getChi();
         } catch (Exception e) {
             e.printStackTrace();
             return ERROR;

@@ -49,4 +49,8 @@ public class CartItem {
     public int hashCode() {
         return did;
     }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 }

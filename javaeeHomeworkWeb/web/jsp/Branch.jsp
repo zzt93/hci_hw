@@ -145,48 +145,46 @@
                 <!-- ngIf: showGuide && shopCart.vm.groups.length === 1 -->
                 <div class="shop-grouphead-row">
                     <!-- ngIf: shopCart.vm.groups.length > 1 -->购物车
-                    <a href="javascript:" onclick="clearCart()">[清空]</a>
+                    <a href="javascript:" onclick="Server.clearCart()">[清空]</a>
                 </div>
             </div>
         </div>
         <div class="shop-cartbasket-tablerow">
             <div class="cell itemname" title="芒果紫米露/热">芒果紫米露/热</div>
             <div class="cell itemquantity">
-                <button onclick="updateNum(item.id, SUB, this)">-</button>
-                <input value="${item.num}" onchange="updateFromInput(this)" type="number"
-                       min="1" max="100" >
-                <button onclick="updateNum(item.id, ADD, this)">+</button>
+                <button onclick="updateCartItemNum(SUB, this)">-</button>
+                <input value="1" onchange="updateFromInput(this)"
+                       min="1" max="100">
+                <button onclick="updateCartItemNum(ADD, this)">+</button>
             </div>
             <div class="cell itemtotal">¥9</div>
         </div>
-        <c:forEach items="${cart.items}" var="item">
-            <div class="shop-cartbasket-tablerow" >
+        <c:forEach items="${cart.items}" var="entry">
+            <c:set var="item" value="${entry.value}" scope="page"/>
+            <div class="shop-cartbasket-tablerow" id="${item.id}">
                 <div class="cell itemname" title="${item.name}">${item.name}</div>
-                <div class="cell itemquantity" id="${item.id}">
-                    <button onclick="updateNum(item.id, SUB, this)">-</button>
+                <div class="cell itemquantity">
+                    <button onclick="updateCartItemNum(SUB, this)">-</button>
                     <input value="${item.num}" onchange="updateFromInput(this)" type="number"
-                           min="1" max="100" >
-                    <button onclick="updateNum(item.id, ADD, this)">+</button>
+                           min="1" max="100">
+                    <button onclick="updateCartItemNum(ADD, this)">+</button>
                 </div>
-                <div class="cell itemtotal">¥${item.price * item.quantity}</div>
+                <div class="cell itemtotal">¥${item.price * item.num}</div>
             </div>
         </c:forEach>
     </div>
 
     <div class="shop-cartfooter" onclick="">
         <span class="fa fa-2x fa-shopping-cart shop-carticon">
-            <c:if test="${cart.quantity > 0}">
-            <span class="shop-cartpieces">${cart.quantity}</span>
-            </c:if>
+            <span class="shop-cartpieces" style="display: ${cart.quantity > 0 ? 'inline-block' : 'none'}">
+            ${cart.quantity}</span>
         </span>
-        <c:if test="${cart.quantity > 0}">
-            <p class="shop-cartfooter-text price">${cart.total}</p>
-        </c:if>
+        <p class="shop-cartfooter-text price">
+        ${cart.total}</p>
         <button class="shop-cartfooter-checkout disabled" onclick="checkout()"
-                disabled="disabled">还差 6 元起送
+                disabled="disabled">还差 ${30 - cart.total} 元起送
         </button>
     </div>
-    <div class="shop-flyitem"></div>
 </div>
 
 <%@include file="../html/footer.html" %>
@@ -196,8 +194,8 @@
 <!-- jTable script file. -->
 <script src="../scripts/jquery-ui-1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 <script type="application/javascript" src="../scripts/drag.js"></script>
+<script type="application/javascript" src="../scripts/cart.js"></script>
 <script src="../scripts/jtable.2.4.0/jquery.jtable.js" type="text/javascript"></script>
-<script src="../scripts/angular.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         var order = $('#previous-order');

@@ -163,6 +163,13 @@
         </action>
 
 
+        <action name="shoppingCart" class="action.CartAction" method="cart{1}">
+            <result type="json">
+                <param name="root">
+                    oldInfo
+                </param>
+            </result>
+        </action>
     </package>
 
 </struts>

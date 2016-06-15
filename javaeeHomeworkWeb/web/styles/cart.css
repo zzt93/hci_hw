@@ -26,6 +26,17 @@
     box-shadow: 0 1px 3px #2c2c2c
 }
 
+
+.shop-cartfooter-text.price:before {
+    content: "\00a5";
+    font-size: 14px
+}
+
+.shop-cartfooter-text,.shop-carticon {
+    display: inline-block;
+    vertical-align: middle
+}
+
 .shop-carticon {
     position: relative;
     width: 40px;
@@ -34,9 +45,13 @@
     font-size: 1.5em;
 }
 
-.shop-cartfooter-text,.shop-carticon {
-    display: inline-block;
-    vertical-align: middle
+.shop-cartfooter-text {
+    color: #fff
+}
+
+
+.shop-cartfooter-text.price {
+    font-size: 24px
 }
 
 .shop-cartpieces {
@@ -125,7 +140,7 @@
 }
 
 .shop-cartbasket-tablerow .cell.itemquantity {
-    width: 25%;
+    width: 30%;
     text-align: center
 }
 

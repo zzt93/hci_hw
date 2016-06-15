@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="../styles/account-content.css">
     <link rel="stylesheet" href="../styles/main-header.css">
+    <link rel="stylesheet" href="../styles/sign-head.css">
 
 
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
@@ -58,16 +59,16 @@ addListChosenListener('side_nav_list', 'tabbed-block');
     <nav id="side_nav" class="flex-none">
         <ul id="side_nav_list">
             <li>
-                <a href="#">Personal </a>
+                <a href="#">个人信息 </a>
             </li>
             <li>
-                <a href="#">Reservation </a>
+                <a href="#">已下单 </a>
             </li>
             <li>
-                <a href="#">History </a>
+                <a href="#">消费历史 </a>
             </li>
             <li>
-                <a href="#">Message </a>
+                <a href="#">消息通知 </a>
             </li>
         </ul>
     </nav>
@@ -75,7 +76,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
     <div id="tabbed-block" class="flex1">
 
         <div class="container" id="personal">
-            <h3>Your public information</h3>
+            <h3>您的公开信息</h3>
             <section class="personal-info flex-container-large" id="public-info">
                 <div class="avatar-wrapper none">
                     <img id="avatar" class="resize" src="../images/user.png" alt="a user">
@@ -89,55 +90,29 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                 </div>
                 <div id="change-picture-progress">&nbsp;</div>
                 <div class="flex1 info-part">
-                    <label for="DisplayName">Display name
+                    <label for="DisplayName">显示称呼
                         <br>
                         <input id="DisplayName" value="${user.name}" maxlength="30" tabindex="1"
                                data-site="Tony" type="text">
                     </label>
 
                     <br>
-                    <label>Location
+                    <label>送货地址
                         <br>
                         <input id="Location" value="${account.addr}" maxlength="100"
                                tabindex="3" data-site="Nanjing, China" type="text">
                     </label>
                     <br>
-                    <input type="submit" value="Submit changes" onclick="setUserAccountInfo(this)">
-                    <br>
                 </div>
 
-                <div class="flex1 info-part">
-                    <h4> Your card</h4>
-                    <ul id="roles">
-                        <li>${userRank}</li>
-                    </ul>
-
-
-                    <fmt:formatNumber value="${sessionScope.uid}" var="formattedId"
-                                      maxIntegerDigits="7" minIntegerDigits="7" groupingUsed="false"/>
-
-                    <fmt:formatNumber value="${account.bankCard}" var="formattedBackCard"
-                                      groupingUsed="true"/>
-
-                    <label>User Card Number:
-                        <input type="text" value="${formattedId}" readonly>
-                    </label>
-                    <label>BankCard Number:
-                        <input type="text" value="${formattedBackCard}" readonly>
-                    </label>
-                    <br>
-                    <div class="horizontal-center" style="margin-top: 10px; font-size: 1.5em;">
-                        <label><a href="<s:url action='Activation_input'/>">Activate/Upgrade</a></label>
-                    </div>
-                </div>
 
             </section>
             <br>
 
-            <h3>Your private information</h3>
+            <h3>您的私密信息</h3>
             <section class="personal-info" id="private-info">
                 <div>
-                    <label for="age">Age
+                    <label for="age">年龄
                         <br>
                         <input id="age" value="${account.age}" maxlength="30" tabindex="1"
                                data-site="Tony" type="text" pattern="\d+">
@@ -145,33 +120,64 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
                     <br>
 
-                    <s:radio id="gender" name="gender" list="gender" label="Gender" value="userGender"/>
-
-
-                    <br>
-                    <input type="submit" value="Submit changes" onclick="setUserAccountInfo(this)">
+                    <s:radio id="gender" name="gender" list="gender" label="性别" value="userGender"/>
                     <br>
                 </div>
 
             </section>
             <br>
-            <div class="horizontal-center">
-                <form action="AccountDelete">
-                    <input type="submit" value="Delete Account">
-                </form>
-            </div>
+            <input type="submit" value="Submit changes" onclick="setUserAccountInfo(this)">
         </div>
 
         <div class="container" id="reserve">
-            <h3>Your reservation</h3>
+            <h3>您的订单</h3>
 
             <div id="ReservationTableContainer"></div>
 
         </div>
 
         <div class="container">
-            <h3>Balance: ${consume.balance}</h3>
-            <h3>Your payment history</h3>
+
+            <h3>会员卡信息</h3>
+            <div class="flex1 info-part">
+                <ul id="roles">
+                    <li>${userRank}</li>
+                </ul>
+                <br>
+
+                <fmt:formatNumber value="${sessionScope.uid}" var="formattedId"
+                                  maxIntegerDigits="7" minIntegerDigits="7" groupingUsed="false"/>
+
+                <fmt:formatNumber value="${account.bankCard}" var="formattedBackCard"
+                                  groupingUsed="true"/>
+
+                <label>会员卡卡号:
+                    <input type="text" value="${formattedId}" readonly>
+                </label>
+                <br>
+                <label>银行卡卡号:
+                    <input type="text" value="${formattedBackCard}" readonly>
+                </label>
+                <br>
+                <s:form action="Activation_" id="register">
+                    <h2 class="inline-h2">Activate </h2>
+
+
+                    <s:textfield name="money" label="money"
+                                 required="required"/>
+                    <s:textfield name="bankCard" label="bank card" pattern="\d{19}"
+                                 title="bank card number must 19 number"
+                                 required="required"/>
+
+                    <s:submit value="activate by cash"/>
+                    <s:submit value="activate by card"/>
+
+                </s:form>
+
+            </div>
+
+            <h3>余额: ${consume.balance}</h3>
+            <h3>您的消费账单</h3>
 
             <div id="payTable"></div>
         </div>
