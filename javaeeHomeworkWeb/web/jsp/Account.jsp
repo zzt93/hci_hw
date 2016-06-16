@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="../styles/account-content.css">
     <link rel="stylesheet" href="../styles/main-header.css">
-    <link rel="stylesheet" href="../styles/sign-head.css">
+    <link rel="stylesheet" href="../styles/new-account.css">
 
 
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
@@ -65,7 +65,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                 <a href="#">已下单 </a>
             </li>
             <li>
-                <a href="#">消费历史 </a>
+                <a href="#">消费信息 </a>
             </li>
             <li>
                 <a href="#">消息通知 </a>
@@ -126,7 +126,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
             </section>
             <br>
-            <input type="submit" value="Submit changes" onclick="setUserAccountInfo(this)">
+            <input type="submit" value="提交修改" onclick="setUserAccountInfo(this)">
         </div>
 
         <div class="container" id="reserve">
@@ -138,58 +138,61 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
         <div class="container">
 
-            <h3>会员卡信息</h3>
-            <div class="flex1 info-part">
-                <ul id="roles">
-                    <li>${userRank}</li>
-                </ul>
-                <br>
+            <div >
+                <h3>会员卡信息</h3>
+                <div id="headline">
+                    <div class="card-info">
+                        <label>会员卡等级: ${userRank}
+                        </label>
+                        <br>
 
-                <fmt:formatNumber value="${sessionScope.uid}" var="formattedId"
-                                  maxIntegerDigits="7" minIntegerDigits="7" groupingUsed="false"/>
+                        <fmt:formatNumber value="${sessionScope.uid}" var="formattedId"
+                                          maxIntegerDigits="7" minIntegerDigits="7" groupingUsed="false"/>
 
-                <fmt:formatNumber value="${account.bankCard}" var="formattedBackCard"
-                                  groupingUsed="true"/>
+                        <fmt:formatNumber value="${account.bankCard}" var="formattedBackCard"
+                                          groupingUsed="true"/>
 
-                <label>会员卡卡号:
-                    <input type="text" value="${formattedId}" readonly>
-                </label>
-                <br>
-                <label>银行卡卡号:
-                    <input type="text" value="${formattedBackCard}" readonly>
-                </label>
-                <br>
-                <s:form action="Activation_" id="register">
-                    <h2 class="inline-h2">Activate </h2>
+                        <label>会员卡卡号:
+                            <input type="text" value="${formattedId}" readonly>
+                        </label>
+                        <br>
+                        <label>银行卡卡号:
+                            <input type="text" value="${formattedBackCard}" readonly>
+                        </label>
+                        <br></div>
+                    <s:form action="Activation_" id="register">
+                        <div class="horizontal-center"><h3>充值</h3></div>
 
 
-                    <s:textfield name="money" label="money"
-                                 required="required"/>
-                    <s:textfield name="bankCard" label="bank card" pattern="\d{19}"
-                                 title="bank card number must 19 number"
-                                 required="required"/>
+                        <s:textfield name="money" label="金额"
+                                     required="required"/>
+                        <s:textfield name="bankCard" label="卡号" pattern="\d{19}"
+                                     title="bank card number must 19 number"
+                                     required="required"/>
 
-                    <s:submit value="activate by cash"/>
-                    <s:submit value="activate by card"/>
+                        <s:submit value="现金充值"/>
+                        <s:submit value="银行卡充值"/>
 
-                </s:form>
+                    </s:form>
+                    <br>
+                </div>
 
             </div>
 
-            <h3>余额: ${consume.balance}</h3>
             <h3>您的消费账单</h3>
+            <h4>余额: ￥${consume.balance}</h4>
 
             <div id="payTable"></div>
         </div>
 
         <div class="container" id="message">
-            <h3>Your Messages</h3>
+            <h3>您的消息</h3>
 
             <div class="horizontal-center">
                 <div id="MessagesTable"></div>
             </div>
             <div class="horizontal-center">
-                <input type="submit" value="Delete selected messages" onclick="deleteMsg()"/>
+                <input type="submit" value="删除选中消息" onclick="deleteMsg()"/>
             </div>
         </div>
 
@@ -202,8 +205,6 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
 
 <script type="application/javascript" src="../scripts/chosen.js"></script>
-<script type="application/javascript" src="../scripts/Chart.js-2.0-dev/Chart.js"></script>
-<script type="application/javascript" src="../scripts/useLineChart.js"></script>
 
 <script type="application/javascript" src="../scripts/jquery/dist/jquery.min.js"></script>
 <script type="application/javascript" src="../scripts/updateAccount.js"></script>
@@ -215,7 +216,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
     $(document).ready(function () {
         var con = $('#ReservationTableContainer');
         con.jtable({
-            title: 'Reservations List',
+            title: '订单',
             paging: true,
             pageSize: 4,
             actions: {
@@ -224,17 +225,17 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             },
             fields: {
                 rid: {
-                    title: 'Reservation Id',
+                    title: '订单ID',
                     width: '10%',
                     key: true
                 },
                 bdate: {
-                    title: 'Date for buying',
+                    title: '下单日期',
                     width: '20%',
                     edit: false
                 },
                 branch: {
-                    title: 'Department',
+                    title: '分店',
                     width: '30%',
                     edit: false,
                     display: function (data) {
@@ -254,7 +255,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                             $('#ReservationTableContainer').jtable('openChildTable',
                                     $img.closest('tr'),
                                     {
-                                        title: 'reservation ' + reservationData.record.rid + ' - details',
+                                        title: '订单' + reservationData.record.rid + ' - 内容',
                                         actions: {
                                             listAction: 'OrderList?rid=' + reservationData.record.rid,
                                             deleteAction: 'OrderDelete',
@@ -268,19 +269,19 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                                                 list: false
                                             },
                                             dessert: {
-                                                title: 'Dessert',
+                                                title: '甜点',
                                                 width: '20%',
                                                 display: function (data) {
                                                     return data.record.dessert.name;
                                                 }
                                             },
                                             price: {
-                                                title: 'Price',
+                                                title: '单价',
                                                 width: '30%',
                                                 edit: false
                                             },
                                             num: {
-                                                title: 'Number',
+                                                title: '数量',
                                                 width: '30%',
                                                 edit: true
                                             }
@@ -301,7 +302,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
         var pay = $('#payTable');
         pay.jtable({
-            title: 'Payment History',
+            title: '购买历史',
             paging: true,
             pageSize: 4,
             actions: {
@@ -310,13 +311,13 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             },
             fields: {
                 rid: {
-                    title: 'Reservation Id',
+                    title: '订单ID',
                     width: '10%',
                     key: true,
                     list: true
                 },
                 branch: {
-                    title: 'Branch',
+                    title: '分店',
                     width: '30%',
                     edit: false,
                     options: 'BranchOptions',
@@ -325,12 +326,12 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                     }
                 },
                 bdate: {
-                    title: 'Buy date',
+                    title: '购买日期',
                     width: '20%',
                     edit: false
                 },
                 payment: {
-                    title: 'Payment'
+                    title: '总金额'
                 }
             }
         });
@@ -338,7 +339,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
         var msg = $('#MessagesTable');
         msg.jtable({
-            title: 'Message list',
+            title: '消息',
             paging: true,
             pageSize: 4,
             selecting: true, //Enable selecting
@@ -350,17 +351,17 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             },
             fields: {
                 mid: {
-                    title: 'Message Id',
+                    title: '消息ID',
                     width: '30%',
                     key: true,
                     list: true
                 },
                 msg: {
-                    title: 'Message content',
+                    title: '内容',
                     width: '30%'
                 },
                 user: {
-                    title: 'User Id',
+                    title: '用户ID',
                     width: '30%',
                     display: function (line) {
                         return line.record.user.uid;

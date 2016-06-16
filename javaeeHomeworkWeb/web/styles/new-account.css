@@ -1,0 +1,102 @@
+#headline {
+    padding: 0.8em;
+    /*color: white;*/
+    font-family: Roboto, helvetica, arial, sans-serif;
+    font-weight: 100;
+}
+
+#headline #register {
+    /*padding: 1em;*/
+}
+
+#headline #register h2 {
+    font-weight: 100;
+    margin: 0;
+}
+
+#headline #register label {
+    display: inline-block;
+    margin: 8px 0 0;
+}
+
+#headline #register input {
+    width: 100%;
+    /*height: 150%;*/
+    padding: 10px;
+}
+
+#headline #register input[type=submit] {
+    background-color: hsl(8, 70%, 54%);
+    color: white;
+    margin-top: 0;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    font-size: 18px;
+    cursor: hand;
+}
+
+#headline br {
+    clear: both;
+}
+
+#register h3 {
+    margin: 0;
+}
+
+.wwFormTable {
+}
+
+.label {
+    font-style: italic;
+}
+
+.errorLabel {
+    font-style: italic;
+    color: red;
+}
+
+.errorMessage {
+    font-weight: bold;
+    color: red;
+}
+
+.checkboxLabel {
+}
+
+.checkboxErrorLabel {
+    color: red;
+}
+
+.required {
+    color: red;
+}
+
+.tdLabel {
+    text-align: right;
+    vertical-align: top;
+}
+
+.card-info {
+    float: left;
+    margin: 20px;
+}
+
+.card-info label {
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+@media (min-width: 600px) {
+    #headline {
+        padding: 20px 5%;
+    }
+
+    #headline #register {
+        float: right;
+        padding: 0 50px 20px 30px;
+        /*width: 50%;*/
+        box-sizing: border-box;
+        font-weight: 300;
+    }
+}
