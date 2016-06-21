@@ -75,7 +75,9 @@
         </action>
 
         <action name="Branches" class="action.AllBranches">
-            <result>/jsp/Branches.jsp</result>
+            <result>/jsp/BranchesShow.jsp</result>
+            <interceptor-ref name="defaultStack"/>
+
         </action>
 
         <action name="SearchUser" class="action.OtherWaiter" method="searchUser">
