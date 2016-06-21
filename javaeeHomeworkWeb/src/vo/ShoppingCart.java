@@ -38,7 +38,7 @@ public class ShoppingCart {
     }
 
 
-    public void updateItem(int did, int newNum) {
+    public double updateItem(int did, int newNum) {
         final CartItem cartItem = items.get(did);
         assert cartItem != null;
         final int old = cartItem.getNum();
@@ -46,6 +46,7 @@ public class ShoppingCart {
         final int gap = newNum - old;
         quantity += gap;
         total += (gap * cartItem.getPrice());
+        return newNum * cartItem.getPrice();
     }
 
     public double getPriceById(int did) {

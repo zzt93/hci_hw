@@ -112,13 +112,11 @@ var UI = function () {
          * @param newCount
          * @param newTotal
          */
-        updateNum: function (id, newNum, newCount, newTotal) {
+        updateNum: function (id, newNum, newCount, newTotal, newLineSum) {
             var item = $('#' + id);
             item.find('input').val(newNum);
             var itemTotal = item.find('.itemtotal');
-            var price = getPriceById(id);
-            var newItemTotal = price * newNum;
-            itemTotal.html('¥' + (newItemTotal));
+            itemTotal.html('¥' + (newLineSum));
             // update total
             this.updateTotal(newCount, newTotal);
         },
@@ -184,7 +182,7 @@ var Server = function () {
                     },
                     success: function (response) {
                         console.log(response);
-                        UI.updateNum(did, newNum, response['newCount'], response['newTotal']);
+                        UI.updateNum(did, newNum, response['newCount'], response['newTotal'], response['lineSum']);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }

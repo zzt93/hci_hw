@@ -72,21 +72,21 @@ public class CartAction extends ActionSupport {
     public String cartAdd() throws Exception {
         final ShoppingCart cart = getCart();
         cart.addItem(new CartItem(did, name, price));
-        info = new PartInfo(cart.getQuantity(), cart.getTotal());
+        info = new PartInfo(cart.getQuantity(), cart.getTotal(), price);
         return SUCCESS;
     }
 
     public String cartRemove() throws Exception {
         final ShoppingCart cart = getCart();
         cart.removeItem(did);
-        info = new PartInfo(cart.getQuantity(), cart.getTotal());
+        info = new PartInfo(cart.getQuantity(), cart.getTotal(), 0);
         return SUCCESS;
     }
 
     public String cartUpdateNumber() throws Exception {
         final ShoppingCart cart = getCart();
-        cart.updateItem(did, num);
-        info = new PartInfo(cart.getQuantity(), cart.getTotal());
+        final double lineSum = cart.updateItem(did, num);
+        info = new PartInfo(cart.getQuantity(), cart.getTotal(), lineSum);
         return SUCCESS;
     }
 

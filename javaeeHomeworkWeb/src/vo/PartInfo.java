@@ -9,10 +9,12 @@ public class PartInfo {
 
     private int newCount;
     private double newTotal;
+    private double lineSum;
 
-    public PartInfo(int quantity, double total) {
+    public PartInfo(int quantity, double total, double lineSum) {
         newCount = quantity;
         newTotal = total;
+        this.lineSum = lineSum;
     }
 
     public int getNewCount() {
@@ -21,5 +23,9 @@ public class PartInfo {
 
     public double getNewTotal() {
         return newTotal;
+    }
+
+    public double getLineSum() {
+        return lineSum;
     }
 }
