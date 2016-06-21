@@ -13,7 +13,7 @@ function getPriceById() {
 var Utility = function () {
     return {
         extractNumber: function (string) {
-            parseInt(string.replace(/\D/g, ''));
+            return parseInt(string.replace(/\D/g, ''));
         }
     };
 }();
