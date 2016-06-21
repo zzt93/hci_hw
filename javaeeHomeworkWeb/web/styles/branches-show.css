@@ -35,12 +35,14 @@
 }
 
 .rstblock-logo {
+
     padding: 20px;
     color: #999;
     text-align: center
 }
 
 .rstblock-logo-icon {
+    margin: 0 auto;
     display: block;
     width: 70px;
     height: 70px;
@@ -194,7 +196,13 @@
     box-sizing: inherit
 }
 
-.clearfix:after {
+.place-rstbox {
+    margin-left: 17%;
+    margin-right: 17% ;
+}
+.clearfix {
+
+
     content: "";
     display: table;
     height: 0;
