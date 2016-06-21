@@ -43,9 +43,10 @@ var UI = function () {
             var button = div.find('button');
             if (newTotal >= DELIVERY_GOAL) {
                 // enable check out
-                button.removeAttr("disabled").html('去结算');
+                button.removeAttr("disabled").removeClass('disabled').html('去结算');
+            } else {
+                button.prop('disabled', 'disabled').addClass('disabled').html('还差' + (DELIVERY_GOAL - newTotal) + '元起送');
             }
-            button.html('还差' + (DELIVERY_GOAL - newTotal) + '元起送');
         },
         updateHeight: function (type) {
             var div = $('div.shop-cartbasket');
@@ -62,7 +63,7 @@ var UI = function () {
                     newH = OLD;
                     break;
             }
-            div.css('top', newH + 'px');
+            div.css('top', -newH + 'px');
         },
         /**
          * dessert list add button invoke this

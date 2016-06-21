@@ -83,6 +83,11 @@
             <interceptor-ref name="defaultStack"/>
         </action>
 
+        <action name="CheckOut" class="action.CartAction">
+            <result>/jsp/Pay.jsp</result>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+
     </package>
 
     <package name="ajax" namespace="/dessert" extends="json-default">
