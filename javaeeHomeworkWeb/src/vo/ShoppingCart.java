@@ -34,7 +34,7 @@ public class ShoppingCart {
     public void removeItem(int did) {
         final CartItem remove = items.remove(did);
         quantity--;
-        total = remove.getPrice();
+        total -= remove.getPrice();
     }
 
 
@@ -46,5 +46,9 @@ public class ShoppingCart {
         final int gap = newNum - old;
         quantity += gap;
         total += (gap * cartItem.getPrice());
+    }
+
+    public double getPriceById(int did) {
+        return items.get(did).getPrice();
     }
 }
