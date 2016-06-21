@@ -12,7 +12,12 @@
     <link href="../styles/pay.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../styles/main-header.css">
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
+    <link href="../styles/toastr.css" rel="stylesheet"/>
+    <script src="../scripts/jquery/dist/jquery.min.js"></script>
+    <script src="../scripts/toastr.js"></script>
+    <script src="../scripts/cart.js"></script>
     <script src="../scripts/pay.js"></script>
+
 </head>
 
 <body>
@@ -53,7 +58,7 @@
                 <div class="itemName">${item.name}</div>
                 <div class="itemNumber">
                     <button class="numberAciton" onClick="sub(this)">-</button>
-                    <input type="text" class="number" value="${item.num}" onChange="changeNum(this,this.value)">
+                    <input type="text" class="number" value="${item.num}" onChange="changeNum(this)">
                     <button class="numberAciton" onClick="add(this)">+</button>
                 </div>
                 <div class="itemTotal">￥<span>${item.price * item.num}</span></div>
@@ -96,7 +101,7 @@
         </div>
         <div class="pay_selection">
             <h2>付款方式
-                <span>推荐使用在线支付，首单立减5元</span>
+                <span>推荐使用在线支付，立减5元</span>
             </h2>
             <ul class="choice_list" id="pay_choice_list">
                 <li class="pay_item choosed" onClick="choosePay(0)">
@@ -113,7 +118,7 @@
 
         </div>
         <div class="confirm">
-            <button id="confirm_button">确认下单</button>
+            <button id="confirm_button" onclick="pay()">确认下单</button>
         </div>
     </div>
 
