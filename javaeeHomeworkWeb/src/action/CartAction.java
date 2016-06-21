@@ -64,6 +64,7 @@ public class CartAction extends ActionSupport {
         ShoppingCart cart = (ShoppingCart) session.getAttribute(CART);
         if (cart == null) {
             cart = new ShoppingCart();
+            session.setAttribute(CART, cart);
         }
         info = new OldInfo(cart.getQuantity(), cart.getTotal());
         return cart;

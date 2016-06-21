@@ -2,12 +2,18 @@
  * Created by zzt on 6/13/16.
  *
  */
+/**
+ * stub function for test
+ */
+function getPriceById() {
+    return 10;
+}
 
 
 var Utility = function () {
     return {
         extractNumber: function (string) {
-            parseInt(string.replace(/\D/g, ''));
+            return parseInt(string.replace(/\D/g, ''));
         }
     };
 }();
@@ -24,9 +30,15 @@ var UI = function () {
         updateTotal: function (newCount, newTotal) {
             var div = $('div.shop-cartfooter');
             // update count
-            div.find('span.shop-cartpieces').html(newCount);
+            var pieces = div.find('span.shop-cartpieces');
+            if (newCount > 0) {
+                pieces.attr("display", "inline-block");
+            } else {
+                pieces.attr("display", "none");
+            }
+            pieces.html(newCount);
             // update money
-            div.find('p.shop-cartfooter-text').html('¥' + newTotal);
+            div.find('p.shop-cartfooter-text').html(newTotal);
             // update button
             var button = div.find('button');
             if (newTotal >= DELIVERY_GOAL) {
@@ -63,12 +75,12 @@ var UI = function () {
                 '<div class="cell itemname" title="${item.name}">${item.name}</div>' +
                 '<div class="cell itemquantity">' +
                 '<button onclick="updateCartItemNum(SUB, this)">-</button>' +
-                '<input value="1" onchange="updateFromInput(this)" type="number" min="1" max="100" >' +
+                '<input value="1" onchange="updateFromInput(this)" min="1" max="100" >' +
                 '<button onclick="updateCartItemNum(ADD, this)">+</button></div>' +
                 '<div class="cell itemtotal">¥${item.price * item.quantity}</div></div>';
             var htmlItem = $($.parseHTML(html));
             htmlItem.attr('id', item.did);
-            htmlItem.find('.itemname').attr('title', item.name).val(item.name);
+            htmlItem.find('.itemname').attr('title', item.name).html(item.name);
             htmlItem.find('.itemtotal').html('¥' + (item.price * item.num));
             $('#shopCart').after(htmlItem[0].outerHTML);
             // update total
@@ -95,19 +107,20 @@ var UI = function () {
          * cart list '+' button;
          * cart list input field;
          * @param id
-         * @param num
+         * @param newNum
          * @param oldCount
          * @param oldTotal
          */
-        updateNum: function (id, num, oldCount, oldTotal) {
+        updateNum: function (id, newNum, oldCount, oldTotal) {
             var item = $('#' + id);
-            item.find('input').val(num);
+            item.find('input').val(newNum);
             var itemTotal = item.find('.itemtotal');
             var oldItemTotal = Utility.extractNumber(itemTotal.html());
-            var number = item.price * item.num;
-            itemTotal.html('¥' + (number));
+            var price = getPriceById(id);
+            var newItemTotal = price * newNum;
+            itemTotal.html('¥' + (newItemTotal));
             // update total
-            this.updateTotal(oldCount + num, oldTotal + number - oldItemTotal);
+            this.updateTotal(newNum, oldTotal + newItemTotal - oldItemTotal);
         },
         clearCart: function () {
             $('div.shop-cartbasket-tablerow').remove();
@@ -122,7 +135,7 @@ var Server = function () {
         addGoods: function (item) {
             $.ajax({
                 type: "POST",
-                url: "cartAdd",
+                url: "CartAdd",
                 data: item,
                 success: function (response) {
                     console.log(response);
@@ -135,7 +148,7 @@ var Server = function () {
         removeGoods: function (dessertId) {
             $.ajax({
                 type: "POST",
-                url: "cartRemove",
+                url: "CartRemove",
                 data: {
                     did: dessertId
                 },
@@ -150,13 +163,13 @@ var Server = function () {
         updateNum: function (did, newNum) {
             $.ajax({
                     type: 'POST',
-                    url: 'cartUpdateNumber',
+                    url: 'CartUpdateNumber',
                     data: {
-                        id: did,
+                        did: did,
                         num: newNum
                     },
-                    success: function (data) {
-                        console.log(data);
+                    success: function (response) {
+                        console.log(response);
                         UI.updateNum(did, newNum, response['oldCount'], response['oldTotal']);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -167,7 +180,7 @@ var Server = function () {
         clearCart: function () {
             $.ajax({
                     type: 'POST',
-                    url: 'cartClear',
+                    url: 'CartClear',
                     success: function (data) {
                         console.log(data);
                         UI.clearCart();
@@ -219,8 +232,10 @@ function valid(now, num) {
 
 
 function updateCartInMainPage(change, did, original) {
-    if (valid(original, change)) {
-        Server.updateNum(did, original + change);
+    var changeI = parseInt(change);
+    var originalI = parseInt(original);
+    if (valid(originalI, changeI)) {
+        Server.updateNum(did, changeI + originalI);
     } else {
         removeCartItem(did);
     }
@@ -254,3 +269,5 @@ function updateFromInput(numInput) {
 function checkout() {
     window.location = "";
 }
+
+addCartItem(1, "....", 10);

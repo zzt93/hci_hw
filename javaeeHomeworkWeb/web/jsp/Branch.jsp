@@ -161,11 +161,11 @@
         </div>
         <c:forEach items="${cart.items}" var="entry">
             <c:set var="item" value="${entry.value}" scope="page"/>
-            <div class="shop-cartbasket-tablerow" id="${item.id}">
+            <div class="shop-cartbasket-tablerow" id="${item.did}">
                 <div class="cell itemname" title="${item.name}">${item.name}</div>
                 <div class="cell itemquantity">
                     <button onclick="updateCartItemNum(SUB, this)">-</button>
-                    <input value="${item.num}" onchange="updateFromInput(this)" type="number"
+                    <input value="${item.num}" onchange="updateFromInput(this)"
                            min="1" max="100">
                     <button onclick="updateCartItemNum(ADD, this)">+</button>
                 </div>
