@@ -47,4 +47,8 @@ public class ShoppingCart {
         quantity += gap;
         total += (gap * cartItem.getPrice());
     }
+
+    public double getPriceById(int did) {
+        return items.get(did).getPrice();
+    }
 }

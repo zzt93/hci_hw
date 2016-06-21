@@ -133,6 +133,20 @@ var UI = function () {
 
 var Server = function () {
     return {
+        getPriceById: function (did) {
+            $.ajax({
+                    type: 'GET',
+                    url: 'CartClear',
+                    data: {did: did},
+                    success: function (data) {
+                        console.log(data);
+                        UI.clearCart();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                }
+            );
+        },
         addGoods: function (item) {
             $.ajax({
                 type: "POST",
@@ -268,7 +282,7 @@ function updateFromInput(numInput) {
 }
 
 function checkout() {
-    window.location = "";
+    window.location = "../CheckOut";
 }
 
 addCartItem(1, "....", 10);

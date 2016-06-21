@@ -92,4 +92,6 @@ public class CartAction extends ActionSupport {
         SessionManagement.getSession().setAttribute(CART, null);
         return SUCCESS;
     }
+
+
 }

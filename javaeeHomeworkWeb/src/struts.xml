@@ -175,6 +175,11 @@
                 </param>
             </result>
         </action>
+
+        <action name="UnitPrice" class="action.UnitPrice" method="cartGetPrice">
+            <result type="json">
+            </result>
+        </action>
     </package>
 
 </struts>
