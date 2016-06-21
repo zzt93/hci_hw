@@ -215,12 +215,12 @@
 .choice_list  .annotation  {
 	color: #909090;
 	margin-top: 10px;
-	font-weight: 600;
+	font-weight: 500;
 }
 .choice_list .choice_content  {
 	margin-bottom: 0px;
 	height: auto;
-	font-weight: 600;
+	font-weight: 500;
 }
 ul {
 	list-style: none;
