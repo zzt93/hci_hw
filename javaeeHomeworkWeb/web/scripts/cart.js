@@ -136,11 +136,11 @@ var Server = function () {
         getPriceById: function (did) {
             $.ajax({
                     type: 'GET',
-                    url: 'CartClear',
+                    url: 'UnitPrice',
                     data: {did: did},
                     success: function (data) {
                         console.log(data);
-                        UI.clearCart();
+                        
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
