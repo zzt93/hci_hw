@@ -1,0 +1,265 @@
+@charset "utf-8";
+.reservation  {
+	float: left;
+	width: 30%;
+	height: auto;
+	padding: 0px;
+	border: 1px solid #D9CFCF;
+}
+.reservation_title h2 {
+	margin-left: 20px;
+	float: left;
+}
+.reservation_title {
+	border-color: #D9CFCF;
+	border-width: 1px;
+	height: 60px;
+	border-bottom-style: solid;
+}
+
+.reservation_title a {
+	float: right;
+	color: #818181;
+	text-decoration: none;
+	margin-top: 24px;
+	margin-right: 20px;
+	font-size: 13px;
+}
+.reservation_table_head .itemName  {
+	float: left;
+	padding-right: 0;
+	padding-left: 15px;
+	width: 45%;
+	display: table-cell;
+	font-style: normal;
+	font-weight: bold;
+	text-shadow: 0px 0px;
+	color: #6C6C6C;
+	padding-top: 15px;
+	height: 50px;
+}
+.reservation_table_head {
+	height: 50px;
+	border-bottom: 1px solid #D9CFCF;
+	display: table;
+	width: 100%;
+}
+.reservation_table_head .itemNumber {
+	float: left;
+	width: 25%;
+	display: table-cell;
+	height: 50px;
+	color: #6C6C6C;
+	font-weight: bold;
+	padding-top: 15px;
+	text-align: center;
+}
+.reservation_table_head .itemTotal {
+	float: left;
+	width: 25%;
+	height: 50px;
+	display: table-cell;
+	color: #6C6C6C;
+	font-weight: bold;
+	padding-top: 15px;
+	text-align: right;
+}
+.reservation_table_row {
+	background-color: #FCFAF8;
+	color: #6C6C6C;
+	height: 50px;
+	display: table;
+	width: 100%;
+}
+.reservation_table_row .itemName {
+	float: left;
+	width: 45%;
+	padding-top: 20px;
+	padding-left: 15px;
+	color: #6C6C6C;
+	height: inherit;
+	display: table-cell;
+}
+.reservation_table_row .itemNumber {
+	width: 25%;
+	height: inherit;
+	float: left;
+	padding-top: 20px;
+	text-align: center;
+	display: table-cell;
+}
+.reservation_table_row .itemTotal  {
+	width: 23%;
+	height: inherit;
+	float: left;
+	text-align: right;
+	padding-top: 20px;
+	color: #000000;
+	display: table-cell;
+}
+.reservation_table_row .itemNumber .number {
+	width: 15px;
+	text-align: center;
+	border-style: none;
+}
+.reservation_table_row .itemNumber .numberAciton {
+	background-color: #FFFFFF;
+	font-size: 15px;
+	border-width: thin;
+	width: 24px;
+}
+.reservation_total {
+	height: 80px;
+	color: #f74342;
+	font-weight: bold;
+	font-size: 24px;
+	text-align: right;
+	padding-top: 52px;
+}
+.reservation_total .total  {
+	font-size: 46px;
+	margin-right: 10px;
+}
+.content {
+	float: left;
+	width: 60%;
+	min-height: 500px;
+	margin-left: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: 1px solid #D9CFCF;
+}
+.main {
+	width: 1184px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.content .address h2 {
+	font-size: 20px;
+}
+.address h2 a {
+	color: #4379D6;
+	text-decoration: underline;
+	float: right;
+	font-weight: normal;
+	font-size: 16px;
+}
+.address .address_list {
+	width: inherit;
+	padding-left: 0px;
+}
+.address_list .address_item {
+	border: 1px solid #D9CFCF;
+	padding-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	color: #666;
+	padding-bottom: 15px;
+}
+.address_item .address_info label {
+	width: 80px;
+	height: 38px;
+	display: inline-block;
+	text-align: right;
+	margin-right: 20px;
+	line-height: 38px;
+	font-size: 18px;
+}
+.address_item .address_info input {
+	width: 300px;
+	height: 42px;
+	font-size: 14px;
+	padding-left: 8px;
+}
+
+
+
+
+.content .pay_selection h2 {
+	font-size: 20px;
+}
+.pay_selection h2 span {
+	font-weight: 400;
+	font-size: 12px;
+	color: #FF9C00;
+	margin-left: 16px;
+}
+.pay_selection .choice_list  {
+	width: inherit;
+	height: 80px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.pay_selection .choice_list .pay_item {
+	float: left;
+	width: 45%;
+	height: inherit;
+	margin-right: 10px;
+	padding-left: 15px;
+	border: 1px solid #D9CFCF;
+	cursor: pointer;
+}
+.choosed   {
+	float: left;
+	width: 45%;
+	height: inherit;
+	margin-right: 10px;
+	padding-left: 15px;
+	border: 1px solid #D9CFCF;
+	cursor: pointer;
+	background-image: url("../images/choosed.png");
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+
+.choice_list  .annotation  {
+	color: #909090;
+	margin-top: 10px;
+	font-weight: 600;
+}
+.choice_list .choice_content  {
+	margin-bottom: 0px;
+	height: auto;
+	font-weight: 600;
+}
+ul {
+	list-style: none;
+}
+.content .confirm button {
+	display: inline-block;
+	padding: 8px 17px;
+	border: none;
+	border-radius: 4px;
+	outline: 0;
+	cursor: pointer;
+	font-size: 18px;
+
+    text-align: center;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	font-stretch: normal;
+	background-color: #e62625;
+	color: #FCFCFC;
+	margin-bottom: 20px;
+	margin-top: 30px;
+}
+.content .confirm .cannot_confirm {
+	display: inline-block;
+	padding: 8px 17px;
+	border: none;
+	border-radius: 4px;
+	outline: 0;
+	cursor: pointer;
+	font-size: 18px;
+
+    text-align: center;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	font-stretch: normal;
+	background-color: #bbb;
+	color: #FCFCFC;
+	margin-bottom: 20px;
+	margin-top: 30px;
+}
