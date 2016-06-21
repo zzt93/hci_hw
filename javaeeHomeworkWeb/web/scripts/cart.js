@@ -32,9 +32,9 @@ var UI = function () {
             // update count
             var pieces = div.find('span.shop-cartpieces');
             if (newCount > 0) {
-                pieces.attr("display", "inline-block");
+                pieces.show();
             } else {
-                pieces.attr("display", "none");
+                pieces.hide();
             }
             pieces.html(newCount);
             // update money
@@ -68,10 +68,10 @@ var UI = function () {
         /**
          * dessert list add button invoke this
          * @param item
-         * @param oldCount
-         * @param oldTotal
+         * @param newCount
+         * @param newTotal
          */
-        addGoods: function (item, oldCount, oldTotal) {
+        addGoods: function (item, newCount, newTotal) {
             var html = '<div class="shop-cartbasket-tablerow" >' +
                 '<div class="cell itemname" title="${item.name}">${item.name}</div>' +
                 '<div class="cell itemquantity">' +
@@ -85,21 +85,21 @@ var UI = function () {
             htmlItem.find('.itemtotal').html('¥' + (item.price * item.num));
             $('#shopCart').after(htmlItem[0].outerHTML);
             // update total
-            this.updateTotal(oldCount + 1, oldTotal + item.price);
+            this.updateTotal(newCount, newTotal);
             this.updateHeight(MORE);
         },
         /**
          * dessert list '-' button invoke;
          * cart list '-' button invoke
          * @param id
-         * @param oldCount
-         * @param oldTotal
+         * @param newCount
+         * @param newTotal
          */
-        removeGoods: function (id, oldCount, oldTotal) {
+        removeGoods: function (id, newCount, newTotal) {
             var item = $('#' + id);
             var price = getPriceById(id);
             item.remove();
-            this.updateTotal(oldCount - 1, oldTotal - price);
+            this.updateTotal(newCount, newTotal);
             this.updateHeight(LESS);
         },
         /**
@@ -109,19 +109,18 @@ var UI = function () {
          * cart list input field;
          * @param id
          * @param newNum
-         * @param oldCount
-         * @param oldTotal
+         * @param newCount
+         * @param newTotal
          */
-        updateNum: function (id, newNum, oldCount, oldTotal) {
+        updateNum: function (id, newNum, newCount, newTotal) {
             var item = $('#' + id);
             item.find('input').val(newNum);
             var itemTotal = item.find('.itemtotal');
-            var oldItemTotal = Utility.extractNumber(itemTotal.html());
             var price = getPriceById(id);
             var newItemTotal = price * newNum;
             itemTotal.html('¥' + (newItemTotal));
             // update total
-            this.updateTotal(newNum, oldTotal + newItemTotal - oldItemTotal);
+            this.updateTotal(newCount, newTotal);
         },
         clearCart: function () {
             $('div.shop-cartbasket-tablerow').remove();
@@ -154,7 +153,7 @@ var Server = function () {
                 data: item,
                 success: function (response) {
                     console.log(response);
-                    UI.addGoods(item, response['oldCount'], response['oldTotal']);
+                    UI.addGoods(item, response['newCount'], response['newTotal']);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
@@ -169,7 +168,7 @@ var Server = function () {
                 },
                 success: function (response) {
                     console.log(response);
-                    UI.removeGoods(dessertId, response['oldCount'], response['oldTotal']);
+                    UI.removeGoods(dessertId, response['newCount'], response['newTotal']);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
@@ -185,7 +184,7 @@ var Server = function () {
                     },
                     success: function (response) {
                         console.log(response);
-                        UI.updateNum(did, newNum, response['oldCount'], response['oldTotal']);
+                        UI.updateNum(did, newNum, response['newCount'], response['newTotal']);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
