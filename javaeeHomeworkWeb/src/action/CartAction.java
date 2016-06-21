@@ -3,7 +3,7 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import interceptor.SessionManagement;
 import vo.CartItem;
-import vo.OldInfo;
+import vo.PartInfo;
 import vo.ShoppingCart;
 
 import javax.servlet.http.HttpSession;
@@ -21,9 +21,9 @@ public class CartAction extends ActionSupport {
     private String name;
     private double price;
 
-    private OldInfo info;
+    private PartInfo info;
 
-    public OldInfo getInfo() {
+    public PartInfo getInfo() {
         return info;
     }
 
@@ -66,25 +66,27 @@ public class CartAction extends ActionSupport {
             cart = new ShoppingCart();
             session.setAttribute(CART, cart);
         }
-        info = new OldInfo(cart.getQuantity(), cart.getTotal());
         return cart;
     }
 
     public String cartAdd() throws Exception {
         final ShoppingCart cart = getCart();
         cart.addItem(new CartItem(did, name, price));
+        info = new PartInfo(cart.getQuantity(), cart.getTotal(), price);
         return SUCCESS;
     }
 
     public String cartRemove() throws Exception {
         final ShoppingCart cart = getCart();
         cart.removeItem(did);
+        info = new PartInfo(cart.getQuantity(), cart.getTotal(), 0);
         return SUCCESS;
     }
 
     public String cartUpdateNumber() throws Exception {
         final ShoppingCart cart = getCart();
-        cart.updateItem(did, num);
+        final double lineSum = cart.updateItem(did, num);
+        info = new PartInfo(cart.getQuantity(), cart.getTotal(), lineSum);
         return SUCCESS;
     }
 
