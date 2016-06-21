@@ -2,6 +2,12 @@
  * Created by zzt on 6/13/16.
  *
  */
+/**
+ * stub function for test
+ */
+function getPriceById() {
+    return 10;
+}
 
 
 var Utility = function () {
@@ -24,9 +30,15 @@ var UI = function () {
         updateTotal: function (newCount, newTotal) {
             var div = $('div.shop-cartfooter');
             // update count
-            div.find('span.shop-cartpieces').html(newCount);
+            var pieces = div.find('span.shop-cartpieces');
+            if (newCount > 0) {
+                pieces.attr("display", "inline-block");
+            } else {
+                pieces.attr("display", "none");
+            }
+            pieces.html(newCount);
             // update money
-            div.find('p.shop-cartfooter-text').html('¥' + newTotal);
+            div.find('p.shop-cartfooter-text').html(newTotal);
             // update button
             var button = div.find('button');
             if (newTotal >= DELIVERY_GOAL) {
@@ -68,7 +80,7 @@ var UI = function () {
                 '<div class="cell itemtotal">¥${item.price * item.quantity}</div></div>';
             var htmlItem = $($.parseHTML(html));
             htmlItem.attr('id', item.did);
-            htmlItem.find('.itemname').attr('title', item.name).val(item.name);
+            htmlItem.find('.itemname').attr('title', item.name).html(item.name);
             htmlItem.find('.itemtotal').html('¥' + (item.price * item.num));
             $('#shopCart').after(htmlItem[0].outerHTML);
             // update total
@@ -95,20 +107,20 @@ var UI = function () {
          * cart list '+' button;
          * cart list input field;
          * @param id
-         * @param num
+         * @param newNum
          * @param oldCount
          * @param oldTotal
          */
-        updateNum: function (id, num, oldCount, oldTotal) {
+        updateNum: function (id, newNum, oldCount, oldTotal) {
             var item = $('#' + id);
-            item.find('input').val(num);
+            item.find('input').val(newNum);
             var itemTotal = item.find('.itemtotal');
             var oldItemTotal = Utility.extractNumber(itemTotal.html());
             var price = getPriceById(id);
-            var newItemTotal = price * num;
+            var newItemTotal = price * newNum;
             itemTotal.html('¥' + (newItemTotal));
             // update total
-            this.updateTotal(oldCount + num, oldTotal + newItemTotal - oldItemTotal);
+            this.updateTotal(newNum, oldTotal + newItemTotal - oldItemTotal);
         },
         clearCart: function () {
             $('div.shop-cartbasket-tablerow').remove();
@@ -257,3 +269,5 @@ function updateFromInput(numInput) {
 function checkout() {
     window.location = "";
 }
+
+addCartItem(1, "....", 10);
