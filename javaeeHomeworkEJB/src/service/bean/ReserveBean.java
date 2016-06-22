@@ -273,9 +273,9 @@ public class ReserveBean implements ReserveService {
     }
 
     @Override
-    public long countBranchReserve(int uid) {
+    public long countBranchReserve(int bid) {
         return (long) em.createNamedQuery(Reserve.COUNT_BRANCH_RESERVE)
-                .setParameter(1, uid)
+                .setParameter(1, bid)
                 .getSingleResult();
     }
 

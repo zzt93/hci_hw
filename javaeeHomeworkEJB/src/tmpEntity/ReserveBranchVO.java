@@ -40,8 +40,13 @@ public class ReserveBranchVO implements Serializable {
         return details;
     }
 
+    @Deprecated
     public void addDetail(RDBranchVO rdBranchVO) {
         details.put(rdBranchVO.getTmpId(), rdBranchVO);
         rdBranchVO.setReserve(this);
+    }
+
+    public void addCartItem(RDBranchVO vo) {
+        details.put(vo.getDid(), vo);
     }
 }

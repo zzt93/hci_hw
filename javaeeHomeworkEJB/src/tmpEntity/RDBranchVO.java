@@ -15,6 +15,8 @@ public class RDBranchVO implements Serializable {
     private int did;
     private int num;
     private double price;
+
+    @Deprecated
     private final int tmpId;
     private ReserveBranchVO reserve;
 
@@ -26,6 +28,7 @@ public class RDBranchVO implements Serializable {
         this.dessertName = dessertName;
     }
 
+    @Deprecated
     public int getTmpId() {
         return tmpId;
     }
@@ -50,10 +53,11 @@ public class RDBranchVO implements Serializable {
         return price;
     }
 
+    @Deprecated
     public ReserveBranchVO getReserve() {
         return reserve;
     }
-
+    @Deprecated
     public void setReserve(ReserveBranchVO reserve) {
         this.reserve = reserve;
     }

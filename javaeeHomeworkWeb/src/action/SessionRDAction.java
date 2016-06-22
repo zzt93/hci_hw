@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * <p>
  * Usage:
  */
+@Deprecated
 public class SessionRDAction extends ActionSupport {
 
     public static final String TMP_RESERVE = "reserveDetail";
@@ -128,6 +129,7 @@ public class SessionRDAction extends ActionSupport {
         return SUCCESS;
     }
 
+    @Deprecated
     public String orderBranchAdd() throws Exception {
         HttpSession session = SessionManagement.getSession();
         ReserveBranchVO tmpReserve = (ReserveBranchVO) session.getAttribute(TMP_RESERVE);
@@ -147,6 +149,7 @@ public class SessionRDAction extends ActionSupport {
         return SUCCESS;
     }
 
+    @Deprecated
     public String orderBranchDelete() throws Exception {
         HttpSession session = SessionManagement.getSession();
         ReserveBranchVO tmpReserve = (ReserveBranchVO) session.getAttribute(TMP_RESERVE);
@@ -157,6 +160,7 @@ public class SessionRDAction extends ActionSupport {
         result = JTableHelper.OK;
         return SUCCESS;
     }
+
 
     public String orderBranchUpdate() throws Exception {
         if (num >= 1) {
