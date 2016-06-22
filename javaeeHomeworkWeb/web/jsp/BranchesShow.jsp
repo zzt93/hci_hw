@@ -48,41 +48,41 @@
 <div class="place-rstbox clearfix">
     <div class="clearfix" style="height: 1120px;">
 
-     <c:forEach items="${branches}" var="branch">
-        <div class="rstblock-logo">
-            <div style="display: inline-block">
-                <br>
-                <img
-                        src="../images/branch${branch.bid}.jpg"
-                        width="70" height="70" class="rstblock-logo-icon">
-            </div>
-            <!--<div class="elemeicon elemeicon-premiumsign rstblock-logo-premiumsign">-->
-            <!--</div>-->
-            <div class="rstblock-content" style="display: inline-block">
-                <div class="rstblock-title">
-                    <s:url action="Branch" var="branchLink">
-                        <s:param name="branchNum">${branch.bid}</s:param>
-                    </s:url>
-                    <a href="${branchLink}">${branch.name}</a></div>
-                <div class="starrating icon-star">
+        <c:forEach items="${branches}" var="branch">
+            <div class="rstblock-logo">
+                <div style="display: inline-block">
+                    <br>
+                    <img
+                            src="../images/branch${branch.bid}.jpg"
+                            width="70" height="70" class="rstblock-logo-icon">
+                </div>
+                <!--<div class="elemeicon elemeicon-premiumsign rstblock-logo-premiumsign">-->
+                <!--</div>-->
+                <div class="rstblock-content" style="display: inline-block">
+                    <div class="rstblock-title">
+                        <s:url action="Branch" var="branchLink">
+                            <s:param name="branchNum">${branch.bid}</s:param>
+                        </s:url>
+                        <a href="${branchLink}">${branch.addr}</a></div>
+                    <div class="starrating icon-star">
                             <span class="icon-star" style="width: 96%">
                             </span>
                             <%--<span class="rstblock-monthsales">--%>
-                                <%--月售单<label>${}</label>单--%>
+                            <%--月售单<label>${}</label>单--%>
                             <%--</span>--%>
 
-                    <div class="rstblock-cost">
-                        30元起送/免配送费
-                    </div>
-                    <div class="rstblock-activity">
-                        <i style="background: #f07373">减</i>
-                        <i style="background: #fff;color: #ff4e00;border: 1px solid;padding: 0;">付</i>
+                        <div class="rstblock-cost">
+                            30元起送/免配送费
+                        </div>
+                        <div class="rstblock-activity">
+                            <i style="background: #f07373">减</i>
+                            <i style="background: #fff;color: #ff4e00;border: 1px solid;padding: 0;">付</i>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-     </c:forEach>
+            </div>
+        </c:forEach>
 
 
     </div>
