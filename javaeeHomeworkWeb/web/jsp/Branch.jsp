@@ -24,14 +24,8 @@
     <link rel="stylesheet" href="../styles/main-header.css">
     <link rel="stylesheet" href="../styles/branches.css">
     <link rel="stylesheet" href="../styles/util.css">
-    <link rel="stylesheet" href="../styles/dessert.css">
-    <link rel="stylesheet" href="../styles/lightBox.css">
     <link rel="stylesheet" href="../styles/cart.css">
 
-    <!-- jTable Metro theme -->
-    <link href="../scripts/jtable.2.4.0/themes/metro/blue/jtable.css" rel="stylesheet" type="text/css"/>
-    <link href="../scripts/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet"
-          type="text/css"/>
     <link href="../styles/good.css" rel="stylesheet" type="text/css"/>
     <script src="../scripts/good.js"></script>
 
@@ -66,7 +60,7 @@
         <%--<h1>Dessert house</h1>--%>
 
         <%--<h3>Branch ${branchAddr}</h3>--%>
-
+        <img src="../images/branch${branchNum}.jpeg">
         <%--</header>--%>
         <!-- Elements after a floating element will flow around it.
          To avoid this, use the clear property.
@@ -75,71 +69,71 @@
     </div>
 </div>
 
+<div style="max-width: 1000px; margin: 0 auto">
+    <div style="float: right;width:23%">
+        <div class="shopbulletin-section">
+            <h3 class="shopbulletin-section-title">商家公告</h3>
 
-<div style="float: right;width:23%;margin-right: 5%">
-    <div class="shopbulletin-section">
-        <h3 class="shopbulletin-section-title">商家公告</h3>
-
-        <p class="shopbulletin-content"></p>
-        <ul class="shopbulletin-supports">
-            <li>
-                <span style="background-color: rgb(75, 154, 24);">保</span>
-                已加入“外卖保”计划，食品安全有保障
-            </li>
-            <li>
-                <span style="background-color: rgb(144, 113, 203);">票</span>
-                该商家支持开发票，请在下单时填写好发票抬头
-            </li>
-        </ul>
-        <p class="shopbulletin-foodsecurity-agency"></p>
-    </div>
-    <div class="shopbulletin-section">
-        <h3 class="shopbulletin-section-title">食品安全等级公示</h3>
-
-        <p class="shopbulletin-content"></p>
-
-        <div class="shopbulletin-foodsecurity-result" style="width:55%;">
-            <h4>
-                监督检查结果:
-                <span>良好</span>
-            </h4>
-            <img src="smile.png">
+            <p class="shopbulletin-content"></p>
+            <ul class="shopbulletin-supports">
+                <li>
+                    <span style="background-color: rgb(75, 154, 24);">保</span>
+                    已加入“外卖保”计划，食品安全有保障
+                </li>
+                <li>
+                    <span style="background-color: rgb(144, 113, 203);">票</span>
+                    该商家支持开发票，请在下单时填写好发票抬头
+                </li>
+            </ul>
+            <p class="shopbulletin-foodsecurity-agency"></p>
         </div>
-        <div class="shopbulletin-foodsecurity-date" style="width:40%;float:right">
-            <h4>检查日期<p class="shopbulletin-foodsecurity-year">2016年</p>
+        <div class="shopbulletin-section">
+            <h3 class="shopbulletin-section-title">食品安全等级公示</h3>
 
-                <p class="shopbulletin-foodsecurity-day">01/27</p>
-            </h4>
+            <p class="shopbulletin-content"></p>
+
+            <div class="shopbulletin-foodsecurity-result" style="width:55%;">
+                <h4>
+                    监督检查结果:
+                    <span>良好</span>
+                </h4>
+                <img src="smile.png">
+            </div>
+            <div class="shopbulletin-foodsecurity-date" style="width:40%;float:right">
+                <h4>检查日期<p class="shopbulletin-foodsecurity-year">2016年</p>
+
+                    <p class="shopbulletin-foodsecurity-day">01/27</p>
+                </h4>
+            </div>
+            <p class="shopbulletin-foodsecurity-agency ng-binding"></p>
         </div>
-        <p class="shopbulletin-foodsecurity-agency ng-binding"></p>
-    </div>
-</div>
-
-<div style="width:65%;margin-left: 5%;">
-
-    <div id="daohang" class="daohang">
-        <%--<a id="rexiaobanga" class="active" onclick="changeClass();" href="#rexiaobang">热销榜</a>--%>
-        <c:forEach items="${plans}" var="plan">
-            <a id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
-        </c:forEach>
-
-
     </div>
 
-    <div class="flex2">
+    <div style="width:65%;">
 
-        <div id="allfood">
+        <div id="daohang" class="daohang">
+            <%--<a id="rexiaobanga" class="active" onclick="changeClass();" href="#rexiaobang">热销榜</a>--%>
             <c:forEach items="${plans}" var="plan">
-                <div id="${plan.pdate}" class="bangdan">
-                    <p class="kongbai"></p>
+                <a id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
+            </c:forEach>
 
-                    <h3 class="shopmenu-title">
-                            ${plan.pdate}
-                    </h3>
 
-                    <div class="shopmenu-food">
-                        <c:forEach items="${plan.details}" var="detail">
-                            <div class="onefood" id="${detail.pdId}">
+        </div>
+
+        <div class="flex2">
+
+            <div id="allfood">
+                <c:forEach items="${plans}" var="plan">
+                    <div id="${plan.pdate}" class="bangdan">
+                        <p class="kongbai"></p>
+
+                        <h3 class="shopmenu-title">
+                                ${plan.pdate}
+                        </h3>
+
+                        <div class="shopmenu-food">
+                            <c:forEach items="${plan.details}" var="detail">
+                                <div class="onefood" id="${detail.pdId}">
                                     <span class="col-1">
                                         <a>
                                             <img class="foodpic" src="../images/${detail.dessert.did}.jpg"
@@ -147,32 +141,34 @@
                                         </a>
                                     </span>
 
-                                <div class="col-2">
-                                    <h3 class="shopmenu-food-name">${detail.dessert.name}</h3>
+                                    <div class="col-2">
+                                        <h3 class="shopmenu-food-name">${detail.dessert.name}</h3>
 
-                                    <div class="color-mute">月售33份</div>
-                                    <div class="shopmenu-food-price">
-                                        <span>￥</span>
-                                        <span class="money">${detail.price}</span>
-                                    </div>
-                                    <div id="gouwuche" class="gouwudiv">
-                                        <button class="shop-cartbutton" onclick="addGouWuChe(this)">加入购物车</button>
-                                        <div id="inputnum" style="display: none">
-                                            <button class="minus"
-                                                    onclick="clickminus(this.nextElementSibling,this.parentNode.previousElementSibling)">
-                                                -
-                                            </button>
-                                            <input id="${detail.pdId}input"class="input" onchange="changenum(this)" value="1" oldvalue="1">
-                                            <button class="plus" onclick="clickplus(this.previousElementSibling)">+
-                                            </button>
+                                        <div class="color-mute">月售33份</div>
+                                        <div class="shopmenu-food-price">
+                                            <span>￥</span>
+                                            <span class="money">${detail.price}</span>
+                                        </div>
+                                        <div id="gouwuche" class="gouwudiv">
+                                            <button class="shop-cartbutton" onclick="addGouWuChe(this)">加入购物车</button>
+                                            <div id="inputnum" style="display: none">
+                                                <button class="minus"
+                                                        onclick="clickminus(this.nextElementSibling,this.parentNode.previousElementSibling)">
+                                                    -
+                                                </button>
+                                                <input id="${detail.pdId}input" class="input" onchange="changenum(this)"
+                                                       value="1" oldvalue="1">
+                                                <button class="plus" onclick="clickplus(this.previousElementSibling)">+
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </c:forEach>
+                            </c:forEach>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </div>
         </div>
     </div>
 </div>
@@ -233,141 +229,7 @@
 
 
 <script type="application/javascript" src="../scripts/jquery/dist/jquery.min.js"></script>
-<!-- jTable script file. -->
-<script src="../scripts/jquery-ui-1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-<script type="application/javascript" src="../scripts/drag.js"></script>
 <script type="application/javascript" src="../scripts/cart.js"></script>
-<script src="../scripts/jtable.2.4.0/jquery.jtable.js" type="text/javascript"></script>
-<script type="text/javascript">
-    //    $(document).ready(function () {
-    <%--var order = $('#previous-order');--%>
-    <%--order.jtable({--%>
-    <%--title: 'Your orders in this branch',--%>
-    <%--paging: true,--%>
-    <%--pageSize: 4,--%>
-    <%--actions: {--%>
-    <%--listAction: 'BranchUserReserveList?branchNum=' + ${branchNum},--%>
-    <%--deleteAction: 'BranchUserReserveDelete'--%>
-    <%--},--%>
-    <%--fields: {--%>
-    <%--rid: {--%>
-    <%--title: 'Reservation Id',--%>
-    <%--width: '10%',--%>
-    <%--key: true,--%>
-    <%--list: true--%>
-    <%--},--%>
-    <%--branch: {--%>
-    <%--title: 'Branch',--%>
-    <%--width: '30%',--%>
-    <%--options: 'BranchOptions',--%>
-    <%--display: function (reservationData) {--%>
-    <%--return reservationData.record.branch.addr;--%>
-    <%--}--%>
-    <%--},--%>
-    <%--bdate: {--%>
-    <%--title: 'Buy date',--%>
-    <%--width: '20%',--%>
-    <%--edit: true--%>
-    <%--},--%>
-    <%--details: {--%>
-    <%--title: '',--%>
-    <%--width: '2%',--%>
-    <%--edit: false,--%>
-    <%--create: false,--%>
-    <%--display: function (reservationData) {--%>
-    <%--//Create an image that will be used to open child table--%>
-    <%--var $img = $('<img src="../images/more.png" title="Show reservation detail" />');--%>
-    <%--//Open child table when user clicks the image--%>
-    <%--$img.click(function () {--%>
-    <%--$('#previous-order').jtable('openChildTable',--%>
-    <%--$img.closest('tr'),--%>
-    <%--{--%>
-    <%--title: 'reservation ' + reservationData.record.rid + ' - details',--%>
-    <%--actions: {--%>
-    <%--listAction: 'OrderList?rid=' + reservationData.record.rid,--%>
-    <%--deleteAction: 'OrderDelete',--%>
-    <%--updateAction: 'OrderUpdate'--%>
-    <%--},--%>
-    <%--fields: {--%>
-    <%--rdid: {--%>
-    <%--title: 'Dessert Id',--%>
-    <%--width: '30%',--%>
-    <%--key: true,--%>
-    <%--list: false--%>
-    <%--},--%>
-    <%--dessert: {--%>
-    <%--title: 'Dessert',--%>
-    <%--width: '20%',--%>
-    <%--display: function (data) {--%>
-    <%--return data.record.dessert.name;--%>
-    <%--}--%>
-    <%--},--%>
-    <%--price: {--%>
-    <%--title: 'Price',--%>
-    <%--width: '30%'--%>
-    <%--},--%>
-    <%--num: {--%>
-    <%--title: 'Number',--%>
-    <%--width: '30%',--%>
-    <%--edit: true--%>
-    <%--}--%>
-    <%--}--%>
-    <%--},--%>
-    <%--function (data) { //opened handler--%>
-    <%--data.childTable.jtable('load');--%>
-    <%--});--%>
-    <%--});--%>
-    <%--//Return image to show on the person row--%>
-    <%--return $img;--%>
-    <%--}--%>
-    <%--}--%>
-    <%--}--%>
-    <%--});--%>
-    <%--order.jtable('load');--%>
-
-
-    //        initDragDrop();
-
-
-    //        var currentOrder = $('#current-order');
-    //        currentOrder.jtable({
-    //            title: 'Current order',
-    //            actions: {
-    //                listAction: 'ReserveDetailList',
-    //                deleteAction: 'ReserveDetailDelete',
-    //                updateAction: 'ReserveDetailUpdate'
-    //            },
-    //            fields: {
-    //                tmpId: {
-    //                    key: true,
-    //                    list: false
-    //                },
-    //                dessertName: {
-    //                    title: 'Dessert name',
-    //                    width: '30%',
-    //                    edit: false
-    //                },
-    //                price: {
-    //                    title: 'Price',
-    //                    width: '30%',
-    //                    edit: false
-    //                },
-    //                num: {
-    //                    title: 'Number',
-    //                    width: '20%',
-    //                    edit: true
-    //                }
-    //            }
-    //        });
-    //        currentOrder.jtable('load');
-    //    });
-
-
-    //    $(window).bind('beforeunload', function () {
-    //        return 'If not paying your order, you may lose it later';
-    //    });
-</script>
-
 
 </body>
 </html>
