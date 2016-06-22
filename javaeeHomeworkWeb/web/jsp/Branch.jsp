@@ -42,7 +42,7 @@
 
         <form>
             <p class="action">
-                <a href="<s:url action='Login_input'/>" class="fa fa-user"> log out</a>
+                <a href="<s:url action='Login_input'/>" class="fa fa-user" > <span style="font-family: 楷体">登出</span></a>
             </p>
 
             <p class="action">
