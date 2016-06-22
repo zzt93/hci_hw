@@ -8,7 +8,7 @@
   Time: 11:47 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ page session="true" %>
 
 <html lang="en">
@@ -125,7 +125,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
             </section>
             <br>
-            <input type="submit" value="提交修改" onclick="setUserAccountInfo(this)">
+            <input type="submit" value="提交修改" onclick="setUserAccountInfo(this)" style="margin-left: 15%">
         </div>
 
         <div class="container" id="reserve">
@@ -197,7 +197,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
     </div>
 </div>
-<%@include file="../html/footer.html" %>
+<%@include file="../html/footer.jsp" %>
 
 </body>
 
@@ -233,7 +233,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                     edit: false
                 },
                 branch: {
-                    title: '分店',
+                    title: '店铺名称',
                     width: '30%',
                     edit: false,
                     display: function (data) {
@@ -315,7 +315,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                     list: true
                 },
                 branch: {
-                    title: '分店',
+                    title: '店铺名称',
                     width: '30%',
                     edit: false,
                     options: 'BranchOptions',

@@ -1,20 +1,20 @@
-<head>
-    <meta charset="UTF-8">
-</head>
+<%@page pageEncoding="UTF-8" %>
 <section class="fixed-size"></section>
 
 
+<link href="../styles/sign-footer.css" type="text/css" rel="stylesheet">
 <footer>
-    <link href="../styles/sign-footer.css" type="text/css" rel="stylesheet">
     <div>
         <section id="link">
-            <a href="#">更多：饿了么 </a>
+            更多：<a href="#">饿了么 </a>
         </section>
-        <section id="contact">
+        <section>
             <p>意见反馈 : feedback@ele.me</p>
-
+        </section>
+        <section>
             <p>24小时客服热线 : 10105757</p>
         </section>
+
         <section id="mis">
         </section>
     </div>
