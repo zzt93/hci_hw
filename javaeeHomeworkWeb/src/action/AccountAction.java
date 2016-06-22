@@ -22,9 +22,9 @@ import java.util.List;
  */
 public class AccountAction extends ActionSupport {
 
-    User user;
-    Account account;
-    Consume consume;
+    private User user;
+    private Account account;
+    private Consume consume;
     private List<String> gender = new ArrayList<>();
     private String userGender;
     private String userRank;
@@ -86,7 +86,7 @@ public class AccountAction extends ActionSupport {
             for (Gender gender1 : Gender.values()) {
                 gender.add(gender1.getDes2());
             }
-            userGender = Gender.values()[account.getGender()].getDes();
+            userGender = Gender.values()[account.getGender()].getDes2();
 
             // handle rank
             userRank = Rank.values()[consume.getRank()].getChi();

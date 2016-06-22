@@ -16,7 +16,7 @@
         <action name="Login_*" method="{1}" class="action.UserLogin">
             <!--"success" is the default result code, so the framework will use the "Menu" action as response. (Which we haven't written yet.)-->
             <result type="redirectAction">Branches</result>
-            <result name="input">/jsp/UserLogin.jsp</result>
+            <result name="input">/html/index.html</result>
             <interceptor-ref name="defaultStack"/>
         </action>
 
