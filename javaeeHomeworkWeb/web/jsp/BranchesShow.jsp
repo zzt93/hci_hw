@@ -53,7 +53,7 @@
                 <div style="display: inline-block">
                     <br>
                     <img
-                            src="../images/branch${branch.bid}.jpg"
+                            src="../images/branch${branch.bid}.jpeg"
                             width="70" height="70" class="rstblock-logo-icon">
                 </div>
                 <!--<div class="elemeicon elemeicon-premiumsign rstblock-logo-premiumsign">-->
