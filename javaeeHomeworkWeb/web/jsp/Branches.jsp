@@ -43,7 +43,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             </p>
 
             <p class="action">
-                <a href="<s:url action='Account'/> " class="fa fa-home"> ${sessionScope.userName}</a>
+                <a href="<s:url action='Account'/> " class="fa fa-home"><span style="font-family: 楷体"> ${sessionScope.userName}</span></a>
             </p>
         </form>
         <br>
