@@ -28,7 +28,7 @@
 
 <header>
     <section id="main-header">
-        <img src="../images/shangbiao.png" id="logo" width="80px" height="60px">
+        <img src="../images/logo2.jpg" id="logo" width="80px" height="60px">
 
 
 

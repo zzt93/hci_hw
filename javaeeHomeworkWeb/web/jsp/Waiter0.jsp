@@ -29,7 +29,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
 <header>
     <section id="main-header">
-        <img src="../images/yellow-pin.png" id="logo">
+        <img src="../images/logo2.jpg" id="logo">
 
         <p id="app-name"><a href="#">Staff Id: ${sid}</a></p>
 
