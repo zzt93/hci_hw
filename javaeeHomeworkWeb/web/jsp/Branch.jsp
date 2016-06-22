@@ -53,22 +53,48 @@
     </section>
 </header>
 
-<div id="headline">
-    <div class="branch-container ">
 
-        <%--<header>--%>
-        <%--<h1>Dessert house</h1>--%>
+<div class="shopguide">
+    <div class="shopguide-info">
+        <span>
+            <a>
+                <img class="storepic" srcsrc="../images/branch${branchNum}.jpeg" >
+            </a>
+        </span>
 
-        <%--<h3>Branch ${branchAddr}</h3>--%>
-        <img src="../images/branch${branchNum}.jpeg">
-        <%--</header>--%>
-        <!-- Elements after a floating element will flow around it.
-         To avoid this, use the clear property.
-        The clear property specifies on which sides of an element
-         floating elements are not allowed to float:-->
+        <h1> ${branchAddr}</h1>
+    </div>
+    <div class="shopguide-server">
+        <span>
+            <em>起送价</em>
+            <em class="shopguide-server-value">0元</em>
+        </span>
+        <span>
+            <em>配送费</em>
+            <em class="shopguide-server-value">6元</em>
+        </span>
+        <span>
+            <em>平均送达速度</em>
+            <em class="shopguide-server-value">30分钟</em>
+        </span>
     </div>
 </div>
+<%--<div id="headline">--%>
+    <%--<div class="branch-container ">--%>
 
+        <%--&lt;%&ndash;<header>&ndash;%&gt;--%>
+        <%--&lt;%&ndash;<h1>Dessert house</h1>&ndash;%&gt;--%>
+
+        <%--&lt;%&ndash;<h3>Branch ${branchAddr}</h3>&ndash;%&gt;--%>
+        <%--<img src="../images/branch${branchNum}.jpeg">--%>
+        <%--&lt;%&ndash;</header>&ndash;%&gt;--%>
+        <%--<!-- Elements after a floating element will flow around it.--%>
+         <%--To avoid this, use the clear property.--%>
+        <%--The clear property specifies on which sides of an element--%>
+         <%--floating elements are not allowed to float:-->--%>
+    <%--</div>--%>
+<%--</div>--%>
+<div>
 <div style="max-width: 1000px; margin: 0 auto">
     <div style="float: right;width:23%">
         <div class="shopbulletin-section">
@@ -97,7 +123,7 @@
                     监督检查结果:
                     <span>良好</span>
                 </h4>
-                <img src="smile.png">
+                <img src="../images/smile.png">
             </div>
             <div class="shopbulletin-foodsecurity-date" style="width:40%;float:right">
                 <h4>检查日期<p class="shopbulletin-foodsecurity-year">2016年</p>
@@ -172,7 +198,7 @@
         </div>
     </div>
 </div>
-
+</div>
 
 <div class="cart">
     <div class="shop-cartbasket" style="top: -88px; height: auto;">

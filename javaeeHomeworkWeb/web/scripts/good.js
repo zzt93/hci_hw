@@ -27,7 +27,7 @@ window.onscroll = function () {
     //    document.getElementById("daohang").setAttribute("class", "daohang sticky");
     //    document.getElementById("allfood").setAttribute("class", "allfood");
     //}
-    //else {
+    //if(scrollTop<=200) {
     //    document.getElementById("daohang").setAttribute("class", "daohang");
     //    document.getElementById("allfood").setAttribute("class", "");
     //}

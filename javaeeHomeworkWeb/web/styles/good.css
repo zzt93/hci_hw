@@ -244,3 +244,59 @@ button{
     line-height: 24px;
     outline: 0;
 }
+
+
+.shopguide{
+    background: url(//static11.elemecdn.com/eleme/desktop/media/img/shop-bg.0391dd.jpg) no-repeat;
+    background-size: cover;
+    padding-top: 48px;
+    position: relative;
+    display: table;
+    height: 100px;
+    width:100%;
+}
+
+.shopguide-info {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    color: #fff;
+    padding-bottom: 30px;
+    padding-left: 50px;
+}
+
+.shopguide-info h1{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.shopguide-server {
+    display: table-cell;
+    vertical-align: middle;
+    color: #fff;
+    text-align: right;
+    width: 490px;
+    padding-right:200px;
+    padding-bottom: 30px;
+
+}
+
+.shopguide-server-value {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 3px;
+    font-size: 18px;
+}
+
+.shopguide-server>span:first-child {
+    margin-left: 0;
+}
+
+.shopguide-server>span {
+    display: inline-block;
+    margin-left: 80px;
+    vertical-align: top;
+    text-align: center;
+    font-size: 18px;
+}
