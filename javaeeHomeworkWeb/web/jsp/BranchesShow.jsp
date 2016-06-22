@@ -28,9 +28,9 @@
 
 <header>
     <section id="main-header">
-        <img src="../images/yellow-pin.png" id="logo">
+        <img src="../images/shangbiao.png" id="logo" width="80px" height="60px">
 
-        <p id="app-name"><a href="<s:url action="Branches"/> ">Dessert</a></p>
+
 
         <form>
             <p class="action">
