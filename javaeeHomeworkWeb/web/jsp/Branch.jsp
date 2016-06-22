@@ -197,7 +197,7 @@
                                                     onclick="clickminus(this.nextElementSibling,this.parentNode.previousElementSibling)">
                                                 -
                                             </button>
-                                            <input class="input" onchange="changenum(this)" value="1" oldvalue="1">
+                                            <input id="${detail.pdId}input"class="input" onchange="changenum(this)" value="1" oldvalue="1">
                                             <button class="plus" onclick="clickplus(this.previousElementSibling)">+
                                             </button>
                                         </div>

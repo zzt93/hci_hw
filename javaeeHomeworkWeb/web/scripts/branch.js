@@ -8,7 +8,8 @@
  * @param num
  */
 function updateItemNum(goodsId, num) {
-
+    var input = document.getElementById(goodsId+"input");
+    input.setValue(num);
 }
 
 function getPriceById(id) {
