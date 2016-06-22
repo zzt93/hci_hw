@@ -82,7 +82,7 @@ public class PlanBean implements PlanService {
     public ArrayList<Plan> branchPlan(int bid) {
         return (ArrayList<Plan>) em.createNamedQuery(Plan.BRANCH_PLAN, Plan.class)
                 .setParameter(1, bid)
-                .setParameter(2, LocalDate.now().toString())
+                .setParameter(2, "")
                 .getResultList();
     }
 
