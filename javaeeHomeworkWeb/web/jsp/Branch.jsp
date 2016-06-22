@@ -97,7 +97,7 @@
                     监督检查结果:
                     <span>良好</span>
                 </h4>
-                <img src="smile.png">
+                <img src="../images/smile.png">
             </div>
             <div class="shopbulletin-foodsecurity-date" style="width:40%;float:right">
                 <h4>检查日期<p class="shopbulletin-foodsecurity-year">2016年</p>
