@@ -39,7 +39,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
         <form>
             <p class="action">
-                <a href="<s:url action='Login_input'/>" class="fa fa-user"> log out</a>
+                <a href="<s:url action='Login_input'/>" class="fa fa-user">登出</a>
             </p>
 
             <p class="action">
