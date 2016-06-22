@@ -110,7 +110,12 @@
     /*----------------------------------------------------*/
     /*the following is for personal ui*/
     #personal, #settings {
-        padding-left: 20px;
+        padding-left: 100px;
+    }
+
+    #personal input {
+        margin-top: 10px;
+        margin-bottom: 15px;
     }
 
     /*----------------------------------------------------*/

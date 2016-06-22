@@ -127,6 +127,6 @@
 
 
 <div style="clear: both;"></div>
-<%@include file="../html/footer.html" %>
+<%@include file="../html/footer.jsp" %>
 </body>
 </html>

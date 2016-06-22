@@ -90,7 +90,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 </div>
 </body>
 
-<%@include file="../html/footer.html" %>
+<%@include file="../html/footer.jsp" %>
 
 
 <script type="application/javascript" src="../scripts/chosen.js"></script>
