@@ -197,12 +197,11 @@
 }
 
 .place-rstbox {
-    margin-left: 17%;
-    margin-right: 17% ;
+    max-width: 1000px;
+    margin: 0 auto;
 }
+
 .clearfix {
-
-
     content: "";
     display: table;
     height: 0;

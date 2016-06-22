@@ -32,11 +32,12 @@
     font-weight: 700;
 }
 
-.action {
+#main-header .action {
     float: right;
     font-size: 1.3em;
     margin-right: 0;
     margin-left: 2%;
+    margin-top: 17px;
 }
 
 

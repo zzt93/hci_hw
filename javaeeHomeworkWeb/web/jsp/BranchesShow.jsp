@@ -28,36 +28,29 @@
 
 <header>
     <section id="main-header">
-        <img src="../images/logo2.jpg" id="logo" width="80px" height="60px">
+        <img src="../images/logo2.jpg" id="logo">
 
+        <p class="action">
+            <a href="<s:url action='Login_input'/>" class="fa fa-user"> log out</a>
+        </p>
 
-
-        <form>
-            <p class="action">
-                <a href="<s:url action='Login_input'/>" class="fa fa-user"> log out</a>
-            </p>
-
-            <p class="action">
-                <a href="<s:url action='Account'/> " class="fa fa-home"> ${sessionScope.userName}</a>
-            </p>
-        </form>
+        <p class="action">
+            <a href="<s:url action='Account'/> " class="fa fa-home"> ${sessionScope.userName}</a>
+        </p>
         <br>
     </section>
 </header>
 
 <div class="place-rstbox clearfix">
-    <div class="clearfix" style="height: 1120px;">
+    <div class="clearfix">
 
         <c:forEach items="${branches}" var="branch">
             <div class="rstblock-logo">
                 <div style="display: inline-block">
-                    <br>
-                    <img
-                            src="../images/branch${branch.bid}.jpeg"
-                            width="70" height="70" class="rstblock-logo-icon">
+                    <img src="../images/branch${branch.bid}.jpeg"
+                         width="70" height="70" class="rstblock-logo-icon">
                 </div>
-                <!--<div class="elemeicon elemeicon-premiumsign rstblock-logo-premiumsign">-->
-                <!--</div>-->
+
                 <div class="rstblock-content" style="display: inline-block">
                     <div class="rstblock-title">
                         <s:url action="Branch" var="branchLink">
@@ -88,5 +81,7 @@
     </div>
 
 </div>
+<%@include file="../html/footer.jsp" %>
+
 </body>
 </html>
