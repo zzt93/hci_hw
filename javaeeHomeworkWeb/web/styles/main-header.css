@@ -1,0 +1,46 @@
+@import "anchor.css";
+
+#main-header {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-bottom: 2px solid #c7c7c7;
+    background-color: white;
+}
+
+#main-header p, #main-header img {
+    margin: 1% 2%;
+}
+
+#main-header ul {
+    /*display: none;*/
+}
+
+#main-header img {
+    width: 105px;
+    height: 32px;
+}
+
+#logo, #app-name {
+    float: left;
+}
+
+#app-name {
+    color: #4c84d4;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.action {
+    float: right;
+    font-size: 1.3em;
+}
+
+
+#main-header br {
+    clear: both;
+}
+
+@media (min-width: 600px) {
+
+}

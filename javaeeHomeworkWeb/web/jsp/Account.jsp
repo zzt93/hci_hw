@@ -38,19 +38,18 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
 <header>
     <section id="main-header">
-        <img src="../images/yellow-pin.png" id="logo">
 
-        <p id="app-name"><a href="<s:url action='Branches'/>">Dessert</a></p>
+        <p id="app-name"><a href="<s:url action='Branches'/>">
+            <img src="../images/logo2.jpg" id="logo">
+        </a></p>
 
-        <form>
+        <p class="action">
+            <a href="<s:url action='Login_logOut'/>" class="fa fa-user"> 登出</a>
+        </p>
+
             <p class="action">
-                <a href="<s:url action='Login_logOut'/>" class="fa fa-user"> log out</a>
+                <a href="<s:url action='Branches'/> " class="fa fa-home"> 主页</a>
             </p>
-
-            <p class="action">
-                <a href="<s:url action='Branches'/> " class="fa fa-home"> dessert</a>
-            </p>
-        </form>
         <br>
     </section>
 </header>
@@ -62,10 +61,10 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                 <a href="#">个人信息 </a>
             </li>
             <li>
-                <a href="#">已下单 </a>
+                <a href="#">已下订单 </a>
             </li>
             <li>
-                <a href="#">消费信息 </a>
+                <a href="#">消费历史 </a>
             </li>
             <li>
                 <a href="#">消息通知 </a>
@@ -138,7 +137,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
         <div class="container">
 
-            <div >
+            <div>
                 <h3>会员卡信息</h3>
                 <div id="headline">
                     <div class="card-info">
@@ -198,10 +197,9 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
     </div>
 </div>
+<%@include file="../html/footer.html" %>
 
 </body>
-
-<%@include file="../html/footer.html" %>
 
 
 <script type="application/javascript" src="../scripts/chosen.js"></script>
