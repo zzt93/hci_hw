@@ -12,5 +12,6 @@ function updateItemNum(goodsId, num) {
 }
 
 function getPriceById(id) {
-    
+    var food = document.getElementById(id);
+    return food.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.innerHTML;
 }

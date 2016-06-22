@@ -32,6 +32,8 @@
     <link href="../scripts/jtable.2.4.0/themes/metro/blue/jtable.css" rel="stylesheet" type="text/css"/>
     <link href="../scripts/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet"
           type="text/css"/>
+    <link href="../styles/good.css" rel="stylesheet" type="text/css"/>
+    <script src="../scripts/good.js"></script>
 
     <title>Branch ${branchNum}: ${branchAddr} </title>
     <s:head/>
@@ -78,8 +80,10 @@
 
         <nav class="flex1 right-split">
             <h5>Phone Number:</h5>
+
             <h3>025-83593186</h3>
             <h5>Address:</h5>
+
             <h3>NanJing, NJU</h3>
 
             <a class="dessert-div"
@@ -88,6 +92,7 @@
             </a>
 
             <h3>Create order</h3>
+
             <div id="drop">
                 <div class="vertical-center" style="height: 80%;">
                     drag dessert and drop here to make order
@@ -97,45 +102,143 @@
 
         </nav>
 
-        <div class="flex2">
-            <h3>Orders</h3>
-            <div id="previous-order"></div>
+        <div style="float: right;width:23%;margin-right: 5%">
+            <div class="shopbulletin-section">
+                <h3 class="shopbulletin-section-title">商家公告</h3>
 
-            <div id="date-box" title="Date reminding" class="none">
-                <p class="fa fa-warning">Can't choose desserts in different date in same order</p>
+                <p class="shopbulletin-content"></p>
+                <ul class="shopbulletin-supports">
+                    <li>
+                        <span style="background-color: rgb(75, 154, 24);">保</span>
+                        已加入“外卖保”计划，食品安全有保障
+                    </li>
+                    <li>
+                        <span style="background-color: rgb(144, 113, 203);">票</span>
+                        该商家支持开发票，请在下单时填写好发票抬头
+                    </li>
+                </ul>
+                <p class="shopbulletin-foodsecurity-agency"></p>
             </div>
+            <div class="shopbulletin-section">
+                <h3 class="shopbulletin-section-title">食品安全等级公示</h3>
 
-            <h3>Desserts</h3>
-            <div>
-                <c:forEach items="${plans}" var="plan">
-                    <h4>${plan.pdate}</h4>
-                    <c:forEach items="${plan.details}" var="detail">
-                        <div class="dessert-div">
-                            <img class="dessert" src="../images/${detail.dessert.did}.jpg"
-                                 title="${detail.dessert.name}:${detail.price}">
-                        </div>
-                    </c:forEach>
-                </c:forEach>
+                <p class="shopbulletin-content"></p>
 
-            </div>
+                <div class="shopbulletin-foodsecurity-result" style="width:55%;">
+                    <h4>
+                        监督检查结果:
+                        <span>良好</span>
+                    </h4>
+                    <img src="smile.png">
+                </div>
+                <div class="shopbulletin-foodsecurity-date" style="width:40%;float:right">
+                    <h4>检查日期<p class="shopbulletin-foodsecurity-year">2016年</p>
 
-            <h3>New order</h3>
-            <div id="current-order"></div>
-
-            <div class="horizontal-center">
-                <s:submit value="Pay your order" onclick="payOrder()"/>
-            </div>
-            <div id="donePaying" class="none" title="Success">
-                <p>Paying succeed</p>
-            </div>
-            <div id="errorPaying" class="none" title="Error">
-                <p>Paying fail</p>
+                        <p class="shopbulletin-foodsecurity-day">01/27</p>
+                    </h4>
+                </div>
+                <p class="shopbulletin-foodsecurity-agency ng-binding"></p>
             </div>
         </div>
 
+        <div style="width:65%;margin-left: 5%;">
+
+            <div id="daohang" class="daohang">
+                <%--<a id="rexiaobanga" class="active" onclick="changeClass();" href="#rexiaobang">热销榜</a>--%>
+                <c:forEach items="${plans}" var="plan">
+                    <a id="${plans.pdate}a" onclick="changeClass();" href="#${plans.pdate}">${plans.pdate}</a>
+                </c:forEach>
+
+
+            </div>
+
+            <div class="flex2">
+                <h3>Orders</h3>
+
+                <div id="previous-order"></div>
+
+                <div id="date-box" title="Date reminding" class="none">
+                    <p class="fa fa-warning">Can't choose desserts in different date in same order</p>
+                </div>
+
+                <h3>Desserts</h3>
+
+                <div id="allfood">
+                    <c:forEach items="${plans}" var="plan">
+                        <div id="${plans.pdate}" class="bangdan">
+                        <p class="kongbai"></p>
+
+                        <h3 class="shopmenu-title">
+                                ${plans.pdate}
+                        </h3>
+
+                        <div class="shopmenu-food">
+                        <c:forEach items="${plan.details}" var="detail">
+                            <div class="onefood" id="${detail.pdId}">
+                                    <span class="col-1">
+                                        <a>
+                                            <img class="foodpic" src="../images/${detail.dessert.did}.jpg"
+                                                 alt="${detail.dessert.name}的图片">
+                                        </a>
+                                    </span>
+
+                                <div class="col-2">
+                                    <h3 class="shopmenu-food-name">${detail.dessert.name}</h3>
+
+                                    <div class="color-mute">月售33份</div>
+                                    <div class="shopmenu-food-price">
+                                        <span>￥</span>
+                                        <span class="money">${detail.price}</span>
+                                    </div>
+                                    <div id="gouwuche" class="gouwudiv">
+                                        <button class="shop-cartbutton" onclick="addGouWuChe(this)">加入购物车</button>
+                                        <div id="inputnum" style="display: none">
+                                            <button class="minus"
+                                                    onclick="clickminus(this.nextElementSibling,this.parentNode.previousElementSibling)">
+                                                -
+                                            </button>
+                                            <input class="input" onchange="changenum(this)" value="1" oldvalue="1">
+                                            <button class="plus" onclick="clickplus(this.previousElementSibling)">+
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </c:forEach>
+                    </c:forEach>
+                    <%--<c:forEach items="${plans}" var="plan">--%>
+                    <%--<h4>${plan.pdate}</h4>--%>
+                    <%--<c:forEach items="${plan.details}" var="detail">--%>
+                    <%--<div class="dessert-div">--%>
+                    <%--<img class="dessert" src="../images/${detail.dessert.did}.jpg"--%>
+                    <%--title="${detail.dessert.name}:${detail.price}" >--%>
+                    <%--</div>--%>
+                    <%--</c:forEach>--%>
+                    <%--</c:forEach>--%>
+
+                </
+                >
+
+                <h3>New order</h3>
+
+                <div id="current-order"></div>
+
+                <div class="horizontal-center">
+                    <s:submit value="Pay your order" onclick="payOrder()"/>
+                </div>
+                <div id="donePaying" class="none" title="Success">
+                    <p>Paying succeed</p>
+                </div>
+                <div id="errorPaying" class="none" title="Error">
+                    <p>Paying fail</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
-
 
 <div class="cart">
     <div class="shop-cartbasket" style="top: -88px; height: auto;">
@@ -177,10 +280,11 @@
     <div class="shop-cartfooter" onclick="">
         <span class="fa fa-2x fa-shopping-cart shop-carticon">
             <span class="shop-cartpieces" style="display: ${cart.quantity > 0 ? 'inline-block' : 'none'}">
-            ${cart.quantity}</span>
+                ${cart.quantity}</span>
         </span>
+
         <p class="shop-cartfooter-text price">
-        ${cart.total}</p>
+            ${cart.total}</p>
         <button class="shop-cartfooter-checkout disabled" onclick="checkout()"
                 disabled="disabled">还差 ${30 - cart.total} 元起送
         </button>

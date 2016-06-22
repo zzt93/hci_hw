@@ -1,0 +1,246 @@
+.daohang{
+    padding: 10px 15px 5px;
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+
+.daohang a{
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+    padding: 3px 10px;
+    width: 18%;
+    border-radius: 2px;
+    color: #666;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.daohang a:hover{
+    background-color: rgb(238,238,238);
+}
+
+.active{
+    background-color: #0089dc;
+}
+
+.shopmenu-title {
+    padding: 30px 0 0px 15px;
+    font-size: 20px;
+}
+
+.shopmenu-title span {
+    font-size: 12px;
+    color: #999;
+}
+
+.shopmenu-food {
+    font-size: 12px;
+}
+
+.onefood{
+    width:45%;
+    height: 120px;
+    margin: 2%;
+    margin-top: 1px;
+    margin-bottom: 10px;
+    border:1px solid #eee;
+    display: inline-block;
+    background-color: white;
+
+}
+.shopmenu-food-price{
+    color:red;
+    margin: 5px;
+}
+.shopmenu-food-name, .shopmenu-food-price {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.shop-cartbutton {
+    background-color: #0089dc;
+    color: #fff;
+    display: inline-block;
+    right: 10px;
+    bottom: 10px;
+    border: 0;
+    cursor: pointer;
+    width: 90px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 20px;
+    text-align: center;
+    outline: 0;
+
+}
+
+button{
+    font: 400 1em/1.5 PingFang SC,Lantinghei SC,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans;
+    padding: 0;
+}
+
+.gouwudiv{
+    float:right;
+    margin-right: 10px;
+}
+
+.inputnum{
+    float:right;
+    margin-right: 10px;
+    border: 0px solid #ddd;
+    display: inline-block;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    width: 90px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 20px;
+    text-align: center;
+    outline: 0;
+
+}
+
+.foodpic{
+    width:100px;
+    height:100px;
+    float: left;
+    margin: 10px;
+}
+
+.col-2{
+    margin-left: 120px;
+}
+
+.shopbulletin-section {
+    margin-bottom: 20px;
+    border-radius: 2px 2px 0 0;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.12);
+}
+
+
+.shopbulletin-section-title {
+    margin-bottom: 1em;
+    padding: 0 1em;
+    line-height: 2.8em;
+    background-color: #0089dc;
+    color: #fff;
+}
+
+.shopbulletin-content {
+    padding: 0 15px 20px;
+    line-height: 2;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.shopbulletin-supports {
+    padding: 0 15px;
+    overflow: hidden;
+}
+
+.shopbulletin-supports li {
+    margin-bottom: 10px;
+    padding-left: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.shopbulletin-supports li span{
+    border-radius: 20px;
+}
+
+.shopbulletin-foodsecurity-agency {
+    margin-top: 24px;
+    line-height: 2.5em;
+    height: 2.5em;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: #999;
+}
+
+.shopbulletin-foodsecurity-date {
+    width: 38%;
+    border-left: 1px solid #eee;
+    font-weight: 600;
+}
+
+.shopbulletin-foodsecurity-date, .shopbulletin-foodsecurity-result {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    width: 60%;
+}
+
+.shopbulletin-foodsecurity-year {
+    margin: 12px 0 4px;
+    font-size: 14px;
+    color: #999;
+}
+
+.shopbulletin-foodsecurity-day {
+    font-size: 20px;
+}
+
+.sticky {
+    position: fixed;
+    top: 5px;
+    width:60%;
+}
+
+.allfood{
+    margin-top: 120px;
+}
+
+.kongbai{
+    height: 50px;
+}
+
+.minus{
+    display: inline-block;
+    left: 0;
+    border-right: 1px solid #ddd;
+    border-radius: 20px 0 0 20px;
+    cursor: pointer;
+    top: 0;
+    height: 24px;
+    border: 0;
+    width: 27px;
+    text-align: center;
+    background-color: #eee;
+    line-height: 24px;
+    outline: 0;
+}
+
+.plus{
+    display: inline-block;
+    right: 0;
+    border-left: 1px solid #ddd;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    top: 0;
+    height: 24px;
+    border: 0;
+    width: 27px;
+    text-align: center;
+    background-color: #eee;
+    line-height: 24px;
+    outline: 0;
+}
+
+.input{
+    background-color: #fff;
+    width: 18px;
+    left: 27px;
+    top: 0;
+    display: inline-block;
+    height: 24px;
+    border: 0;
+    text-align: center;
+    line-height: 24px;
+    outline: 0;
+}
