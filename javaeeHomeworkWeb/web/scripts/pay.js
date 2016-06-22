@@ -93,7 +93,7 @@ function choosePay(index){
 }
 
 function pay(){
-    toastr.success("付款成功");
+    PayServer.submitOrder();
 }
 
 var PayServer = function () {
@@ -115,5 +115,18 @@ var PayServer = function () {
                 }
             );
         },
+        submitOrder:function(){
+            $.ajax({
+                    type: 'POST',
+                    url: 'BranchUserReserveNewPay',
+                    success: function (response) {
+                        toastr.success("下单成功");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        toastr.error("余额不足");
+                    }
+                }
+            );
+        }
     }
 }();
