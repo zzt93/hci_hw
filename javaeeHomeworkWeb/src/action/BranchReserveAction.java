@@ -8,6 +8,7 @@ import interceptor.SessionManagement;
 import remote.JNDIFactory;
 import service.PlanService;
 import service.ReserveService;
+import tmpEntity.RDBranchVO;
 import tmpEntity.ReserveBranchVO;
 import vo.CartItem;
 import vo.PlanBranchVO;
@@ -15,6 +16,7 @@ import vo.ShoppingCart;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -184,11 +186,35 @@ public class BranchReserveAction extends ActionSupport {
      *
      * @throws Exception
      */
+    @Deprecated
     public String branchUserReservePay() throws Exception {
         // finish reserve by sending all data
         HttpSession session = SessionManagement.getSession();
         ReserveBranchVO tmpReserve = (ReserveBranchVO) session.getAttribute(SessionRDAction.TMP_RESERVE);
         session.setAttribute(SessionRDAction.TMP_RESERVE, null);
+        return pay(tmpReserve);
+    }
+
+    /**
+     * Finish an order
+     *
+     * @return result string
+     *
+     * @throws Exception
+     */
+    public String branchUserReserveNewPay() throws Exception {
+        // finish reserve by sending all data
+        final ShoppingCart cart = getCart();
+        int bid = branchNum;
+        ReserveBranchVO tmpReserve = new ReserveBranchVO(getDate(), SessionManagement.getUid(), bid);
+        for (CartItem cartItem : cart.getItems().values()) {
+            tmpReserve.addCartItem(new RDBranchVO(0, cartItem.getDid(),
+                    cartItem.getName(), cartItem.getNum(), cartItem.getPrice()));
+        }
+        return pay(tmpReserve);
+    }
+
+    private String pay(ReserveBranchVO tmpReserve) {
         try {
             ReserveService reserveService =
                     (ReserveService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//ReserveEJB!service.ReserveService");
@@ -202,6 +228,10 @@ public class BranchReserveAction extends ActionSupport {
             return ERROR;
         }
         return SUCCESS;
+    }
+
+    private String getDate() {
+        return new Date().toString();
     }
 
 

@@ -1,0 +1,99 @@
+
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link href="styles/fonts.css" type="text/css" rel="stylesheet">-->
+    <link href="../styles/sign-head.css" type="text/css" rel="stylesheet">
+    <link href="../styles/sign-footer.css" type="text/css" rel="stylesheet">
+    <link href="../styles/sign-content.css" type="text/css" rel="stylesheet">
+    <link href="../styles/anchor.css" type="text/css" rel="stylesheet">
+    <link href="../styles/tooltip.css" type="text/css" rel="stylesheet">
+    <link href="../styles/sign-main.css" type="text/css" rel="stylesheet">
+
+
+    <title>index</title>
+
+
+    <script type="text/javascript">
+        var images = [];
+        images[0] = "../images/de4.jpg";
+        images[1] = "../images/de3.jpg";
+        images[2] = "../images/de2%20.jpg";
+        images[3] = "../images/de1.jpg";
+        var x = 0;
+        setInterval("changeImage()", 2000);
+        function changeImage() {
+            var img = document.getElementById("img");
+            img.src = images[x];
+            x++;
+            x = x % 4;
+        }
+    </script>
+
+</head>
+
+
+<body class="pg-unitive-login theme--www">
+
+<header class="header cf">
+    <br><br>
+
+    <a href="index.html"><img src="../images/shangbiao.png" width="102px" height="76px"></a>
+    <br><br>
+</header>
+
+
+<div class="site-body-wrapper">
+    <div class="site-body cf">
+        <div class="promotion-banner">
+
+            <img id="img" src="../images/de3.jpg" width="400px" height="300px">
+
+        </div>
+
+        <div class="login-section" data-params="{&quot;service&quot;:&quot;www&quot;,&quot;isDialog&quot;:false }">
+            <form id="J-normal-form" action="/dessert/Login_execute" class="form form--stack">
+
+
+                <span class="login-type" data-mtevent="login.mobile.switch">
+                    <br>
+                     <br>
+                     <br>
+
+                    账号登录:
+                </span>
+
+                <div class="form-field form-field--icon">
+                    <i class="icon icon-user"></i>
+                    <input type="text" id="login-email" class="f-text" name="user name" placeholder="用户名" required ="required"/>
+                </div>
+                <div class="form-field form-field--icon">
+                    <i class="icon icon-password"></i>
+                    <input type="password" id="login-password" class="f-text" name="password" placeholder="密码" required = "required"/>
+                </div>
+
+
+                <div class="form-field form-field--ops">
+                    <input type="hidden" name="origin" value="account-login"/>
+                    <input type="hidden" name="fingerprint" class="J-fingerprint" value=""/>
+                    <input type="hidden" name="csrf" value="gRBB1f4k-__JuyItrYqHDu-WMymsnIsZdsSw"/>
+                    <input data-mtevent="login.normal.submit" type="submit" class="btn" name="commit" value="登录"/>
+                </div>
+                <p class="signup-guide">还没有账号？<a
+                        href="register.html"
+                        target="_top">免费注册</a></p>
+            </form>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
