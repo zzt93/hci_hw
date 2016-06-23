@@ -9,7 +9,7 @@
  */
 function updateItemNum(goodsId, num) {
     var input = document.getElementById(goodsId+"input");
-    input.setValue(num);
+    input.setAttribute("value",num);
 }
 
 function getPriceById(id) {
