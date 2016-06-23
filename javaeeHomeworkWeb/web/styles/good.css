@@ -189,7 +189,7 @@ button{
 .sticky {
     position: fixed;
     top: 5px;
-    /*width:65%;*/
+    width:650px;
 }
 
 .allfood{
