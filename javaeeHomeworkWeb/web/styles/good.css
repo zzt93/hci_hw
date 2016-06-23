@@ -189,7 +189,7 @@ button{
 .sticky {
     position: fixed;
     top: 5px;
-    width:60%;
+    /*width:65%;*/
 }
 
 .allfood{
@@ -301,6 +301,3 @@ button{
     font-size: 18px;
 }
 
-.daohang :first-child{
-
-}
