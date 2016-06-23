@@ -43,8 +43,8 @@ function getTop(e) {
 }
 
 function addGouWuChe(e){
-    e.style.display="none";
-    document.getElementById("inputnum").style.display="inline-block";
+    document.getElementById(e).style.display="none";
+    document.getElementById(e.substr(0, e.length-3)+"in").style.display="inline-block";
 }
 
 function clickminus(input,gouwuche){
