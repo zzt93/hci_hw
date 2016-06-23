@@ -177,8 +177,8 @@
                                             <span class="money">${detail.price}</span>
                                         </div>
                                         <div id="gouwuche" class="gouwudiv">
-                                            <button id="${detail.pdId}add" name="${detail.dessert.name}" price="${detail.price}" class="shop-cartbutton" onclick="addGouWuChe(this);addCartItem(this.id.substr(0,this.id.length-3),this.name,this.price)">加入购物车</button>
-                                            <div id="inputnum" style="display: none">
+                                            <button id="${detail.pdId}add" name="${detail.dessert.name}" price="${detail.price}" class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name,this.price)">加入购物车</button>
+                                            <div id="${detail.pdId}in" style="display: none">
                                                 <button id="${detail.pdId}minus" class="minus"
                                                         onclick="Server.updateNum(this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
                                                     -
