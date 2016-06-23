@@ -2,12 +2,12 @@
  * Created by ������ on 2016/6/19.
  */
 function changeClass() {
-    document.getElementsByClassName('active')[0].setAttribute("class", "");
+    document.getElementsByClassName('active')[0].setAttribute("class", "others");
     event.srcElement.setAttribute("class", "active");
 }
 
 function changeClass(e){
-    document.getElementsByClassName('active')[0].setAttribute("class", "");
+    document.getElementsByClassName('active')[0].setAttribute("class", "others");
     e.setAttribute("class", "active");
 }
 

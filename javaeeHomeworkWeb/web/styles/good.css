@@ -5,25 +5,32 @@
 }
 
 .daohang a{
+    color: #666;
     text-decoration: none;
     display: inline-block;
     margin: 5px;
     padding: 3px 10px;
     width: 18%;
     border-radius: 2px;
-    color: #666;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     vertical-align: top;
 }
 
-.daohang a:hover{
+a.others{
+    color: #666;
+}
+.daohang a.others:hover{
     background-color: rgb(238,238,238);
 }
 
-.active{
+a.active{
     background-color: #0089dc;
+    color:white;
+}
+.daohang a.active:hover{
+    backgroud-color:white;
 }
 
 .shopmenu-title {
@@ -188,7 +195,7 @@ button{
 
 .sticky {
     position: fixed;
-    top: 5px;
+    top: 0px;
     width:650px;
 }
 
