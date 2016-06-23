@@ -104,12 +104,12 @@
             <p class="shopbulletin-content"></p>
             <ul class="shopbulletin-supports">
                 <li>
-                    <span style="background-color: rgb(75, 154, 24);">保</span>
-                    已加入“外卖保”计划，食品安全有保障
+                    <span style="background: #f07373">满</span>
+                    本店满30起送
                 </li>
                 <li>
-                    <span style="background-color: rgb(144, 113, 203);">票</span>
-                    该商家支持开发票，请在下单时填写好发票抬头
+                    <span style="background: #fff;color: #ff4e00;border: 1px solid;padding: 0;">减</span>
+                    首付满30减11
                 </li>
             </ul>
             <p class="shopbulletin-foodsecurity-agency"></p>
