@@ -85,7 +85,7 @@
             <interceptor-ref name="defaultStack"/>
         </action>
 
-        <action name="CheckOut" class="action.CartAction">
+        <action name="CheckOut" class="action.CartAction" method="execute">
             <result>/jsp/Pay.jsp</result>
             <interceptor-ref name="defaultStack"/>
         </action>

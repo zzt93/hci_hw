@@ -167,7 +167,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                         <s:textfield name="money" label="金额"
                                      required="required"/>
                         <s:textfield name="bankCard" label="卡号" pattern="\d{19}"
-                                     title="bank card number must 19 number"
+                                     title="银行卡号不存在"
                                      required="required"/>
 
                         <s:submit value="现金充值"/>

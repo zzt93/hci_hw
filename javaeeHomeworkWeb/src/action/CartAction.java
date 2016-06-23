@@ -1,8 +1,11 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import entity.User;
 import interceptor.SessionManagement;
 import org.apache.struts2.ServletActionContext;
+import remote.JNDIFactory;
+import service.AccountService;
 import vo.CartItem;
 import vo.PartInfo;
 import vo.ShoppingCart;
@@ -22,6 +25,16 @@ public class CartAction extends ActionSupport {
     private int num = 1;
     private String name;
     private double price;
+
+    private int branchNum;
+
+    public int getBranchNum() {
+        return branchNum;
+    }
+
+    public void setBranchNum(int branchNum) {
+        this.branchNum = branchNum;
+    }
 
     private PartInfo info;
 
@@ -104,5 +117,23 @@ public class CartAction extends ActionSupport {
         return SUCCESS;
     }
 
+    private User user;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String execute() throws Exception {
+        AccountService accountService =
+                (AccountService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//UserInfoEJB!service.AccountService");
+        int uid = SessionManagement.getUid();
+        assert accountService != null;
+        user = accountService.getUser(uid);
+        return SUCCESS;
+    }
 }

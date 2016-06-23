@@ -33,7 +33,7 @@
             </p>
 
             <p class="action">
-                <a href="<s:url action='Branches'/> " class="fa fa-home"> dessert</a>
+                <a href="<s:url action='Branches'/> " class="fa fa-home"> 主页</a>
             </p>
         </form>
         <br>
@@ -83,7 +83,7 @@
                 <li class="address_item">
                     <div class="address_info">
                         <label>姓名</label>
-                        <input type="text" placeholder="请输入你的姓名">
+                        <input type="text" placeholder="请输入你的姓名" value="${user.name}">
                         <br>
                         <br>
                         <label>联系方式</label>
@@ -93,7 +93,7 @@
                         <label>位置</label>
 
 
-                        <input type="text" placeholder="请输入小区、大厦或学校" class="location">
+                        <input type="text" placeholder="请输入小区、大厦或学校" class="location" value="${user.account.addr}">
                         <br>
                         <br>
                         <label>详细地址</label>
