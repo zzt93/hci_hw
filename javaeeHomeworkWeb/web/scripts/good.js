@@ -60,6 +60,7 @@ function clickminus(input,gouwuche){
 function clickplus(input){
     input.value++;
     input.oldvalue=input.value;
+
 }
 
 function changenum(input){

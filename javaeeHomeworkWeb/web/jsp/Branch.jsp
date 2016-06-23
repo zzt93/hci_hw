@@ -28,6 +28,7 @@
 
     <link href="../styles/good.css" rel="stylesheet" type="text/css"/>
     <script src="../scripts/good.js"></script>
+    <script src="../scripts/cart.js"></script>
 
     <title>Branch ${branchNum}: ${branchAddr} </title>
     <s:head/>
