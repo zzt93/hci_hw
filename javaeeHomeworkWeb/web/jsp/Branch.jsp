@@ -187,17 +187,46 @@
                                             <span class="money">${detail.price}</span>
                                         </div>
                                         <div id="gouwuche" class="gouwudiv">
-                                            <button id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
-                                            <div id="${detail.pdId}in" style="display: none">
-                                                <button id="${detail.pdId}minus" class="minus"
-                                                        onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
-                                                    -
-                                                </button>
-                                                <input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
-                                                       value="1" oldvalue="1">
-                                                <button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
-                                                </button>
-                                            </div>
+                                            <c:choose>
+                                                <c:when test="${items.containsKey(detail.dessert.did)}">
+                                                <button style="display: none" id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
+                                                <div id="${detail.pdId}in">
+                                                    <button id="${detail.pdId}minus" class="minus"
+                                                            onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
+                                                        -
+                                                    </button>
+                                                    <input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
+                                                           value="${items[detail.dessert.did].num}" oldvalue="1">
+                                                    <button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
+                                                    </button>
+                                                </div>
+                                            </c:when>
+                                                <c:otherwise>
+                                                    <button id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
+                                                    <div id="${detail.pdId}in" style="display: none">
+                                                        <button id="${detail.pdId}minus" class="minus"
+                                                                onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
+                                                            -
+                                                        </button>
+                                                        <input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
+                                                               value="1" oldvalue="1">
+                                                        <button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
+                                                        </button>
+                                                    </div>
+                                                </c:otherwise>
+                                            </c:choose>
+
+                                            <%--<button id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>--%>
+                                            <%--<div id="${detail.pdId}in" style="display: none">--%>
+                                                <%--<button id="${detail.pdId}minus" class="minus"--%>
+                                                        <%--onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">--%>
+                                                    <%-----%>
+                                                <%--</button>--%>
+                                                <%--<input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"--%>
+                                                       <%--value="1" oldvalue="1">--%>
+                                                <%--<button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+--%>
+                                                <%--</button>--%>
+                                            <%--</div>--%>
                                         </div>
                                     </div>
                                 </div>
