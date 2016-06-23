@@ -96,6 +96,16 @@ function pay(){
     PayServer.submitOrder();
 }
 
+function readGet() {
+    var parts = window.location.search.substr(1).split("&");
+    var $_GET = {};
+    for (var i = 0; i < parts.length; i++) {
+        var temp = parts[i].split("=");
+        $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+    }
+    return $_GET;
+}
+
 var PayServer = function () {
     return {
         updateNum: function (did, newNum) {
@@ -119,6 +129,7 @@ var PayServer = function () {
             $.ajax({
                     type: 'POST',
                     url: 'BranchUserReserveNewPay',
+                    data: {branchNum: readGet()['branchNum']},
                     success: function (response) {
                         toastr.success("下单成功");
                     },
