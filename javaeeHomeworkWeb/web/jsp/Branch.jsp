@@ -159,7 +159,7 @@
 
                         <div class="shopmenu-food">
                             <c:forEach items="${plan.details}" var="detail">
-                                <div class="onefood" id="${detail.pdId}">
+                                <div class="onefood">
                                     <span class="col-1">
                                         <a>
                                             <img class="foodpic" src="../images/${detail.dessert.did}.jpg"
