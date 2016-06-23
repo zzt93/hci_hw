@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page session="true" %>
-
 <html>
 
 <head>
@@ -188,29 +188,29 @@
                                         </div>
                                         <div id="gouwuche" class="gouwudiv">
                                             <c:choose>
-                                                <c:when test="${items.containsKey(detail.dessert.did)}">
+                                                <c:when test="${cart.items.containsKey(detail.dessert.did)}">
                                                 <button style="display: none" id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
                                                 <div id="${detail.pdId}in">
-                                                    <button id="${detail.pdId}minus" class="minus"
+                                                    <button id="${detail.dessert.did}minus" class="minus"
                                                             onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
                                                         -
                                                     </button>
-                                                    <input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
-                                                           value="${items[detail.dessert.did].num}" oldvalue="1">
-                                                    <button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
+                                                    <input id="${detail.dessert.did}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
+                                                           value="${cart.items[detail.dessert.did].num}" oldvalue="1">
+                                                    <button id="${detail.dessert.did}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
                                                     </button>
                                                 </div>
-                                            </c:when>
+                                                </c:when>
                                                 <c:otherwise>
-                                                    <button id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
-                                                    <div id="${detail.pdId}in" style="display: none">
-                                                        <button id="${detail.pdId}minus" class="minus"
+                                                    <button id="${detail.dessert.did}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
+                                                    <div id="${detail.dessert.did}in" style="display: none">
+                                                        <button id="${detail.dessert.did}minus" class="minus"
                                                                 onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
                                                             -
                                                         </button>
-                                                        <input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
+                                                        <input id="${detail.dessert.did}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
                                                                value="1" oldvalue="1">
-                                                        <button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
+                                                        <button id="${detail.dessert.did}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
                                                         </button>
                                                     </div>
                                                 </c:otherwise>
@@ -241,7 +241,7 @@
 </div>
 
 <div class="cart">
-    <div class="shop-cartbasket" style="top: -43px; height: auto;">
+    <div class="shop-cartbasket" style="top: -${43 + fn:length(cart.items) * 45}px; height: auto;">
         <div id="shopCart" class="">
             <!-- ngIf: shopCart.vm.groups.length > 1 -->
             <div class="shop-grouphead single">
@@ -268,7 +268,7 @@
                 <div class="cell itemname" title="${item.name}">${item.name}</div>
                 <div class="cell itemquantity">
                     <button onclick="updateCartItemNum(SUB, this)">-</button>
-                    <input value="${item.num}" onchange="updateFromInput(this)"
+                    <input value="${item.num}" onchange="updateFromInput(this)" onkeypress="keyPress()"
                            min="1" max="100">
                     <button onclick="updateCartItemNum(ADD, this)">+</button>
                 </div>
@@ -285,8 +285,9 @@
 
         <p class="shop-cartfooter-text price">
             ${cart.total}</p>
-        <button class="shop-cartfooter-checkout disabled" onclick="checkout()"
-                disabled="disabled">还差 ${30 - cart.total} 元起送
+        <c:set var="gap" value="${30 - cart.total}" />
+        <button class="shop-cartfooter-checkout ${30 > cart.total ? 'disabled' : ''}" onclick="checkout()"
+                disabled="${30 > cart.total ? 'disabled' : ''}">${30 > cart.total ? '还差'.concat(gap).concat('元起送') : '去结算'}
         </button>
     </div>
 </div>
@@ -298,9 +299,9 @@
 <script type="application/javascript" src="../scripts/branch.js"></script>
 <script type="application/javascript" src="../scripts/cart.js"></script>
 <script>
-    $(document).ready(function () {
-        addCartItem(1, "芒果西米露", 10);
-    });
+//    $(document).ready(function () {
+//        addCartItem(1, "芒果西米露", 10);
+//    });
 </script>
 
 </body>

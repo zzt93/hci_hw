@@ -2,10 +2,12 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import interceptor.SessionManagement;
+import org.apache.struts2.ServletActionContext;
 import vo.CartItem;
 import vo.PartInfo;
 import vo.ShoppingCart;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -60,6 +62,7 @@ public class CartAction extends ActionSupport {
     }
 
     public ShoppingCart getCart() {
+        System.out.println(ServletActionContext.getServletContext().getMajorVersion());
         HttpSession session = SessionManagement.getSession();
         ShoppingCart cart = (ShoppingCart) session.getAttribute(CART);
         if (cart == null) {
@@ -76,6 +79,7 @@ public class CartAction extends ActionSupport {
         return SUCCESS;
     }
 
+    @Deprecated
     public String cartRemove() throws Exception {
         final ShoppingCart cart = getCart();
         cart.removeItem(did);
@@ -85,7 +89,12 @@ public class CartAction extends ActionSupport {
 
     public String cartUpdateNumber() throws Exception {
         final ShoppingCart cart = getCart();
-        final double lineSum = cart.updateItem(did, num);
+        double lineSum = 0;
+        if (num == 0) {
+            cart.removeItem(did);
+        } else {
+            lineSum = cart.updateItem(did, num);
+        }
         info = new PartInfo(cart.getQuantity(), cart.getTotal(), lineSum);
         return SUCCESS;
     }

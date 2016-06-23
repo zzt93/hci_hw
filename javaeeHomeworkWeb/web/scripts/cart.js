@@ -120,12 +120,17 @@ var UI = function () {
          * @param newNum
          * @param newCount
          * @param newTotal
+         * @param newLineSum
          */
         updateNum: function (id, newNum, newCount, newTotal, newLineSum) {
-            var item = $('#' + id);
-            item.find('input').val(newNum);
-            var itemTotal = item.find('.itemtotal');
-            itemTotal.html('¥' + (newLineSum));
+            if (newNum === 0) {
+                this.removeGoods(id, newCount, newTotal);
+            } else {
+                var item = $('#' + id);
+                item.find('input').val(newNum);
+                var itemTotal = item.find('.itemtotal');
+                itemTotal.html('¥' + (newLineSum));
+            }
             // update total
             this.updateTotal(newCount, newTotal);
         },
@@ -227,9 +232,9 @@ function addCartItem(goodsId, name, price) {
 }
 
 
-function removeCartItem(goodsId) {
-    Server.removeGoods(goodsId);
-}
+// function removeCartItem(goodsId) {
+//     Server.removeGoods(goodsId);
+// }
 
 const ADD = 1;
 const SUB = -1;
@@ -256,11 +261,11 @@ function valid(now, num) {
 function updateCartInMainPage(change, did, original) {
     var changeI = parseInt(change);
     var originalI = parseInt(original);
-    if (valid(originalI, changeI)) {
+    // if (valid(originalI, changeI)) {
         Server.updateNum(did, changeI + originalI);
-    } else {
-        removeCartItem(did);
-    }
+    // } else {
+    //     removeCartItem(did);
+    // }
 }
 
 /**
