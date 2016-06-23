@@ -44,6 +44,7 @@ function getTop(e) {
 
 function addGouWuChe(e){
     document.getElementById(e).style.display="none";
+    document.getElementById(e.substr(0, e.length-3)+"input").value=1;
     document.getElementById(e.substr(0, e.length-3)+"in").style.display="inline-block";
 }
 
