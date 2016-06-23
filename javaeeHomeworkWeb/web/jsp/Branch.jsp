@@ -140,10 +140,20 @@
 
         <div id="daohang" class="daohang">
             <%--<a id="rexiaobanga" class="active" onclick="changeClass();" href="#rexiaobang">热销榜</a>--%>
-            <c:forEach items="${plans}" var="plan">
-                <a id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
+            <c:forEach items="${plans}" var="plan"  varStatus="status">
+                <c:choose>
+                    <c:when test="{status.first}">
+                        <a class="active" id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
+                    </c:otherwise>
+                </c:choose>
+                <%--<c:if test="{status.first}">--%>
+                    <%--<a class="active" id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>--%>
+                <%--</c:if>--%>
+                <%--<a id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>--%>
             </c:forEach>
-
 
         </div>
 
@@ -177,7 +187,7 @@
                                             <span class="money">${detail.price}</span>
                                         </div>
                                         <div id="gouwuche" class="gouwudiv">
-                                            <button id="${detail.pdId}add" name="${detail.dessert.name}" price="${detail.price}" class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name,this.price)">加入购物车</button>
+                                            <button id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
                                             <div id="${detail.pdId}in" style="display: none">
                                                 <button id="${detail.pdId}minus" class="minus"
                                                         onclick="Server.updateNum(this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
