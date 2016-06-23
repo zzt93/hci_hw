@@ -12,49 +12,23 @@ function changeClass(e){
 }
 
 window.onscroll = function () {
-    //scrollTop=document.body.scrollTop;
-    //var daohangTop = getTop(document.getElementById("daohang"));
-    //var rexiaobangTop = getTop(document.getElementById("rexiaobang"));
-    //var xinpinlijianTop = getTop(document.getElementById("xinpinlijian"));
-    //var kafeiTop = getTop(document.getElementById("kafei"));
-    //var guoshizhiyinliaoTop = getTop(document.getElementById("guoshuzhiyinliao"));
-    //var chayinTop = getTop(document.getElementById("chayin"));
-    //var tangTop = getTop(document.getElementById("tang"));
-    //var xiaochiTop = getTop(document.getElementById("xiaochi"));
-    //var yimianTop = getTop(document.getElementById("yimian"));
-    //
-    //if ((document.documentElement.scrollTop >= daohangTop || document.body.scrollTop >= daohangTop)) {
-    //    document.getElementById("daohang").setAttribute("class", "daohang sticky");
-    //    document.getElementById("allfood").setAttribute("class", "allfood");
-    //}
-    //if(scrollTop<=200) {
-    //    document.getElementById("daohang").setAttribute("class", "daohang");
-    //    document.getElementById("allfood").setAttribute("class", "");
-    //}
-    //if(scrollTop>=rexiaobangTop){
-    //    changeClass(document.getElementById("rexiaobanga"));
-    //}
-    //if(scrollTop>=xinpinlijianTop){
-    //    changeClass(document.getElementById("xinpinlijiana"));
-    //}
-    //if(scrollTop>=kafeiTop){
-    //    changeClass(document.getElementById("kafeia"));
-    //}
-    //if(scrollTop>=guoshizhiyinliaoTop){
-    //    changeClass(document.getElementById("guoshizhiyinliaoa"));
-    //}
-    //if(scrollTop>=chayinTop){
-    //    changeClass(document.getElementById("chayina"));
-    //}
-    //if(scrollTop>=tangTop){
-    //    changeClass(document.getElementById("tanga"));
-    //}
-    //if(scrollTop>=xiaochiTop){
-    //    changeClass(document.getElementById("xiaochia"));
-    //}
-    //if(scrollTop>=yimianTop){
-    //    changeClass(document.getElementById("yimiana"));
-    //}
+    scrollTop=document.body.scrollTop;
+    var daohangTop = getTop(document.getElementById("daohang"));
+
+    if ((document.documentElement.scrollTop >= daohangTop || document.body.scrollTop >= daohangTop)) {
+        document.getElementById("daohang").setAttribute("class", "daohang sticky");
+        document.getElementById("allfood").setAttribute("class", "allfood");
+    }
+    if(scrollTop<=200) {
+        document.getElementById("daohang").setAttribute("class", "daohang");
+        document.getElementById("allfood").setAttribute("class", "");
+    }
+    var childArr = document.getElementById("allfood").children;
+    for(var i=0;i<childArr.length;i++){
+        if(scrollTop>=getTop(document.getElementById(childArr[i].id))){
+            changeClass(document.getElementById(childArr[i].id+"a"));
+        }
+    }
 };
 
 function scroll(id, top) {
