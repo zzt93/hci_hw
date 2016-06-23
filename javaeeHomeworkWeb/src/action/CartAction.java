@@ -62,7 +62,7 @@ public class CartAction extends ActionSupport {
     }
 
     public ShoppingCart getCart() {
-        System.out.println(ServletActionContext.getServletContext().getMajorVersion());
+//        System.out.println(ServletActionContext.getServletContext().getMajorVersion());
         HttpSession session = SessionManagement.getSession();
         ShoppingCart cart = (ShoppingCart) session.getAttribute(CART);
         if (cart == null) {

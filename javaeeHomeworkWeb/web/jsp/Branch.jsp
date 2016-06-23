@@ -43,11 +43,12 @@
 
         <form>
             <p class="action">
-                <a href="<s:url action='Login_input'/>" class="fa fa-user" > <span style="font-family: 楷体">登出</span></a>
+                <a href="<s:url action='Login_input'/>" class="fa fa-user"> <span style="font-family: 楷体">登出</span></a>
             </p>
 
             <p class="action">
-                <a href="<s:url action='Account'/> " class="fa fa-home"> <span style="font-family: 楷体"> ${sessionScope.userName}</span></a>
+                <a href="<s:url action='Account'/> " class="fa fa-home"> <span
+                        style="font-family: 楷体"> ${sessionScope.userName}</span></a>
             </p>
         </form>
         <br>
@@ -59,7 +60,7 @@
     <div class="shopguide-info">
         <span>
             <a>
-                <img class="storepic" srcsrc="../images/branch${branchNum}.jpeg" >
+                <img class="storepic" src="../images/branch${branchNum}.jpeg">
             </a>
         </span>
 
@@ -81,96 +82,98 @@
     </div>
 </div>
 <%--<div id="headline">--%>
-    <%--<div class="branch-container ">--%>
+<%--<div class="branch-container ">--%>
 
-        <%--&lt;%&ndash;<header>&ndash;%&gt;--%>
-        <%--&lt;%&ndash;<h1>Dessert house</h1>&ndash;%&gt;--%>
+<%--&lt;%&ndash;<header>&ndash;%&gt;--%>
+<%--&lt;%&ndash;<h1>Dessert house</h1>&ndash;%&gt;--%>
 
-        <%--&lt;%&ndash;<h3>Branch ${branchAddr}</h3>&ndash;%&gt;--%>
-        <%--<img src="../images/branch${branchNum}.jpeg">--%>
-        <%--&lt;%&ndash;</header>&ndash;%&gt;--%>
-        <%--<!-- Elements after a floating element will flow around it.--%>
-         <%--To avoid this, use the clear property.--%>
-        <%--The clear property specifies on which sides of an element--%>
-         <%--floating elements are not allowed to float:-->--%>
-    <%--</div>--%>
+<%--&lt;%&ndash;<h3>Branch ${branchAddr}</h3>&ndash;%&gt;--%>
+<%--<img src="../images/branch${branchNum}.jpeg">--%>
+<%--&lt;%&ndash;</header>&ndash;%&gt;--%>
+<%--<!-- Elements after a floating element will flow around it.--%>
+<%--To avoid this, use the clear property.--%>
+<%--The clear property specifies on which sides of an element--%>
+<%--floating elements are not allowed to float:-->--%>
+<%--</div>--%>
 <%--</div>--%>
 <div>
-<div style="max-width: 1000px; margin: 0 auto">
-    <div style="float: right;width:23%">
-        <div class="shopbulletin-section">
-            <h3 class="shopbulletin-section-title">商家公告</h3>
+    <div style="max-width: 1000px; margin: 0 auto">
+        <div style="float: right;width:23%">
+            <div class="shopbulletin-section">
+                <h3 class="shopbulletin-section-title">商家公告</h3>
 
-            <p class="shopbulletin-content"></p>
-            <ul class="shopbulletin-supports">
-                <li>
-                    <span style="background-color: rgb(75, 154, 24);">保</span>
-                    已加入“外卖保”计划，食品安全有保障
-                </li>
-                <li>
-                    <span style="background-color: rgb(144, 113, 203);">票</span>
-                    该商家支持开发票，请在下单时填写好发票抬头
-                </li>
-            </ul>
-            <p class="shopbulletin-foodsecurity-agency"></p>
-        </div>
-        <div class="shopbulletin-section">
-            <h3 class="shopbulletin-section-title">食品安全等级公示</h3>
-
-            <p class="shopbulletin-content"></p>
-
-            <div class="shopbulletin-foodsecurity-result" style="width:55%;">
-                <h4>
-                    监督检查结果:
-                    <span>良好</span>
-                </h4>
-                <img src="../images/smile.png">
+                <p class="shopbulletin-content"></p>
+                <ul class="shopbulletin-supports">
+                    <li>
+                        <span style="background-color: rgb(75, 154, 24);">保</span>
+                        已加入“外卖保”计划，食品安全有保障
+                    </li>
+                    <li>
+                        <span style="background-color: rgb(144, 113, 203);">票</span>
+                        该商家支持开发票，请在下单时填写好发票抬头
+                    </li>
+                </ul>
+                <p class="shopbulletin-foodsecurity-agency"></p>
             </div>
-            <div class="shopbulletin-foodsecurity-date" style="width:40%;float:right">
-                <h4>检查日期<p class="shopbulletin-foodsecurity-year">2016年</p>
+            <div class="shopbulletin-section">
+                <h3 class="shopbulletin-section-title">食品安全等级公示</h3>
 
-                    <p class="shopbulletin-foodsecurity-day">01/27</p>
-                </h4>
+                <p class="shopbulletin-content"></p>
+
+                <div class="shopbulletin-foodsecurity-result" style="width:55%;">
+                    <h4>
+                        监督检查结果:
+                        <span>良好</span>
+                    </h4>
+                    <img src="../images/smile.png">
+                </div>
+                <div class="shopbulletin-foodsecurity-date" style="width:40%;float:right">
+                    <h4>检查日期<p class="shopbulletin-foodsecurity-year">2016年</p>
+
+                        <p class="shopbulletin-foodsecurity-day">01/27</p>
+                    </h4>
+                </div>
+                <p class="shopbulletin-foodsecurity-agency ng-binding"></p>
             </div>
-            <p class="shopbulletin-foodsecurity-agency ng-binding"></p>
         </div>
-    </div>
 
-    <div style="width:65%;">
+        <div style="width:65%;">
 
-        <div id="daohang" class="daohang">
-            <%--<a id="rexiaobanga" class="active" onclick="changeClass();" href="#rexiaobang">热销榜</a>--%>
-            <c:forEach items="${plans}" var="plan"  varStatus="status">
-                <c:choose>
-                    <c:when test="${status.first}">
-                        <a class="active" id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a class="others" id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
-                    </c:otherwise>
-                </c:choose>
-                <%--<c:if test="{status.first}">--%>
+            <div id="daohang" class="daohang">
+                <%--<a id="rexiaobanga" class="active" onclick="changeClass();" href="#rexiaobang">热销榜</a>--%>
+                <c:forEach items="${plans}" var="plan" varStatus="status">
+                    <c:choose>
+                        <c:when test="${status.first}">
+                            <a class="active" id="${plan.pdate}a" onclick="changeClass();"
+                               href="#${plan.pdate}">${plan.pdate}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="others" id="${plan.pdate}a" onclick="changeClass();"
+                               href="#${plan.pdate}">${plan.pdate}</a>
+                        </c:otherwise>
+                    </c:choose>
+                    <%--<c:if test="{status.first}">--%>
                     <%--<a class="active" id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>--%>
-                <%--</c:if>--%>
-                <%--<a id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>--%>
-            </c:forEach>
+                    <%--</c:if>--%>
+                    <%--<a id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>--%>
+                </c:forEach>
 
-        </div>
+            </div>
 
-        <div class="flex2">
+            <div class="flex2">
 
-            <div id="allfood">
-                <c:forEach items="${plans}" var="plan">
-                    <div id="${plan.pdate}" class="bangdan">
-                        <p class="kongbai"></p>
+                <div id="allfood">
+                    <c:forEach items="${plans}" var="plan">
+                        <div id="${plan.pdate}" class="bangdan">
+                            <p class="kongbai"></p>
 
-                        <h3 class="shopmenu-title">
-                                ${plan.pdate}
-                        </h3>
+                            <h3 class="shopmenu-title">
+                                    ${plan.pdate}
+                            </h3>
 
-                        <div class="shopmenu-food">
-                            <c:forEach items="${plan.details}" var="detail">
-                                <div class="onefood">
+                            <div class="shopmenu-food">
+                                <c:forEach items="${plan.details}" var="detail">
+                                    <div class="onefood">
                                     <span class="col-1">
                                         <a>
                                             <img class="foodpic" src="../images/${detail.dessert.did}.jpeg"
@@ -178,66 +181,61 @@
                                         </a>
                                     </span>
 
-                                    <div class="col-2">
-                                        <h3 class="shopmenu-food-name">${detail.dessert.name}</h3>
+                                        <div class="col-2">
+                                            <h3 class="shopmenu-food-name">${detail.dessert.name}</h3>
 
-                                        <div class="color-mute">月售33份</div>
-                                        <div class="shopmenu-food-price">
-                                            <span>￥</span>
-                                            <span class="money">${detail.price}</span>
-                                        </div>
-                                        <div id="gouwuche" class="gouwudiv">
-                                            <c:choose>
-                                                <c:when test="${cart.items.containsKey(detail.dessert.did)}">
-                                                <button style="display: none" id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
-                                                <div id="${detail.pdId}in">
+                                            <div class="color-mute">月售33份</div>
+                                            <div class="shopmenu-food-price">
+                                                <span>￥</span>
+                                                <span class="money">${detail.price}</span>
+                                            </div>
+                                            <div id="gouwuche" class="gouwudiv">
+                                                <button style="display: ${cart.items.containsKey(detail.dessert.did) ? 'none' : 'inline-block'}"
+                                                        id="${detail.dessert.did}add"
+                                                        name="${detail.dessert.name}!${detail.price}"
+                                                        class="shop-cartbutton"
+                                                        onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])"
+                                                        )>加入购物车
+                                                </button>
+                                                <div id="${detail.dessert.did}in"
+                                                     style="display: ${cart.items.containsKey(detail.dessert.did) ? 'inline-block':'none' }">
                                                     <button id="${detail.dessert.did}minus" class="minus"
                                                             onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
                                                         -
                                                     </button>
-                                                    <input id="${detail.dessert.did}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
+                                                    <input id="${detail.dessert.did}input" class="input"
+                                                           onkeypress="keyPress()"
+                                                           onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
                                                            value="${cart.items[detail.dessert.did].num}" oldvalue="1">
-                                                    <button id="${detail.dessert.did}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
+                                                    <button id="${detail.dessert.did}plus" class="plus"
+                                                            onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">
+                                                        +
                                                     </button>
                                                 </div>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <button id="${detail.dessert.did}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
-                                                    <div id="${detail.dessert.did}in" style="display: none">
-                                                        <button id="${detail.dessert.did}minus" class="minus"
-                                                                onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
-                                                            -
-                                                        </button>
-                                                        <input id="${detail.dessert.did}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
-                                                               value="1" oldvalue="1">
-                                                        <button id="${detail.dessert.did}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
-                                                        </button>
-                                                    </div>
-                                                </c:otherwise>
-                                            </c:choose>
 
-                                            <%--<button id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>--%>
-                                            <%--<div id="${detail.pdId}in" style="display: none">--%>
-                                                <%--<button id="${detail.pdId}minus" class="minus"--%>
-                                                        <%--onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">--%>
+
+                                                    <%--<button id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>--%>
+                                                    <%--<div id="${detail.pdId}in" style="display: none">--%>
+                                                    <%--<button id="${detail.pdId}minus" class="minus"--%>
+                                                    <%--onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">--%>
                                                     <%-----%>
-                                                <%--</button>--%>
-                                                <%--<input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"--%>
-                                                       <%--value="1" oldvalue="1">--%>
-                                                <%--<button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+--%>
-                                                <%--</button>--%>
-                                            <%--</div>--%>
+                                                    <%--</button>--%>
+                                                    <%--<input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"--%>
+                                                    <%--value="1" oldvalue="1">--%>
+                                                    <%--<button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+--%>
+                                                    <%--</button>--%>
+                                                    <%--</div>--%>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </c:forEach>
+                                </c:forEach>
+                            </div>
                         </div>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="cart">
@@ -253,14 +251,14 @@
             </div>
         </div>
         <%--<div class="shop-cartbasket-tablerow">--%>
-            <%--<div class="cell itemname" title="芒果紫米露/热">芒果紫米露/热</div>--%>
-            <%--<div class="cell itemquantity">--%>
-                <%--<button onclick="updateCartItemNum(SUB, this)">-</button>--%>
-                <%--<input value="1" onchange="updateFromInput(this)"--%>
-                       <%--min="1" max="100">--%>
-                <%--<button onclick="updateCartItemNum(ADD, this)">+</button>--%>
-            <%--</div>--%>
-            <%--<div class="cell itemtotal">¥9</div>--%>
+        <%--<div class="cell itemname" title="芒果紫米露/热">芒果紫米露/热</div>--%>
+        <%--<div class="cell itemquantity">--%>
+        <%--<button onclick="updateCartItemNum(SUB, this)">-</button>--%>
+        <%--<input value="1" onchange="updateFromInput(this)"--%>
+        <%--min="1" max="100">--%>
+        <%--<button onclick="updateCartItemNum(ADD, this)">+</button>--%>
+        <%--</div>--%>
+        <%--<div class="cell itemtotal">¥9</div>--%>
         <%--</div>--%>
         <c:forEach items="${cart.items}" var="entry">
             <c:set var="item" value="${entry.value}" scope="page"/>
@@ -285,7 +283,7 @@
 
         <p class="shop-cartfooter-text price">
             ${cart.total}</p>
-        <c:set var="gap" value="${30 - cart.total}" />
+        <c:set var="gap" value="${30 - cart.total}"/>
         <button class="shop-cartfooter-checkout ${30 > cart.total ? 'disabled' : ''}" onclick="checkout()"
                 disabled="${30 > cart.total ? 'disabled' : ''}">${30 > cart.total ? '还差'.concat(gap).concat('元起送') : '去结算'}
         </button>
@@ -299,9 +297,9 @@
 <script type="application/javascript" src="../scripts/branch.js"></script>
 <script type="application/javascript" src="../scripts/cart.js"></script>
 <script>
-//    $(document).ready(function () {
-//        addCartItem(1, "芒果西米露", 10);
-//    });
+    //    $(document).ready(function () {
+    //        addCartItem(1, "芒果西米露", 10);
+    //    });
 </script>
 
 </body>
