@@ -37,9 +37,9 @@
 
 <header>
     <section id="main-header">
-        <img src="../images/logo2.jpg" id="logo">
 
-        <p id="app-name"><a href="<s:url action="Branches"/> ">Dessert</a></p>
+
+        <p id="app-name"><a href="<s:url action="Branches"/> "><img src="../images/logo2.jpg" id="logo"></a></p>
 
         <form>
             <p class="action">
@@ -213,16 +213,16 @@
                 </div>
             </div>
         </div>
-        <div class="shop-cartbasket-tablerow">
-            <div class="cell itemname" title="芒果紫米露/热">芒果紫米露/热</div>
-            <div class="cell itemquantity">
-                <button onclick="updateCartItemNum(SUB, this)">-</button>
-                <input value="1" onchange="updateFromInput(this)"
-                       min="1" max="100">
-                <button onclick="updateCartItemNum(ADD, this)">+</button>
-            </div>
-            <div class="cell itemtotal">¥9</div>
-        </div>
+        <%--<div class="shop-cartbasket-tablerow">--%>
+            <%--<div class="cell itemname" title="芒果紫米露/热">芒果紫米露/热</div>--%>
+            <%--<div class="cell itemquantity">--%>
+                <%--<button onclick="updateCartItemNum(SUB, this)">-</button>--%>
+                <%--<input value="1" onchange="updateFromInput(this)"--%>
+                       <%--min="1" max="100">--%>
+                <%--<button onclick="updateCartItemNum(ADD, this)">+</button>--%>
+            <%--</div>--%>
+            <%--<div class="cell itemtotal">¥9</div>--%>
+        <%--</div>--%>
         <c:forEach items="${cart.items}" var="entry">
             <c:set var="item" value="${entry.value}" scope="page"/>
             <div class="shop-cartbasket-tablerow" id="${item.did}">

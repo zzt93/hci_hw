@@ -9,6 +9,15 @@ function getPriceById() {
     return 10;
 }
 
+function readGet() {
+    var parts = window.location.search.substr(1).split("&");
+    var $_GET = {};
+    for (var i = 0; i < parts.length; i++) {
+        var temp = parts[i].split("=");
+        $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+    }
+    return $_GET;
+}
 
 var Utility = function () {
     return {
@@ -279,7 +288,7 @@ function updateFromInput(numInput) {
 }
 
 function checkout() {
-    window.location = "../CheckOut";
+    window.location = "CheckOut?branchNum=" + readGet()['branchNum'];
 }
 
-addCartItem(1, "....", 10);
+addCartItem(1, "芒果西米露", 10);

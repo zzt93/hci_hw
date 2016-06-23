@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../styles/main-header.css">
     <link rel="stylesheet" href="../styles/new-account.css">
 
+    <link href="../styles/toastr.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
     <!-- jTable Metro theme -->
@@ -206,6 +207,8 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
 <script type="application/javascript" src="../scripts/jquery/dist/jquery.min.js"></script>
 <script type="application/javascript" src="../scripts/updateAccount.js"></script>
+<script src="../scripts/toastr.js"></script>
+
 
 <!-- jTable script file. -->
 <script src="../scripts/jquery-ui-1.11.4/jquery-ui.min.js" type="text/javascript"></script>
