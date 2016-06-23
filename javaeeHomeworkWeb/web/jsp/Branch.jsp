@@ -146,7 +146,7 @@
                         <a class="active" id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
                     </c:when>
                     <c:otherwise>
-                        <a id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
+                        <a class="others" id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
                     </c:otherwise>
                 </c:choose>
                 <%--<c:if test="{status.first}">--%>
