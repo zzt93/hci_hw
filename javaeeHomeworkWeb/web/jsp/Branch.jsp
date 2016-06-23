@@ -142,7 +142,7 @@
             <%--<a id="rexiaobanga" class="active" onclick="changeClass();" href="#rexiaobang">热销榜</a>--%>
             <c:forEach items="${plans}" var="plan"  varStatus="status">
                 <c:choose>
-                    <c:when test="{status.first}">
+                    <c:when test="${status.first}">
                         <a class="active" id="${plan.pdate}a" onclick="changeClass();" href="#${plan.pdate}">${plan.pdate}</a>
                     </c:when>
                     <c:otherwise>
@@ -173,7 +173,7 @@
                                 <div class="onefood">
                                     <span class="col-1">
                                         <a>
-                                            <img class="foodpic" src="../images/${detail.dessert.did}.jpg"
+                                            <img class="foodpic" src="../images/${detail.dessert.did}.jpeg"
                                                  alt="${detail.dessert.name}的图片">
                                         </a>
                                     </span>
@@ -190,12 +190,12 @@
                                             <button id="${detail.pdId}add" name="${detail.dessert.name}!${detail.price}"  class="shop-cartbutton" onclick="addGouWuChe(this.id);addCartItem(this.id.substr(0,this.id.length-3),this.name.split('!')[0],this.name.split('!')[1])")>加入购物车</button>
                                             <div id="${detail.pdId}in" style="display: none">
                                                 <button id="${detail.pdId}minus" class="minus"
-                                                        onclick="Server.updateNum(this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
+                                                        onclick="updateCartInMainPage(-1, this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
                                                     -
                                                 </button>
                                                 <input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
                                                        value="1" oldvalue="1">
-                                                <button id="${detail.pdId}plus" class="plus" onclick="Server.updateNum(this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
+                                                <button id="${detail.pdId}plus" class="plus" onclick="updateCartInMainPage(1, this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
                                                 </button>
                                             </div>
                                         </div>
