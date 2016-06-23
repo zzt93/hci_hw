@@ -87,7 +87,7 @@
                         <br>
                         <br>
                         <label>联系方式</label>
-                        <input type="text" placeholder="请输入你的手机号">
+                        <input type="text" placeholder="请输入你的手机号" onchange="mobileCheck(this)">
                         <br>
                         <br>
                         <label>位置</label>

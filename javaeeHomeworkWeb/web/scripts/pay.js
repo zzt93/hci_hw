@@ -96,6 +96,15 @@ function pay(){
     PayServer.submitOrder();
 }
 
+function mobileCheck(x){
+    var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+    var tel= x.value;
+    if (reg.test(tel)) {
+        toastr.error("手机号码错误");
+        x.style.borderColor="#e62625";
+    }
+}
+
 function readGet() {
     var parts = window.location.search.substr(1).split("&");
     var $_GET = {};
