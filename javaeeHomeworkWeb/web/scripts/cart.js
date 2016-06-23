@@ -5,9 +5,9 @@
 /**
  * stub function for test
  */
-function getPriceById() {
-    return 10;
-}
+// function getPriceById() {
+//     return 10;
+// }
 
 function readGet() {
     var parts = window.location.search.substr(1).split("&");

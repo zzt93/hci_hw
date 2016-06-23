@@ -256,6 +256,7 @@
 
 
 <script type="application/javascript" src="../scripts/jquery/dist/jquery.min.js"></script>
+<script type="application/javascript" src="../scripts/branch.js"></script>
 <script type="application/javascript" src="../scripts/cart.js"></script>
 <script>
     $(document).ready(function () {
