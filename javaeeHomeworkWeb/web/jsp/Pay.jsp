@@ -24,10 +24,9 @@
 
 <header>
     <section id="main-header">
-        <img src="../images/logo2.jpg" id="logo">
 
-        <p id="app-name"><a href="<s:url action='Branches'/>">Dessert</a></p>
 
+        <p id="app-name"><a href="<s:url action='Branches'/>"><img src="../images/logo2.jpg" id="logo"></a></p>
         <form>
             <p class="action">
                 <a href="<s:url action='Login_logOut'/>" class="fa fa-user"><span style="font-family: 楷体">登出</span></a>
