@@ -202,7 +202,7 @@
 </div>
 
 <div class="cart">
-    <div class="shop-cartbasket" style="top: -88px; height: auto;">
+    <div class="shop-cartbasket" style="top: -43px; height: auto;">
         <div id="shopCart" class="">
             <!-- ngIf: shopCart.vm.groups.length > 1 -->
             <div class="shop-grouphead single">

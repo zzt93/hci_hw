@@ -44,7 +44,10 @@
     <div class="reservation">
         <div class="reservation_title">
             <h2>订单详情</h2>
-            <a href="#"> 返回商家修改</a>
+            <a href="" onclick="function jumpBack() {
+                window.location = 'Branch.action?branchNum=' + readGet()['branchNum']
+            }
+            jumpBack()"> 返回商家修改</a>
         </div>
         <div class="reservation_table_head">
             <div class="itemName">商品</div>
