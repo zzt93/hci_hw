@@ -10,6 +10,10 @@
 function updateItemNum(goodsId, num) {
     var input = document.getElementById(goodsId+"input");
     input.setAttribute("value",num);
+    if(num==0){
+        document.getElementById(goodsId+"in").style.display="none";
+        document.getElementById(goodsId+"add").style.display="inline-block";
+    }
 }
 
 function getPriceById(id) {
