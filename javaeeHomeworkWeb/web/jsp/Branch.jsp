@@ -193,7 +193,7 @@
                                                         onclick="Server.updateNum(this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
                                                     -
                                                 </button>
-                                                <input id="${detail.pdId}input" class="input" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
+                                                <input id="${detail.pdId}input" class="input" onkeypress="keyPress()" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
                                                        value="1" oldvalue="1">
                                                 <button id="${detail.pdId}plus" class="plus" onclick="Server.updateNum(this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
                                                 </button>
