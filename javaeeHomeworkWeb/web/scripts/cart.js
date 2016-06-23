@@ -146,7 +146,7 @@ var Server = function () {
                     data: {did: did},
                     success: function (data) {
                         console.log(data);
-                        
+
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
@@ -192,6 +192,7 @@ var Server = function () {
                     success: function (response) {
                         console.log(response);
                         UI.updateNum(did, newNum, response['newCount'], response['newTotal'], response['lineSum']);
+                        updateItemNum(did, newNum);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
@@ -291,4 +292,3 @@ function checkout() {
     window.location = "CheckOut?branchNum=" + readGet()['branchNum'];
 }
 
-addCartItem(1, "芒果西米露", 10);

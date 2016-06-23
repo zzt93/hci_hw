@@ -177,15 +177,15 @@
                                             <span class="money">${detail.price}</span>
                                         </div>
                                         <div id="gouwuche" class="gouwudiv">
-                                            <button id="${detail.pdId}add" class="shop-cartbutton" onclick="addGouWuChe(this);addGoods(this.id.substr(0,this.id.length-3))">加入购物车</button>
+                                            <button id="${detail.pdId}add" class="shop-cartbutton" onclick="addGouWuChe(this);addCartItem(this.id.substr(0,this.id.length-3), )">加入购物车</button>
                                             <div id="inputnum" style="display: none">
                                                 <button id="${detail.pdId}minus" class="minus"
-                                                        onclick="clickminus(this.nextElementSibling,this.parentNode.previousElementSibling);updateNum(this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
+                                                        onclick="Server.updateNum(this.id.substr(0,this.id.length-5),this.nextElementSibling.value);">
                                                     -
                                                 </button>
-                                                <input id="${detail.pdId}input" class="input" onchange="changenum(this);updateNum(this.id.substr(0,this.id.length-5),this.value);"
+                                                <input id="${detail.pdId}input" class="input" onchange="Server.updateNum(this.id.substr(0,this.id.length-5),this.value);"
                                                        value="1" oldvalue="1">
-                                                <button id="${detail.pdId}plus" class="plus" onclick="clickplus(this.previousElementSibling);updateNum(this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
+                                                <button id="${detail.pdId}plus" class="plus" onclick="Server.updateNum(this.id.substr(0,this.id.length-4),this.previousElementSibling.value);">+
                                                 </button>
                                             </div>
                                         </div>
@@ -257,6 +257,11 @@
 
 <script type="application/javascript" src="../scripts/jquery/dist/jquery.min.js"></script>
 <script type="application/javascript" src="../scripts/cart.js"></script>
+<script>
+    $(document).ready(function () {
+        addCartItem(1, "芒果西米露", 10);
+    });
+</script>
 
 </body>
 </html>

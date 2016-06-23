@@ -21,12 +21,14 @@ public class UserInterceptor extends AbstractInterceptor {
     public String intercept(ActionInvocation invocation) throws Exception {
 
         if (SessionManagement.checkId(UserLogin.UID)) {
+            System.out.println("...");
             return ActionSupport.INPUT;
         }
         HttpSession session = SessionManagement.getSession();
         byte state = (byte) session.getAttribute(UserLogin.CARD_STATE);
 
         if (state == CardState.CANCEL.ordinal()) {
+            System.out.println(".......");
             return ActionSupport.INPUT;
         }
 
