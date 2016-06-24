@@ -129,11 +129,11 @@ public class CartAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        AccountService accountService =
-                (AccountService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//UserInfoEJB!service.AccountService");
-        int uid = SessionManagement.getUid();
-        assert accountService != null;
-        user = accountService.getUser(uid);
+//        AccountService accountService =
+//                (AccountService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//UserInfoEJB!service.AccountService");
+//        int uid = SessionManagement.getUid();
+//        assert accountService != null;
+//        user = accountService.getUser(uid);
         return SUCCESS;
     }
 }

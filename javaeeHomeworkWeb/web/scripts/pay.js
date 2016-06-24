@@ -74,10 +74,12 @@ function change_button(v){
         var temp=30-sum_total;
         confim_button.innerHTML="还差 "+temp+" 元起送";
         confim_button.disabled=true;
+        confim_button.style.cursor="default";
         confim_button.style.backgroundColor="#bbb";
     }else {
         confim_button.innerHTML="确认下单";
         confim_button.disabled=false;
+        confim_button.style.cursor="pointer";
         confim_button.style.backgroundColor="#e62625";
     }
 
@@ -150,7 +152,8 @@ var PayServer = function () {
                     url: 'BranchUserReserveNewPay',
                     data: {branchNum: readGet()['branchNum']},
                     success: function (response) {
-                        toastr.success("下单成功");
+                        //toastr.success("下单成功");
+                        $('#myModal').modal();
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         toastr.error("余额不足");

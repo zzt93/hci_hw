@@ -9,11 +9,14 @@
 <head>
     <meta charset="utf-8">
     <title>Pay</title>
+    <link href="../styles/bootstrap.min.css" rel="stylesheet"/>
     <link href="../styles/pay.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../styles/main-header.css">
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
     <link href="../styles/toastr.css" rel="stylesheet"/>
+
     <script src="../scripts/jquery/dist/jquery.min.js"></script>
+    <script src="../scripts/bootstrap/bootstrap.min.js"></script>
     <script src="../scripts/toastr.js"></script>
     <script src="../scripts/cart.js"></script>
     <script src="../scripts/pay.js"></script>
@@ -29,7 +32,7 @@
         <p id="app-name"><a href="<s:url action='Branches'/>"><img src="../images/logo2.jpg" id="logo"></a></p>
         <form>
             <p class="action">
-                <a href="<s:url action='Login_logOut'/>" class="fa fa-user"><span style="font-family: 楷体">登出</span></a>
+                <a href="<s:url action='Login_logOut'/>" class="fa fa-user"><span >登出</span></a>
             </p>
 
             <p class="action">
@@ -103,7 +106,7 @@
                 </li>
             </ul>
         </div>
-        <div class="pay_selection">
+        <div class="pay_selection" style="visibility: visible">
             <h2>付款方式
                 <span>推荐使用在线支付，立减5元</span>
             </h2>
@@ -122,13 +125,34 @@
 
         </div>
         <div class="confirm">
-            <button id="confirm_button" onclick="pay()">确认下单</button>
+            <button id="confirm_button" onclick="pay()" data-toggle="modal" >确认下单</button>
         </div>
     </div>
 
 
 </div>
 
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    请扫下方二维码
+                </h4>
+            </div>
+            <div class="modal-body" style="text-align: center">
+                <img src="../images/二维码.png">
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
 <div style="clear: both;"></div>
 <%@include file="../html/footer.jsp" %>
