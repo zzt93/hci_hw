@@ -26,10 +26,7 @@
             <interceptor-ref name="defaultStack"/>
         </action>
 
-        <action name="Activation_*" class="action.Activation" method="{1}">
-            <result type="redirectAction">Account</result>
-            <result name="input">/jsp/Activation.jsp</result>
-        </action>
+
 
         <action name="InnerLogin_*" method="{1}" class="action.InnerLogin">
             <result name="input">/jsp/InnerLogin.jsp</result>
@@ -178,7 +175,12 @@
             </result>
         </action>
 
-        <action name="UnitPrice" class="action.UnitPrice" method="cartGetPrice">
+        <!--<action name="UnitPrice" class="action.UnitPrice" method="cartGetPrice">-->
+            <!--<result type="json">-->
+            <!--</result>-->
+        <!--</action>-->
+
+        <action name="Activation_*" class="action.Activation" method="{1}">
             <result type="json">
             </result>
         </action>

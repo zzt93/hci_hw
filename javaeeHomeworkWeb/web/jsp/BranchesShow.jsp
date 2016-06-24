@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
     <link href="../styles/branches-show.css" type="text/css" rel="stylesheet">
-    <title>Title</title>
+    <title>甜品屋</title>
 </head>
 <body>
 

@@ -135,7 +135,8 @@ var PayServer = function () {
                     url: 'CartUpdateNumber',
                     data: {
                         did: did,
-                        num: newNum
+                        num: newNum,
+                        branchNum: readGet()['branchNum']
                     },
                     success: function (response) {
                         console.log(response);

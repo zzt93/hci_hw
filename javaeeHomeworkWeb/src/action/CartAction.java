@@ -3,15 +3,13 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.User;
 import interceptor.SessionManagement;
-import org.apache.struts2.ServletActionContext;
 import remote.JNDIFactory;
 import service.AccountService;
 import vo.CartItem;
 import vo.PartInfo;
 import vo.ShoppingCart;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 /**
  * Created by zzt on 6/15/16.
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpSession;
  * <h3></h3>
  */
 public class CartAction extends ActionSupport {
-    static final String CART = "cart";
+    public static final String CART = "cart";
 
     private int did;
     private int num = 1;
@@ -75,14 +73,7 @@ public class CartAction extends ActionSupport {
     }
 
     public ShoppingCart getCart() {
-//        System.out.println(ServletActionContext.getServletContext().getMajorVersion());
-        HttpSession session = SessionManagement.getSession();
-        ShoppingCart cart = (ShoppingCart) session.getAttribute(CART);
-        if (cart == null) {
-            cart = new ShoppingCart();
-            session.setAttribute(CART, cart);
-        }
-        return cart;
+        return SessionManagement.createCartIfAbsent(branchNum);
     }
 
     public String cartAdd() throws Exception {
@@ -92,13 +83,6 @@ public class CartAction extends ActionSupport {
         return SUCCESS;
     }
 
-    @Deprecated
-    public String cartRemove() throws Exception {
-        final ShoppingCart cart = getCart();
-        cart.removeItem(did);
-        info = new PartInfo(cart.getQuantity(), cart.getTotal(), 0);
-        return SUCCESS;
-    }
 
     public String cartUpdateNumber() throws Exception {
         final ShoppingCart cart = getCart();
@@ -113,7 +97,8 @@ public class CartAction extends ActionSupport {
     }
 
     public String cartClear() throws Exception {
-        SessionManagement.getSession().setAttribute(CART, null);
+        final HashMap<Integer, ShoppingCart> carts = SessionManagement.getCarts();
+        carts.remove(branchNum);
         return SUCCESS;
     }
 
@@ -129,11 +114,11 @@ public class CartAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-//        AccountService accountService =
-//                (AccountService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//UserInfoEJB!service.AccountService");
-//        int uid = SessionManagement.getUid();
-//        assert accountService != null;
-//        user = accountService.getUser(uid);
+        AccountService accountService =
+                (AccountService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//UserInfoEJB!service.AccountService");
+        int uid = SessionManagement.getUid();
+        assert accountService != null;
+        user = accountService.getUser(uid);
         return SUCCESS;
     }
 }

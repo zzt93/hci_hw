@@ -116,7 +116,7 @@ public class Consume implements Serializable {
     }
 
     public void payReservation(double price) throws BalanceNotEnoughException {
-        pay(price * Default.RESERVE_RATIO);
+        pay(price);
     }
 
     public void pay(double price) throws BalanceNotEnoughException {

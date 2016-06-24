@@ -39,13 +39,13 @@ public class Activation extends ActionSupport {
     @Override
     public String execute() throws Exception {
         if (money < Rank.LEVEL0.getThreshold()) {
-            addFieldError("money", "money too ");
+//            addFieldError("money", "money too ");
             return INPUT;
         }
         int uid = SessionManagement.getUid();
         ConsumeService consumeService = (ConsumeService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//UserInfoEJB!service.ConsumeService");
         assert consumeService != null;
-        consumeService.activateAccount(uid, money, bankCard);
+        money = consumeService.activateAccount(uid, money, bankCard);
         return SUCCESS;
     }
 }

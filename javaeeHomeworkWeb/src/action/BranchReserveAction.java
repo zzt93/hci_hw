@@ -4,10 +4,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Plan;
 import entity.PlanDetail;
 import entity.Reserve;
-import entity.User;
 import interceptor.SessionManagement;
 import remote.JNDIFactory;
-import service.AccountService;
 import service.PlanService;
 import service.ReserveService;
 import tmpEntity.RDBranchVO;
@@ -19,7 +17,7 @@ import vo.ShoppingCart;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,7 +30,6 @@ public class BranchReserveAction extends ActionSupport {
     private int branchNum;
     private ArrayList<PlanBranchVO> plans = new ArrayList<>();
     private String branchAddr;
-
 
 
     public BranchReserveAction() {
@@ -207,10 +204,9 @@ public class BranchReserveAction extends ActionSupport {
      * @throws Exception
      */
     public String branchUserReserveNewPay() throws Exception {
-
         // finish reserve by sending all data
         final ShoppingCart cart = getCart();
-        int bid = branchNum;
+        int bid = cart.getBid();
         ReserveBranchVO tmpReserve = new ReserveBranchVO(getDate(), SessionManagement.getUid(), bid);
         for (CartItem cartItem : cart.getItems().values()) {
             tmpReserve.addCartItem(new RDBranchVO(0, cartItem.getDid(),
@@ -233,8 +229,8 @@ public class BranchReserveAction extends ActionSupport {
             return ERROR;
         }
         // payment success, clear cart
-        final HttpSession session = SessionManagement.getSession();
-        session.setAttribute(CartAction.CART, null);
+        final HashMap<Integer, ShoppingCart> carts = SessionManagement.getCarts();
+        carts.remove(tmpReserve.getBid());
         return SUCCESS;
     }
 
@@ -242,19 +238,11 @@ public class BranchReserveAction extends ActionSupport {
         return LocalDate.now().toString();
     }
 
-
     /**
      * ------------------ new shopping cart function and variable-----------------
      */
-    private ShoppingCart cart;
-
     public ShoppingCart getCart() {
-        HttpSession session = SessionManagement.getSession();
-        cart = (ShoppingCart) session.getAttribute(CartAction.CART);
-        if (cart == null) {
-            cart = new ShoppingCart();
-        }
-        return cart;
+        return SessionManagement.createCartIfAbsent(branchNum);
     }
 
 }

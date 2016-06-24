@@ -6,7 +6,7 @@
 <footer>
     <div>
         <section id="link">
-            更多：<a href="http://localhost:63342/untitled/footer.html#">Dessert House</a>
+            更多：<a href="#">Dessert House</a>
         </section>
         <section>
             <p>意见反馈 : feedback@163.com</p>

@@ -26,9 +26,10 @@
 
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
     <!-- jTable Metro theme -->
-    <link href="../scripts/jtable.2.4.0/themes/metro/blue/jtable.css" rel="stylesheet" type="text/css"/>
+    <link href="../scripts/jtable.2.4.0/themes/lightcolor/gray/jtable.css" rel="stylesheet" type="text/css"/>
     <link href="../scripts/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet"
           type="text/css"/>
+    <link href="../styles/bootstrap.min.css" rel="stylesheet"/>
 
 
 </head>
@@ -48,9 +49,9 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             <a href="<s:url action='Login_logOut'/>" class="fa fa-user"> 登出</a>
         </p>
 
-            <p class="action">
-                <a href="<s:url action='Branches'/> " class="fa fa-home"> 主页</a>
-            </p>
+        <p class="action">
+            <a href="<s:url action='Branches'/> " class="fa fa-home"> 主页</a>
+        </p>
         <br>
     </section>
 </header>
@@ -59,13 +60,13 @@ addListChosenListener('side_nav_list', 'tabbed-block');
     <nav id="side_nav" class="flex-none">
         <ul id="side_nav_list">
             <li>
-                <a href="#">个人信息 </a>
-            </li>
-            <li>
-                <a href="#">已下订单 </a>
+                <a href="#">我的订单 </a>
             </li>
             <li>
                 <a href="#">消费历史 </a>
+            </li>
+            <li>
+                <a href="#">个人信息 </a>
             </li>
             <li>
                 <a href="#">消息通知 </a>
@@ -74,6 +75,58 @@ addListChosenListener('side_nav_list', 'tabbed-block');
     </nav>
 
     <div id="tabbed-block" class="flex1">
+
+
+        <div class="container" id="reserve">
+            <h3>您的订单</h3>
+
+            <div id="ReservationTableContainer"></div>
+
+        </div>
+
+        <div class="container">
+
+            <div>
+                <h3>会员卡信息</h3>
+                <div class="card-info balance-summary">
+                    <label>当前账户余额:</label>
+                    <label> ${consume.balance}</label>元
+                    <input type="submit" value="充值" onclick="activate(this)"/>
+                </div>
+
+                <c:if test="${cartBid == 0}">
+                    <div>
+                        <a href="CheckOut?branchNum=${cartBid}">去结算</a>
+                    </div>
+                </c:if>
+            </div>
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close"
+                                    data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                请扫下方二维码
+                            </h4>
+                        </div>
+                        <div class="modal-body" style="text-align: center">
+                            <img src="../images/二维码.png">
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+
+            <h3>您的消费账单</h3>
+
+            <div id="payTable"></div>
+        </div>
 
         <div class="container" id="personal">
             <h3>您的公开信息</h3>
@@ -90,7 +143,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                 </div>
                 <div id="change-picture-progress">&nbsp;</div>
                 <div class="flex1 info-part">
-                    <label for="DisplayName">显示称呼
+                    <label for="DisplayName">称呼
                         <br>
                         <input id="DisplayName" value="${user.name}" maxlength="30" tabindex="1"
                                data-site="Tony" type="text">
@@ -129,61 +182,6 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             <input type="submit" value="提交修改" onclick="setUserAccountInfo(this)" style="margin-left: 15%">
         </div>
 
-        <div class="container" id="reserve">
-            <h3>您的订单</h3>
-
-            <div id="ReservationTableContainer"></div>
-
-        </div>
-
-        <div class="container">
-
-            <div>
-                <h3>会员卡信息</h3>
-                <div id="headline">
-                    <div class="card-info">
-                        <label>会员卡等级: ${userRank}
-                        </label>
-                        <br>
-
-                        <fmt:formatNumber value="${sessionScope.uid}" var="formattedId"
-                                          maxIntegerDigits="7" minIntegerDigits="7" groupingUsed="false"/>
-
-                        <fmt:formatNumber value="${account.bankCard}" var="formattedBackCard"
-                                          groupingUsed="true"/>
-
-                        <label>会员卡卡号:
-                            <input type="text" value="${formattedId}" readonly>
-                        </label>
-                        <br>
-                        <label>银行卡卡号:
-                            <input type="text" value="${formattedBackCard}" readonly>
-                        </label>
-                        <br></div>
-                    <s:form action="Activation_" id="register">
-                        <div class="horizontal-center"><h3>充值</h3></div>
-
-
-                        <s:textfield name="money" label="金额"
-                                     required="required"/>
-                        <s:textfield name="bankCard" label="卡号" pattern="\d{19}"
-                                     title="银行卡号不存在"
-                                     required="required"/>
-
-                        <s:submit value="现金充值"/>
-                        <s:submit value="银行卡充值"/>
-
-                    </s:form>
-                    <br>
-                </div>
-
-            </div>
-
-            <h3>您的消费账单</h3>
-            <h4>余额: ￥${consume.balance}</h4>
-
-            <div id="payTable"></div>
-        </div>
 
         <div class="container" id="message">
             <h3>您的消息</h3>
@@ -207,6 +205,8 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
 <script type="application/javascript" src="../scripts/jquery/dist/jquery.min.js"></script>
 <script type="application/javascript" src="../scripts/updateAccount.js"></script>
+<script src="../scripts/bootstrap/bootstrap.min.js"></script>
+
 <script src="../scripts/toastr.js"></script>
 
 
@@ -217,7 +217,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
     $(document).ready(function () {
         var con = $('#ReservationTableContainer');
         con.jtable({
-            title: '订单',
+            title: '',
             paging: true,
             pageSize: 4,
             actions: {
@@ -256,11 +256,9 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                             $('#ReservationTableContainer').jtable('openChildTable',
                                     $img.closest('tr'),
                                     {
-                                        title: '订单' + reservationData.record.rid + ' - 内容',
+                                        title: '订单详情',
                                         actions: {
-                                            listAction: 'OrderList?rid=' + reservationData.record.rid,
-                                            deleteAction: 'OrderDelete',
-                                            updateAction: 'OrderUpdate'
+                                            listAction: 'OrderList?rid=' + reservationData.record.rid
                                         },
                                         fields: {
                                             rdid: {
@@ -303,7 +301,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
 
         var pay = $('#payTable');
         pay.jtable({
-            title: '购买历史',
+            title: '',
             paging: true,
             pageSize: 4,
             actions: {
@@ -358,7 +356,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
                     list: true
                 },
                 msg: {
-                    title: '内容',
+                    title: '详情',
                     width: '30%'
                 },
                 user: {

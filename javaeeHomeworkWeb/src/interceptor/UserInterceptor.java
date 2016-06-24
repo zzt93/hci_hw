@@ -24,13 +24,13 @@ public class UserInterceptor extends AbstractInterceptor {
             System.out.println("...");
             return ActionSupport.INPUT;
         }
-        HttpSession session = SessionManagement.getSession();
-        byte state = (byte) session.getAttribute(UserLogin.CARD_STATE);
+//        HttpSession session = SessionManagement.getSession();
+//        byte state = (byte) session.getAttribute(UserLogin.CARD_STATE);
 
-        if (state == CardState.CANCEL.ordinal()) {
-            System.out.println(".......");
-            return ActionSupport.INPUT;
-        }
+//        if (state == CardState.CANCEL.ordinal()) {
+//            System.out.println(".......");
+//            return ActionSupport.INPUT;
+//        }
 
         return invocation.invoke();
     }

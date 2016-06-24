@@ -1,12 +1,15 @@
 package interceptor;
 
+import action.CartAction;
 import action.InnerLogin;
 import action.UserLogin;
 import entity.User;
 import org.apache.struts2.ServletActionContext;
+import vo.ShoppingCart;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 /**
  * Created by zzt on 12/28/15.
@@ -58,5 +61,24 @@ public class SessionManagement {
             return;
         }
         session.invalidate();
+    }
+
+    public static HashMap<Integer, ShoppingCart> getCarts() {
+        HttpSession session = getSession();
+        return (HashMap<Integer, ShoppingCart>) session.getAttribute(CartAction.CART);
+    }
+
+    public static ShoppingCart createCartIfAbsent(int bid) {
+        HashMap<Integer, ShoppingCart> carts = getCarts();
+        if (carts == null) {
+            carts = new HashMap<>();
+            getSession().setAttribute(CartAction.CART, carts);
+        }
+        ShoppingCart cart = carts.get(bid);
+        if (cart == null) {
+            cart = new ShoppingCart(bid);
+            carts.put(bid, cart);
+        }
+        return cart;
     }
 }

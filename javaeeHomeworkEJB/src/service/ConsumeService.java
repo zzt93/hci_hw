@@ -13,7 +13,7 @@ import java.util.List;
 @Remote
 public interface ConsumeService {
 
-    boolean activateAccount(int uid, double money, String bank);
+    double activateAccount(int uid, double money, String bank);
     boolean suspendAccount(int uid);
     boolean deleteAccount(int uid);
 

@@ -1,5 +1,6 @@
 package vo;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -7,11 +8,21 @@ import java.util.HashMap;
  * <p>
  * <h3></h3>
  */
-public class ShoppingCart {
+public class ShoppingCart implements Serializable{
 
     private HashMap<Integer, CartItem> items = new HashMap<>();
     private int quantity = 0;
     private double total = 0;
+    private int bid;
+
+    public ShoppingCart(int branchNum) {
+        bid = branchNum;
+    }
+
+    public int getBid() {
+        return bid;
+    }
+
 
     public HashMap<Integer, CartItem> getItems() {
         return items;

@@ -10,8 +10,10 @@ import mis.Rank;
 import remote.JNDIFactory;
 import service.AccountService;
 import service.ConsumeService;
+import vo.ShoppingCart;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,6 +30,15 @@ public class AccountAction extends ActionSupport {
     private List<String> gender = new ArrayList<>();
     private String userGender;
     private String userRank;
+    private int cartBid;
+
+    public int getCartBid() {
+        return cartBid;
+    }
+
+    public void setCartBid(int cartBid) {
+        this.cartBid = cartBid;
+    }
 
     public User getUser() {
         return user;
@@ -93,6 +104,13 @@ public class AccountAction extends ActionSupport {
         } catch (Exception e) {
             e.printStackTrace();
             return ERROR;
+        }
+        final HashMap<Integer, ShoppingCart> carts = SessionManagement.getCarts();
+        if (carts != null) {
+            for (Integer integer : carts.keySet()) {
+                cartBid = integer;
+                break;
+            }
         }
         return SUCCESS;
     }
@@ -186,17 +204,18 @@ public class AccountAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String accountDelete() throws Exception {
-        try {
-            ConsumeService consumeService
-                    = (ConsumeService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//UserInfoEJB!service.ConsumeService");
-            assert consumeService != null;
-            consumeService.deleteAccount(SessionManagement.getUid());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ERROR;
-        }
-        return INPUT;
-    }
+
+//    public String accountDelete() throws Exception {
+//        try {
+//            ConsumeService consumeService
+//                    = (ConsumeService) JNDIFactory.getResource("ejb:/javaeeHomeworkEJB_ejb exploded//UserInfoEJB!service.ConsumeService");
+//            assert consumeService != null;
+//            consumeService.deleteAccount(SessionManagement.getUid());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ERROR;
+//        }
+//        return INPUT;
+//    }
 }
 

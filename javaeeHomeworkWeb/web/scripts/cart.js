@@ -144,20 +144,6 @@ var UI = function () {
 
 var Server = function () {
     return {
-        getPriceById: function (did) {
-            $.ajax({
-                    type: 'GET',
-                    url: 'UnitPrice',
-                    data: {did: did},
-                    success: function (data) {
-                        console.log(data);
-
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    }
-                }
-            );
-        },
         addGoods: function (item) {
             $.ajax({
                 type: "POST",
@@ -171,28 +157,15 @@ var Server = function () {
                 }
             });
         },
-        removeGoods: function (dessertId) {
-            $.ajax({
-                type: "POST",
-                url: "CartRemove",
-                data: {
-                    did: dessertId
-                },
-                success: function (response) {
-                    console.log(response);
-                    UI.removeGoods(dessertId, response['newCount'], response['newTotal']);
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                }
-            });
-        },
+
         updateNum: function (did, newNum) {
             $.ajax({
                     type: 'POST',
                     url: 'CartUpdateNumber',
                     data: {
                         did: did,
-                        num: newNum
+                        num: newNum,
+                        branchNum: readGet()['branchNum']
                     },
                     success: function (response) {
                         console.log(response);
@@ -232,10 +205,6 @@ function addCartItem(goodsId, name, price) {
 }
 
 
-// function removeCartItem(goodsId) {
-//     Server.removeGoods(goodsId);
-// }
-
 const ADD = 1;
 const SUB = -1;
 
@@ -261,11 +230,7 @@ function valid(now, num) {
 function updateCartInMainPage(change, did, original) {
     var changeI = parseInt(change);
     var originalI = parseInt(original);
-    // if (valid(originalI, changeI)) {
-        Server.updateNum(did, changeI + originalI);
-    // } else {
-    //     removeCartItem(did);
-    // }
+    Server.updateNum(did, changeI + originalI);
 }
 
 /**
@@ -283,7 +248,8 @@ function newCartItem(id, name, price) {
         did: id,
         num: 1,
         name: name,
-        price: price
+        price: price,
+        branchNum: readGet()['branchNum']
     }
 }
 

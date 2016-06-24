@@ -131,10 +131,10 @@ public class AccountBean implements AccountService, ConsumeService {
 
 
     @Override
-    public boolean activateAccount(int uid, double money, String bank) {
+    public double activateAccount(int uid, double money, String bank) {
         Account account = em.find(Account.class, uid);
         Consume consume = em.find(Consume.class, uid);
-        account.setBankCard(bank);
+//        account.setBankCard(bank);
         // set rank
         byte rank1 = (byte) Rank.values()[Rank.values().length - 1].ordinal();
         for (Rank rank : Rank.values()) {
@@ -156,9 +156,9 @@ public class AccountBean implements AccountService, ConsumeService {
             em.merge(consume);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return balance;
         }
-        return true;
+        return money + balance;
     }
 
 

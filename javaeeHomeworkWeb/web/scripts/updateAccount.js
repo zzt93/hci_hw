@@ -2,6 +2,24 @@
  * Created by zzt on 2/28/16.
  *
  */
+function activate(input) {
+
+    var money = 10;
+    $.post(
+        'Activation_',
+        {money: money},
+        function (res, textStatus) {
+            //console.log("status is: " + textStatus + " Response from server: " + res);
+            if (textStatus === "success") {
+                $('#myModal').modal();
+                toastr.success("充值成功");
+                $(input).prev().html(res['money'])
+            } else {
+                toastr.error("充值失败：网络不给力");
+            }
+        }
+    );
+}
 
 function setUserAccountInfo(submit) {
     var $input = $('input[name="gender"]');

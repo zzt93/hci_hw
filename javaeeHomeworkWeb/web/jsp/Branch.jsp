@@ -193,6 +193,8 @@
                                                 <span class="money">${detail.price}</span>
                                             </div>
                                             <div id="gouwuche" class="gouwudiv">
+                                                <c:set var="cart" value="${cart}" scope="page" />
+
                                                 <button style="display: ${cart.items.containsKey(detail.dessert.did) ? 'none' : 'inline-block'}"
                                                         id="${detail.dessert.did}add"
                                                         name="${detail.dessert.name}!${detail.price}"
@@ -244,11 +246,8 @@
 <div class="cart">
     <div class="shop-cartbasket" style="top: -${43 + fn:length(cart.items) * 45}px; height: auto;">
         <div id="shopCart" class="">
-            <!-- ngIf: shopCart.vm.groups.length > 1 -->
             <div class="shop-grouphead single">
-                <!-- ngIf: showGuide && shopCart.vm.groups.length === 1 -->
                 <div class="shop-grouphead-row">
-                    <!-- ngIf: shopCart.vm.groups.length > 1 -->购物车
                     <a href="javascript:" onclick="Server.clearCart()">[清空]</a>
                 </div>
             </div>
