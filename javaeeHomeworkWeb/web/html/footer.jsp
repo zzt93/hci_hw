@@ -6,13 +6,13 @@
 <footer>
     <div>
         <section id="link">
-            更多：<a href="#">饿了么 </a>
+            更多：<a href="http://localhost:63342/untitled/footer.html#">Dessert House</a>
         </section>
         <section>
-            <p>意见反馈 : feedback@ele.me</p>
+            <p>意见反馈 : feedback@163.com</p>
         </section>
         <section>
-            <p>24小时客服热线 : 10105757</p>
+            <p>24小时客服热线 : 021-20993346</p>
         </section>
 
         <section id="mis">
