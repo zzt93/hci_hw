@@ -19,7 +19,7 @@ var PayUI=function(){
             var sumtotal_span=document.getElementById("total");
             sumTotal=sumTotal.toFixed(2);
             sumtotal_span.innerHTML=sumTotal;
-            change_button(sum_total);
+            change_button(sumTotal);
         },
     }
 }
@@ -98,12 +98,22 @@ function pay(){
 
 function mobileCheck(x){
     var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+    var infoLable=document.getElementById("mobileCheck");
     var tel= x.value;
-    if (reg.test(tel)) {
-        toastr.error("手机号码错误");
-        x.style.borderColor="#e62625";
+    var confim_button=document.getElementById("confirm_button");
+    if (!reg.test(tel)) {
+        infoLable.style.visibility="visible";
+        confim_button.disabled=true;
+        confim_button.style.cursor="default";
+        confim_button.style.backgroundColor="#bbb";
+    }else{
+        infoLable.style.visibility="hidden";
+        confim_button.disabled=false;
+        confim_button.style.cursor="pointer";
+        confim_button.style.backgroundColor="#e62625";
     }
 }
+
 
 function readGet() {
     var parts = window.location.search.substr(1).split("&");

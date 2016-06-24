@@ -170,6 +170,19 @@
 	height: 42px;
 	font-size: 14px;
 	padding-left: 8px;
+	border: 1px solid #D9CFCF;
+}
+
+.address_item .address_info #mobileCheck {
+	width: auto;
+	height: 38px;
+	display: inline-block;
+	text-align: left;
+	margin-right: 10px;
+	line-height: 38px;
+	font-size: 14px;
+	color: #e62625;
+	visibility: hidden;
 }
 
 
