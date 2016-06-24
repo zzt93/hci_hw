@@ -166,7 +166,7 @@
             <div class="flex2">
 
                 <div id="allfood">
-                    <c:forEach items="${plans}" var="plan">
+                    <c:forEach items="${plans}" var="plan" varStatus="i">
                         <div id="${plan.pdate}" class="bangdan">
                             <p class="kongbai"></p>
 
@@ -175,7 +175,7 @@
                             </h3>
 
                             <div class="shopmenu-food">
-                                <c:forEach items="${plan.details}" var="detail">
+                                <c:forEach items="${plan.details}" var="detail" varStatus="j">
                                     <div class="onefood">
                                     <span class="col-1">
                                         <a>
@@ -187,7 +187,7 @@
                                         <div class="col-2">
                                             <h3 class="shopmenu-food-name">${detail.dessert.name}</h3>
 
-                                            <div class="color-mute">月售33份</div>
+                                            <div class="color-mute">月售${i.first?(40-j.count):i.count+j.count}份</div>
                                             <div class="shopmenu-food-price">
                                                 <span>￥</span>
                                                 <span class="money">${detail.price}</span>
