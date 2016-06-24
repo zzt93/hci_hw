@@ -22,7 +22,7 @@ var PayUI=function(){
             change_button(sumTotal);
         },
     }
-}
+}();
 
 function add(x){
     var button_parent= x.parentNode;   //div

@@ -4,8 +4,10 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Plan;
 import entity.PlanDetail;
 import entity.Reserve;
+import entity.User;
 import interceptor.SessionManagement;
 import remote.JNDIFactory;
+import service.AccountService;
 import service.PlanService;
 import service.ReserveService;
 import tmpEntity.RDBranchVO;
@@ -30,6 +32,7 @@ public class BranchReserveAction extends ActionSupport {
     private int branchNum;
     private ArrayList<PlanBranchVO> plans = new ArrayList<>();
     private String branchAddr;
+
 
 
     public BranchReserveAction() {
@@ -204,6 +207,7 @@ public class BranchReserveAction extends ActionSupport {
      * @throws Exception
      */
     public String branchUserReserveNewPay() throws Exception {
+
         // finish reserve by sending all data
         final ShoppingCart cart = getCart();
         int bid = branchNum;
@@ -228,6 +232,9 @@ public class BranchReserveAction extends ActionSupport {
             e.printStackTrace();
             return ERROR;
         }
+        // payment success, clear cart
+        final HttpSession session = SessionManagement.getSession();
+        session.setAttribute(CartAction.CART, null);
         return SUCCESS;
     }
 

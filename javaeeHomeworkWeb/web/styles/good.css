@@ -284,13 +284,14 @@ button{
     vertical-align: middle;
     color: #fff;
     padding-bottom: 30px;
-    padding-left: 50px;
+    float: left;
 }
 
 .shopguide-info h1{
     display: inline-block;
     vertical-align: middle;
     font-size: 18px;
+    padding-top: 30px;
 }
 
 .shopguide-server {
@@ -299,9 +300,13 @@ button{
     color: #fff;
     text-align: right;
     width: 490px;
-    padding-right:200px;
     padding-bottom: 30px;
+    padding-top: 30px;
+    float: right;
+}
 
+.shopguide br {
+    clear: both;
 }
 
 .shopguide-server-value {

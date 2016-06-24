@@ -57,19 +57,20 @@
 
 
 <div class="shopguide">
-    <div class="shopguide-info">
+    <div style="max-width: 1000px; margin: 0 auto">
+        <div class="shopguide-info">
         <span>
             <a>
                 <img class="storepic" src="../images/branch${branchNum}.jpeg">
             </a>
         </span>
 
-        <h1> ${branchAddr}</h1>
-    </div>
-    <div class="shopguide-server">
+            <h1> ${branchAddr}</h1>
+        </div>
+        <div class="shopguide-server">
         <span>
             <em>起送价</em>
-            <em class="shopguide-server-value">0元</em>
+            <em class="shopguide-server-value">30元</em>
         </span>
         <span>
             <em>配送费</em>
@@ -79,6 +80,8 @@
             <em>平均送达速度</em>
             <em class="shopguide-server-value">30分钟</em>
         </span>
+        </div>
+        <br>
     </div>
 </div>
 <%--<div id="headline">--%>
@@ -285,7 +288,9 @@
             ${cart.total}</p>
         <c:set var="gap" value="${30 - cart.total}"/>
         <button class="shop-cartfooter-checkout ${30 > cart.total ? 'disabled' : ''}" onclick="checkout()"
-                disabled="${30 > cart.total ? 'disabled' : ''}">${30 > cart.total ? '还差'.concat(gap).concat('元起送') : '去结算'}
+                <c:if test="${30 > cart.total}">
+                    <c:out value="disabled='disabled'"/>
+                </c:if>>${30 > cart.total ? '还差'.concat(gap).concat('元起送') : '去结算'}
         </button>
     </div>
 </div>
