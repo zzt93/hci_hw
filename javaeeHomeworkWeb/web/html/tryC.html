@@ -9,9 +9,15 @@
     <link rel="stylesheet" href="../styles/main-header.css">
     <link href="../styles/branches.css" type="text/css" rel="stylesheet">
     <link href="../styles/header-setfont.css" type="text/css" rel="stylesheet">
-
+    <script src="../scripts/jquery/dist/jquery.min.js"></script>
+    <script src="../scripts/jquery-ui-1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../scripts/jquery-ui-1.11.4/jquery-ui.css">
+
     <title>Title</title>
+
+
+
 </head>
 <body>
 <header>
@@ -30,9 +36,11 @@
         <br>
     </section>
 </header>
+
+
 <div class="place-rstbox clearfix">
     <div class="clearfix" style="height: 1120px;">
-        <div class="rstblock-logo">
+        <div class="rstblock-logo" data-geo="">
             <div style="display: inline-block">
                 <br>
                 <img
@@ -55,13 +63,14 @@
                         30元起送/免配送费
                     </div>
                     <div class="rstblock-activity">
-                        <i style="background: #f07373">减</i>
+                        <i style="background: #f07373  ">减</i>
                         <i style="background: #fff;color: #ff4e00;border: 1px solid;padding: 0;">付</i>
                     </div>
                 </div>
             </div>
 
         </div>
+
 
         <div class="rstblock-logo">
             <div style="display: inline-block">
@@ -459,6 +468,46 @@
     </div>
 
 </div>
+<script>
+    $(function() {
+        $( document ).tooltip({
+            items: "img, [data-geo], [title]",
+            content: function() {
+                var element = $( this );
+                if ( element.is( "[data-geo]" ) ) {
+                    var text = element.text();
+                    return "<i id='fftt'>减</i> <span style='font-size: small;font-family: 楷体'>满 30减 17</span><br>" +
+                            "<i id='ttff'>付</i> <span style='font-size: small;font-family: 楷体'>可在线支付</span><br>" +
+                            "<span style='font-size: small;font-family: 楷体'>30元起送|免配送费</span><br>" ;
+                }
+                if ( element.is( "[title]" ) ) {
+                    return element.attr( "title" );
+                }
+                if ( element.is( "img" ) ) {
+                    return element.attr( "alt" );
+                }
+
+            }
+        });
+    });
+
+    $(function() {
+        $( document ).tooltip({
+            position: {
+                my: "right bottom",
+                at: "right bottom",
+                using: function( position, feedback ) {
+                    $( this ).css( position );
+                    $( "<div>" )
+                            .addClass( "arrow" )
+                            .addClass( feedback.vertical )
+                            .addClass( feedback.horizontal )
+                            .appendTo( this );
+                }
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

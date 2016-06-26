@@ -207,3 +207,15 @@
     height: 0;
     clear: both
 }
+
+#fftt{
+    font-family: 楷体;
+    background: #f07373;
+    color: white;
+}
+
+#ttff{
+    font-family: 楷体;
+    background: white;
+    color: #f07373;
+}

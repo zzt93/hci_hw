@@ -19,10 +19,11 @@
     <link rel="stylesheet" href="../styles/main-header.css">
     <link href="../styles/branches.css" type="text/css" rel="stylesheet">
 
-
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
     <link href="../styles/branches-show.css" type="text/css" rel="stylesheet">
     <title>甜品屋</title>
+    <script type="application/javascript" src="../scripts/tip.js"></script>
+
 </head>
 <body>
 
@@ -42,10 +43,13 @@
 </header>
 
 <div class="place-rstbox clearfix">
+
+
+
     <div class="clearfix">
 
         <c:forEach items="${branches}" var="branch">
-            <div class="rstblock-logo">
+            <div class="rstblock-logo" data-geo="">
                 <div style="display: inline-block">
                     <img src="../images/branch${branch.bid}.jpeg"
                          width="70" height="70" class="rstblock-logo-icon">
