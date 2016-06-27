@@ -1,5 +1,4 @@
 .rstblock,.rstblock-logo {
-    float: left;
     font-size: 12px;
     position: relative
 }
@@ -35,7 +34,7 @@
 }
 
 .rstblock-logo {
-
+    display: inline-block;
     padding: 20px;
     color: #999;
     text-align: center
@@ -202,10 +201,7 @@
 }
 
 .clearfix {
-    content: "";
-    display: table;
-    height: 0;
-    clear: both
+
 }
 
 #fftt{
