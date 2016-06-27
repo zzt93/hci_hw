@@ -351,20 +351,13 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             fields: {
                 mid: {
                     title: '消息ID',
-                    width: '30%',
+                    width: '10%',
                     key: true,
                     list: true
                 },
                 msg: {
                     title: '详情',
-                    width: '30%'
-                },
-                user: {
-                    title: '用户ID',
-                    width: '30%',
-                    display: function (line) {
-                        return line.record.user.uid;
-                    }
+                    width: '60%'
                 }
             }
         });

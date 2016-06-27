@@ -21,9 +21,15 @@
 
     <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
     <link href="../styles/branches-show.css" type="text/css" rel="stylesheet">
-    <title>甜品屋</title>
+    <script src="../scripts/jquery/dist/jquery.min.js"></script>
+    <script src="../scripts/jquery-ui-1.11.4/jquery-ui.js"></script>
+    <link href="../styles/header-setfont.css" type="text/css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../fonts/font-awesome-4.4.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../scripts/jquery-ui-1.11.4/jquery-ui.css">
     <script type="application/javascript" src="../scripts/tip.js"></script>
 
+    <title>甜品屋</title>
 </head>
 <body>
 

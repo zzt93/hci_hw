@@ -14,9 +14,9 @@ import java.util.Set;
 @Table(name = "reserve")
 @NamedQueries(
         {
-                @NamedQuery(name = Reserve.USER_RESERVE, query = "select r from Reserve r where r.user.uid = ?1 and r.state = false "),
+                @NamedQuery(name = Reserve.USER_RESERVE, query = "select r from Reserve r where r.user.uid = ?1 and r.state = false order by r.bdate DESC "),
                 @NamedQuery(name = Reserve.COUNT_USER_RESERVE, query = "select COUNT(r) from Reserve r where r.user.uid = ?1 and r.state = false "),
-                @NamedQuery(name = Reserve.PAY_RESERVE, query = "select r from Reserve r where r.user.uid = ?1"),
+                @NamedQuery(name = Reserve.PAY_RESERVE, query = "select r from Reserve r where r.user.uid = ?1 order by r.bdate desc "),
                 @NamedQuery(name = Reserve.COUNT_USER_PAYMENT, query = "select COUNT(r) from Reserve r where r.user.uid = ?1"),
                 @NamedQuery(name = Reserve.BRANCH_RESERVE, query = "select r from Reserve r where r.branch.bid = ?1 and r.state = false"),
                 @NamedQuery(name = Reserve.COUNT_BRANCH_RESERVE, query = "select COUNT(r) from Reserve r where r.branch.bid = ?1 and r.state = false"),

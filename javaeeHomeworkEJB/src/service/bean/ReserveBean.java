@@ -99,6 +99,10 @@ public class ReserveBean implements ReserveService {
 
     @Override
     public boolean reserveDelete(int rid) {
+        final List<ReserveDetail> reserveDetails = reserveDetailGet(rid);
+        for (ReserveDetail reserveDetail : reserveDetails) {
+            em.remove(reserveDetail);
+        }
         em.remove(em.find(Reserve.class, rid));
         return true;
     }
