@@ -85,7 +85,7 @@ function change_button(v){
 
 
 }
-var pay_choose;
+var pay_choose=0;
 function choosePay(index){
     var pay_choice_list=document.getElementById("pay_choice_list");
     var lis=pay_choice_list.getElementsByTagName("li");
