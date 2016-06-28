@@ -220,6 +220,10 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             title: '',
             paging: true,
             pageSize: 4,
+            deleteConfirmation: function(data) {
+                toastr.success("删除成功");
+                data.deleteConfirm = false;
+            },
             actions: {
                 listAction: 'UserReserveList',
                 deleteAction: 'UserReserveDelete'
@@ -304,6 +308,10 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             title: '',
             paging: true,
             pageSize: 4,
+            deleteConfirmation: function(data) {
+                toastr.success("删除成功");
+                data.deleteConfirm = false;
+            },
             actions: {
                 listAction: 'PayHistoryList',
                 deleteAction: 'PayHistoryDelete'
@@ -344,6 +352,10 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             selecting: true, //Enable selecting
             multiselect: true, //Allow multiple selecting
             selectingCheckboxes: true, //Show checkboxes on first column
+            deleteConfirmation: function(data) {
+                toastr.success("删除成功");
+                data.deleteConfirm = false;
+            },
             actions: {
                 listAction: 'MsgList',
                 deleteAction: 'MsgDelete'

@@ -205,12 +205,14 @@
 }
 
 #fftt{
+    padding-right: 3px;
     font-family: 楷体;
     background: #f07373;
     color: white;
 }
 
 #ttff{
+    padding-right: 3px;
     font-family: 楷体;
     background: white;
     color: #f07373;
