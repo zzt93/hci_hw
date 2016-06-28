@@ -85,13 +85,14 @@ function change_button(v){
 
 
 }
-
+var pay_choose;
 function choosePay(index){
     var pay_choice_list=document.getElementById("pay_choice_list");
     var lis=pay_choice_list.getElementsByTagName("li");
     lis[0].className="pay_item";
     lis[1].className="pay_item";
     lis[index].className="pay_item choosed";
+    pay_choose=index;
 }
 
 function pay(){
@@ -153,11 +154,16 @@ var PayServer = function () {
                     url: 'BranchUserReserveNewPay',
                     data: {branchNum: readGet()['branchNum']},
                     success: function (response) {
-                        //toastr.success("下单成功");
-                        $('#myModal').modal();
+                        toastr.success("下单成功");
+
+                        //$('#myModal').modal();
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        toastr.error("余额不足");
+                        //toastr.error("余额不足");
+                        if(pay_choose==0) {
+                            $('#myModal').modal();
+                        }
+
                     }
                 }
             );
