@@ -114,7 +114,7 @@
                 <li class="pay_item choosed" onClick="choosePay(0)">
                     <p class="choice_content">在线支付</p>
 
-                    <p class="annotation">仅支持银行卡付款</p>
+                    <p class="annotation">仅支持支付宝付款</p>
                 </li>
                 <li class="pay_item" onClick="choosePay(1)">
                     <p class="choice_content">货到付款</p>

@@ -22,15 +22,14 @@
         var images = [];
         images[0] = "../images/de4.jpg";
         images[1] = "../images/de3.jpg";
-        images[2] = "../images/de2%20.jpg";
-        images[3] = "../images/de1.jpg";
+        images[2] = "../images/de1.jpg";
         var x = 0;
         setInterval("changeImage()", 2000);
         function changeImage() {
             var img = document.getElementById("img");
             img.src = images[x];
             x++;
-            x = x % 4;
+            x = x % images.length;
         }
     </script>
 
@@ -67,11 +66,11 @@
                 <label id="errorTip" style="visibility: hidden; color: red">用户名或密码错误,请重新输入！</label>
                 <div class="form-field form-field--icon">
                     <i class="icon icon-user"></i>
-                    <input type="text" id="login-email" class="f-text" name="name" placeholder="用户名" required ="required"/>
+                    <input type="text" id="login-email" class="f-text" name="name" placeholder="用户名" required ="required" title="如何称呼您"/>
                 </div>
                 <div class="form-field form-field--icon">
                     <i class="icon icon-password"></i>
-                    <input type="password" id="login-password" class="f-text" name="pw" placeholder="密码" required = "required"/>
+                    <input type="password" id="login-password" class="f-text" name="pw" placeholder="密码" required = "required" title="登陆密码"/>
                 </div>
 
 

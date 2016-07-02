@@ -110,7 +110,8 @@
         </action>
 
         <action name="BranchUserReserve*" class="action.BranchReserveAction" method="branchUserReserve{1}">
-            <result type="json">/jsp/Branch.jsp</result>
+            <result type="json" name="success">/jsp/Branch.jsp</result>
+            <result name="error" type="json"></result>
         </action>
 
         <action name="Branch*" class="action.BranchManagementAction" method="branch{1}">

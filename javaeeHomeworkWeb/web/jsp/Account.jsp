@@ -221,7 +221,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             paging: true,
             pageSize: 4,
             deleteConfirmation: function(data) {
-                toastr.success("删除成功");
+//                toastr.success("删除成功");
                 data.deleteConfirm = false;
             },
             actions: {
@@ -309,7 +309,7 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             paging: true,
             pageSize: 4,
             deleteConfirmation: function(data) {
-                toastr.success("删除成功");
+//                toastr.success("删除成功");
                 data.deleteConfirm = false;
             },
             actions: {
@@ -353,7 +353,6 @@ addListChosenListener('side_nav_list', 'tabbed-block');
             multiselect: true, //Allow multiple selecting
             selectingCheckboxes: true, //Show checkboxes on first column
             deleteConfirmation: function(data) {
-                toastr.success("删除成功");
                 data.deleteConfirm = false;
             },
             actions: {

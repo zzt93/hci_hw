@@ -7,9 +7,9 @@ package mis;
  */
 public enum Rank {
     LEVEL0(0, 1, 0, "user", "普通用户"),
-    LEVEL1(200, 1 - 0.02, 20, "level1", "等级一"),
-    LEVEL2(300, 1 - 0.03, 30, "level2", "等级二"),
-    LEVEL3(500, 1 - 0.05, 50, "level3", "等级三"),
+    LEVEL1(200, 1 - 0.02, 0, "level1", "等级一"),
+    LEVEL2(300, 1 - 0.03, 0, "level2", "等级二"),
+    LEVEL3(500, 1 - 0.05, 0, "level3", "等级三"),
     ;
 
     private final int threshold;

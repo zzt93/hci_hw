@@ -154,7 +154,12 @@ var PayServer = function () {
                     url: 'BranchUserReserveNewPay',
                     data: {branchNum: readGet()['branchNum']},
                     success: function (response) {
-                        toastr.success("下单成功");
+                        if(response['paySucc']) {
+                            toastr.success("下单成功");
+                            window.location = "Account";
+                        } else {
+                            $('#myModal').modal();
+                        }
 
                         //$('#myModal').modal();
                     },

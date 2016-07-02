@@ -231,11 +231,18 @@ public class BranchReserveAction extends ActionSupport {
         // payment success, clear cart
         final HashMap<Integer, ShoppingCart> carts = SessionManagement.getCarts();
         carts.remove(tmpReserve.getBid());
+        paySucc = true;
         return SUCCESS;
     }
 
     private String getDate() {
         return LocalDate.now().toString();
+    }
+
+    private boolean paySucc = false;
+
+    public boolean isPaySucc() {
+        return paySucc;
     }
 
     /**

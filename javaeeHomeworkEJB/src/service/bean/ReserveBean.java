@@ -13,7 +13,6 @@ import tmpEntity.ReserveBranchVO;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,19 +37,19 @@ public class ReserveBean implements ReserveService {
     @Override
     public Reserve reserveAddAndPay(ReserveBranchVO reserveBranchVO) throws BalanceNotEnoughException {
         // check plan detail
-//        HashMap<Integer, PlanDetail> map = new HashMap<>();
-//        TypedQuery<PlanDetail> query = em.createNamedQuery(PlanDetail.DETAIL_BY_BID_DATE_DID, PlanDetail.class)
-//                .setParameter(1, reserveBranchVO.getBid())
-//                .setParameter(2, reserveBranchVO.getBdate());
-//        for (RDBranchVO rdBranchVO : reserveBranchVO.getDetails().values()) {
-//            int did = rdBranchVO.getDid();
-//            PlanDetail detail = query.setParameter(3, did).getSingleResult();
-//            map.put(did, detail);
-//            Integer planNum = detail.getNum();
-//            if (planNum < rdBranchVO.getNum()) {
-//                return null;
-//            }
-//        }
+        //        HashMap<Integer, PlanDetail> map = new HashMap<>();
+        //        TypedQuery<PlanDetail> query = em.createNamedQuery(PlanDetail.DETAIL_BY_BID_DATE_DID, PlanDetail.class)
+        //                .setParameter(1, reserveBranchVO.getBid())
+        //                .setParameter(2, reserveBranchVO.getBdate());
+        //        for (RDBranchVO rdBranchVO : reserveBranchVO.getDetails().values()) {
+        //            int did = rdBranchVO.getDid();
+        //            PlanDetail detail = query.setParameter(3, did).getSingleResult();
+        //            map.put(did, detail);
+        //            Integer planNum = detail.getNum();
+        //            if (planNum < rdBranchVO.getNum()) {
+        //                return null;
+        //            }
+        //        }
         // pay money first
         Collection<RDBranchVO> values = reserveBranchVO.getDetails().values();
         double price = 0;
@@ -62,9 +61,9 @@ public class ReserveBean implements ReserveService {
             return null;
         }
         Reserve entity;
-        consume.payReservation(price);
-        // update reservation detail and plan detail
         try {
+            consume.payReservation(price);
+            // update reservation detail and plan detail
             entity = new Reserve(
                     em.find(User.class, reserveBranchVO.getUid()),
                     em.find(Branch.class, reserveBranchVO.getBid()),
@@ -73,9 +72,9 @@ public class ReserveBean implements ReserveService {
             em.persist(entity);
             for (RDBranchVO rdBranchVO : values) {
                 int did = rdBranchVO.getDid();
-//                PlanDetail planDetail = map.get(did);
-//                planDetail.setNum(planDetail.getNum() - rdBranchVO.getNum());
-//                em.persist(planDetail);
+                //                PlanDetail planDetail = map.get(did);
+                //                planDetail.setNum(planDetail.getNum() - rdBranchVO.getNum());
+                //                em.persist(planDetail);
                 Dessert dessert = em.find(Dessert.class, did);
                 em.persist(new ReserveDetail(rdBranchVO.getNum(), rdBranchVO.getPrice(), entity, dessert));
             }

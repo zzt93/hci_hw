@@ -57,8 +57,9 @@ public class UserLogin extends ActionSupport {
 
         User user = accountService.login(name, pw);
         if (user == null) {
-            addFieldError("name", "user name or password is wrong.");
-            return INPUT;
+//            addFieldError("name", "user name or password is wrong.");
+//            return INPUT;
+            throw new Exception();
         }
         SessionManagement.setUserSession(user);
         return SUCCESS;
